@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patronache.ai — Training AI pentru Companii din România</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #dbeafe;
+      --accent: #3b82f6;
+      --dark: #0f172a;
+      --text: #1e293b;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      --success: #10b981;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem;
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo {
+      font-weight: 800; font-size: 1.2rem; color: var(--dark);
+      text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-cta {
+      background: var(--primary); color: white; padding: 0.55rem 1.3rem;
+      border-radius: 7px; text-decoration: none; font-weight: 600; font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      background: white;
+      padding: 9rem 2rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--primary-light); border: 1px solid #bfdbfe;
+      color: var(--primary); padding: 0.35rem 0.9rem; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3px;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 900; color: var(--dark);
+      line-height: 1.15; letter-spacing: -1px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .highlight { color: var(--primary); }
+    .hero p {
+      font-size: 1.05rem; color: var(--muted);
+      margin-bottom: 2rem; line-height: 1.75; max-width: 480px;
+    }
+    .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      background: var(--primary); color: white;
+      padding: 0.85rem 1.75rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.2s; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,64,175,0.3); }
+    .btn-secondary {
+      background: white; color: var(--text);
+      padding: 0.85rem 1.75rem; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: all 0.2s; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .hero-trust {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-top: 2rem; font-size: 0.8rem; color: var(--muted);
+    }
+    .hero-trust-dots { display: flex; gap: -4px; }
+    .trust-dot {
+      width: 28px; height: 28px; border-radius: 50%; border: 2px solid white;
+      background: linear-gradient(135deg, #94a3b8, #64748b);
+      margin-left: -8px; display: flex; align-items: center;
+      justify-content: center; font-size: 0.6rem; color: white; font-weight: 700;
+    }
+    .trust-dot:first-child { margin-left: 0; }
+
+    /* ── HERO VISUAL (right side) ── */
+    .hero-visual { position: relative; }
+    .hero-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .hero-card-header {
+      background: var(--dark); padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-card-header-dots { display: flex; gap: 0.4rem; }
+    .hd { width: 10px; height: 10px; border-radius: 50%; }
+    .hd1 { background: #ef4444; }
+    .hd2 { background: #f59e0b; }
+    .hd3 { background: #22c55e; }
+    .hero-card-header-title {
+      font-size: 0.75rem; font-weight: 600; color: #94a3b8;
+      margin-left: 0.5rem; letter-spacing: 0.3px;
+    }
+    .hero-card-body { padding: 1.5rem; }
+    .hero-schedule-day {
+      font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--primary); margin-bottom: 0.75rem;
+    }
+    .hero-session-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.65rem 0; border-bottom: 1px solid var(--border);
+    }
+    .hero-session-row:last-child { border-bottom: none; }
+    .hero-session-time {
+      font-size: 0.7rem; color: var(--muted); font-weight: 500;
+      min-width: 80px;
+    }
+    .hero-session-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--primary); flex-shrink: 0;
+    }
+    .hero-session-name { font-size: 0.8rem; font-weight: 600; color: var(--dark); }
+    .hero-card-footer {
+      background: var(--light); padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .hero-card-footer-text { font-size: 0.75rem; color: var(--muted); }
+    .hero-card-badge {
+      font-size: 0.7rem; font-weight: 700; background: #dcfce7;
+      color: #166534; padding: 0.25rem 0.65rem; border-radius: 50px;
+    }
+    .hero-float-card {
+      position: absolute; bottom: -16px; left: -24px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.85rem 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-float-icon {
+      width: 36px; height: 36px; background: var(--primary-light);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .hero-float-text { font-size: 0.75rem; }
+    .hero-float-text strong { display: block; color: var(--dark); font-size: 0.85rem; }
+    .hero-float-text span { color: var(--muted); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--dark); padding: 2.5rem 2rem;
+    }
+    .stats-bar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; gap: 0; justify-content: space-around; flex-wrap: wrap;
+    }
+    .stat { text-align: center; padding: 0.5rem 2rem; }
+    .stat + .stat { border-left: 1px solid rgba(255,255,255,0.08); }
+    .stat-number { font-size: 2rem; font-weight: 900; color: white; letter-spacing: -1px; }
+    .stat-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.2rem; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { display: none; }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.5px; color: var(--dark);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted); max-width: 560px; line-height: 1.7;
+    }
+    .section-header { margin-bottom: 4rem; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 0 auto; }
+
+    /* ── BENEFITS ── */
+    .benefits { background: var(--light); }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .benefit-card {
+      background: white; padding: 2rem; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary-light); }
+    .benefit-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--primary-light); display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .benefit-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
+    .benefit-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── PROGRAM ── */
+    .program-toggle {
+      display: flex; gap: 0.5rem; justify-content: center;
+      background: var(--light); padding: 0.4rem; border-radius: 10px;
+      width: fit-content; margin: 0 auto 3rem;
+    }
+    .toggle-btn {
+      padding: 0.6rem 1.5rem; border-radius: 8px; border: none;
+      font-weight: 600; font-size: 0.9rem; cursor: pointer;
+      transition: all 0.2s; color: var(--muted); background: transparent;
+    }
+    .toggle-btn.active {
+      background: white; color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .program-day { display: none; }
+    .program-day.active { display: block; }
+    .day-header {
+      background: linear-gradient(135deg, var(--primary), #1d4ed8);
+      color: white; padding: 1.5rem 2rem; border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .day-header h3 { font-size: 1.1rem; font-weight: 700; }
+    .day-header p { font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem; }
+    .sessions { border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+    .session {
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .session:last-child { border-bottom: none; }
+    .session:hover { background: var(--light); }
+    .session-time {
+      font-size: 0.75rem; font-weight: 600; color: var(--primary);
+      background: var(--primary-light); padding: 0.3rem 0.7rem;
+      border-radius: 6px; white-space: nowrap; min-width: 100px; text-align: center;
+    }
+    .session-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .session-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .session-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
+    .tag {
+      font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem;
+      border-radius: 50px; background: var(--light); color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .program-note {
+      text-align: center; margin-top: 1.5rem;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .program-note strong { color: var(--text); }
+
+    /* ── FREE MODULES ── */
+    .free-modules { background: var(--light); }
+    .modules-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .module-card {
+      background: white; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); overflow: hidden;
+      transition: all 0.3s; cursor: pointer;
+    }
+    .module-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .module-card-top {
+      padding: 2.5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+      position: relative; overflow: hidden;
+    }
+    .module-card-top::after {
+      content: '';
+      position: absolute; right: -30px; top: -30px;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.07); border-radius: 50%;
+    }
+    .module-num {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+      margin-bottom: 0.8rem;
+    }
+    .module-card-top h3 { font-size: 1.4rem; font-weight: 800; color: white; line-height: 1.3; }
+    .module-card-top p { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+    .free-badge {
+      display: inline-block; background: rgba(255,255,255,0.2);
+      color: white; font-size: 0.7rem; font-weight: 700;
+      padding: 0.25rem 0.7rem; border-radius: 50px; margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+    .module-card-bottom { padding: 1.5rem 2rem; }
+    .module-topics { list-style: none; margin-bottom: 1.5rem; }
+    .module-topics li {
+      font-size: 0.875rem; color: var(--text); padding: 0.4rem 0;
+      display: flex; align-items: center; gap: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .module-topics li:last-child { border-bottom: none; }
+    .module-topics li::before { content: '✓'; color: var(--success); font-weight: 700; font-size: 0.8rem; }
+    .btn-start {
+      width: 100%; padding: 0.85rem; border-radius: 10px;
+      background: var(--primary); color: white; border: none;
+      font-weight: 700; font-size: 0.95rem; cursor: pointer;
+      transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .btn-start:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* ── FORMAT ── */
+    .format-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .format-card {
+      border: 2px solid var(--border); border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem; transition: all 0.3s;
+    }
+    .format-card:hover { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); }
+    .format-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+    .format-card h3 { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
+    .format-card > p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .format-list { list-style: none; }
+    .format-list li {
+      font-size: 0.875rem; color: var(--text); padding: 0.5rem 0;
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .format-list li:last-child { border-bottom: none; }
+    .format-list li .check { color: var(--success); font-weight: 700; margin-top: 1px; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      text-align: center; padding: 6rem 2rem;
+    }
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900; color: white; letter-spacing: -0.5px;
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .cta-section p { color: #94a3b8; font-size: 1.05rem; margin-bottom: 2.5rem; }
+    .contact-form {
+      max-width: 560px; margin: 0 auto;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: #94a3b8; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; padding: 0.75rem 1rem; color: white;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      transition: border-color 0.2s; outline: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #475569; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(109,40,217,0.2);
+    }
+    .form-group select option { background: #1e293b; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; padding: 1rem; background: var(--primary); color: white;
+      border: none; border-radius: 10px; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .form-submit:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+    }
+    .form-success .check-circle {
+      width: 64px; height: 64px; background: var(--success);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 1rem;
+    }
+    .form-success h3 { color: white; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .form-success p { color: #94a3b8; font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: #64748b;
+      padding: 3rem 2rem; text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer .logo { color: white; font-size: 1.1rem; display: block; margin-bottom: 0.75rem; }
+    footer p { font-size: 0.85rem; margin-bottom: 0.4rem; }
+    footer a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #a78bfa; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: white; border-radius: var(--radius-lg);
+      width: 100%; max-width: 680px; max-height: 90vh;
+      overflow-y: auto; position: relative;
+    }
+    .modal-header {
+      padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: white; z-index: 10;
+    }
+    .modal-title { font-size: 1rem; font-weight: 700; color: var(--dark); }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+      background: none; cursor: pointer; font-size: 1.1rem; display: flex;
+      align-items: center; justify-content: center; color: var(--muted);
+      transition: all 0.2s;
+    }
+    .modal-close:hover { background: var(--light); color: var(--dark); }
+    .progress-bar-wrap {
+      height: 4px; background: var(--light); border-radius: 2px;
+      margin: 0 2rem; position: relative; top: 0; padding: 0;
+    }
+    .progress-bar {
+      height: 100%; background: linear-gradient(90deg, var(--primary), #818cf8);
+      border-radius: 2px; transition: width 0.4s ease;
+    }
+    .modal-body { padding: 2rem; }
+    .modal-footer {
+      padding: 1.5rem 2rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; bottom: 0; background: white;
+    }
+    .step-indicator { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+    .modal-nav { display: flex; gap: 0.75rem; }
+    .btn-back {
+      padding: 0.65rem 1.2rem; border-radius: 8px;
+      border: 1px solid var(--border); background: none;
+      color: var(--muted); font-weight: 600; font-size: 0.875rem; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { background: var(--light); color: var(--text); }
+    .btn-next {
+      padding: 0.65rem 1.4rem; border-radius: 8px;
+      background: var(--primary); color: white;
+      border: none; font-weight: 700; font-size: 0.875rem; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-next:hover { background: var(--primary-dark); }
+    .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── LESSON CONTENT ── */
+    .lesson-slide { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .slide-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 0.6rem; }
+    .slide-title { font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; line-height: 1.3; }
+    .slide-body { font-size: 0.95rem; color: var(--text); line-height: 1.75; margin-bottom: 1.5rem; }
+    .info-box {
+      background: var(--primary-light); border-left: 3px solid var(--primary);
+      padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.2rem 0;
+      font-size: 0.875rem; color: var(--primary-dark); line-height: 1.6;
+    }
+    .comparison-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0;
+    }
+    .comparison-item { padding: 1rem; border-radius: 10px; font-size: 0.85rem; line-height: 1.6; }
+    .comparison-item.bad { background: #fef2f2; border: 1px solid #fecaca; }
+    .comparison-item.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .comparison-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+    .comparison-item.bad .comparison-label { color: #dc2626; }
+    .comparison-item.good .comparison-label { color: #16a34a; }
+
+    .formula-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0;
+    }
+    .formula-item {
+      padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid var(--border);
+    }
+    .formula-item-label {
+      font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--primary); margin-bottom: 0.3rem;
+    }
+    .formula-item-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .formula-item-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── QUIZ ── */
+    .quiz-question { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 1.2rem; line-height: 1.4; }
+    .quiz-options { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .quiz-option {
+      padding: 0.85rem 1.2rem; border: 2px solid var(--border); border-radius: 10px;
+      cursor: pointer; font-size: 0.9rem; color: var(--text); transition: all 0.2s;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .quiz-option:hover { border-color: var(--primary); background: var(--primary-light); }
+    .quiz-option.selected { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); font-weight: 600; }
+    .quiz-option.correct { border-color: var(--success); background: #f0fdf4; color: #166534; }
+    .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; color: #dc2626; }
+    .quiz-option .opt-letter {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--light); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--muted);
+      flex-shrink: 0;
+    }
+    .quiz-option.selected .opt-letter { background: var(--primary); color: white; border-color: var(--primary); }
+    .quiz-option.correct .opt-letter { background: var(--success); color: white; border-color: var(--success); }
+    .quiz-feedback {
+      margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 8px;
+      font-size: 0.875rem; display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.correct-fb { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .quiz-feedback.wrong-fb { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+
+    /* ── PROMPT SANDBOX ── */
+    .sandbox-label { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-bottom: 0.4rem; }
+    .sandbox-input {
+      width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text);
+      resize: none; outline: none; transition: border-color 0.2s; line-height: 1.6;
+    }
+    .sandbox-input:focus { border-color: var(--primary); }
+    .sandbox-examples { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.75rem 0; }
+    .sandbox-example {
+      font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 50px;
+      border: 1px solid var(--primary); color: var(--primary); cursor: pointer;
+      background: var(--primary-light); transition: all 0.2s; font-weight: 500;
+    }
+    .sandbox-example:hover { background: var(--primary); color: white; }
+    .sandbox-send {
+      padding: 0.75rem 1.5rem; background: var(--primary); color: white;
+      border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
+      font-size: 0.875rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .sandbox-send:hover { background: var(--primary-dark); }
+    .sandbox-send:disabled { opacity: 0.5; cursor: not-allowed; }
+    .sandbox-response {
+      margin-top: 1.5rem; padding: 1.2rem; background: var(--light); border-radius: 10px;
+      border: 1px solid var(--border); display: none;
+    }
+    .sandbox-response.show { display: block; animation: fadeIn 0.3s ease; }
+    .response-header {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 700; color: var(--primary);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem;
+    }
+    .response-header::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--success); display: inline-block;
+    }
+    .response-text { font-size: 0.875rem; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
+    .typing-cursor { display: inline-block; width: 2px; height: 14px; background: var(--primary); margin-left: 2px; animation: blink 0.8s infinite; vertical-align: middle; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ── COMPLETION ── */
+    .completion-screen { text-align: center; padding: 2rem 0; }
+    .completion-emoji { font-size: 4rem; margin-bottom: 1rem; display: block; }
+    .completion-screen h3 { font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.75rem; }
+    .completion-screen p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .completion-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--primary-light); color: var(--primary-dark);
+      padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 700; margin-bottom: 1.5rem;
+    }
+    .btn-cta-modal {
+      display: inline-block; padding: 0.85rem 2rem; background: var(--primary);
+      color: white; border-radius: 10px; font-weight: 700; text-decoration: none;
+      font-size: 0.95rem; transition: all 0.2s;
+    }
+    .btn-cta-modal:hover { background: var(--primary-dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-stats { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .comparison-grid, .formula-grid { grid-template-columns: 1fr; }
+      .modal { margin: 0; border-radius: var(--radius) var(--radius) 0 0; max-height: 95vh; }
+      .modal-overlay { align-items: flex-end; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">patronache<span>.ai</span></a>
+    <ul class="nav-links">
+      <li><a href="#program">Program</a></li>
+      <li><a href="#lectii-gratuite">Lecții Gratuite</a></li>
+      <li><a href="#format">Format</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Solicită Ofertă</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <!-- Left: text -->
+    <div class="hero-left">
+      <div class="hero-badge">🇷🇴 Training AI pentru Companii din România</div>
+      <h1>Pregătește-ți echipa pentru era <span class="highlight">inteligenței artificiale</span></h1>
+      <p>Training practic de 1–2 zile, fără cunoștințe tehnice necesare. Angajații tăi pleacă cu abilități reale, aplicabile de a doua zi.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Solicită o ofertă gratuită →</a>
+        <a href="#lectii-gratuite" class="btn-secondary">▶ Încearcă o lecție</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-dots">
+          <div class="trust-dot">AI</div>
+          <div class="trust-dot">HR</div>
+          <div class="trust-dot">MK</div>
+          <div class="trust-dot">FN</div>
+        </div>
+        <span>Adaptat pentru echipe din orice departament</span>
+      </div>
+    </div>
+    <!-- Right: visual card -->
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-header-dots">
+            <div class="hd hd1"></div>
+            <div class="hd hd2"></div>
+            <div class="hd hd3"></div>
+          </div>
+          <div class="hero-card-header-title">Program Training — Ziua 1</div>
+        </div>
+        <div class="hero-card-body">
+          <div class="hero-schedule-day">Sesiuni incluse</div>
+          <div class="hero-session-row">
+            <div class="hero-session-time">09:00 – 10:30</div>
+            <div class="hero-session-dot"></div>
+            <div class="hero-session-name">Ce este AI-ul?</div>
+          </div>
+          <div class="hero-session-row">
+            <div class="hero-session-time">10:45 – 12:15</div>
+            <div class="hero-session-dot"></div>
+            <div class="hero-session-name">Instrumente esențiale</div>
+          </div>
+          <div class="hero-session-row">
+            <div class="hero-session-time">13:30 – 15:00</div>
+            <div class="hero-session-dot"></div>
+            <div class="hero-session-name">Prompt Engineering</div>
+          </div>
+          <div class="hero-session-row">
+            <div class="hero-session-time">15:15 – 17:00</div>
+            <div class="hero-session-dot"></div>
+            <div class="hero-session-name">AI în munca zilnică</div>
+          </div>
+        </div>
+        <div class="hero-card-footer">
+          <div class="hero-card-footer-text">In-person sau online · Maxim 15 participanți</div>
+          <div class="hero-card-badge">✓ Certificat inclus</div>
+        </div>
+      </div>
+      <div class="hero-float-card">
+        <div class="hero-float-icon">🎯</div>
+        <div class="hero-float-text">
+          <strong>Zero cunoștințe tehnice</strong>
+          <span>necesare pentru participare</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat">
+      <div class="stat-number">1–2</div>
+      <div class="stat-label">Zile de training</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Sesiuni practice</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Cunoștințe tehnice necesare</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Aplicabil de a doua zi</div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits" id="beneficii">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">De ce merită</div>
+      <h2 class="section-title">Ce câștigă organizația ta</h2>
+      <p class="section-sub">Trainingul nostru nu e despre AI în general — e despre cum AI-ul îți ajută echipa să lucreze mai bine, chiar de mâine.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱</div>
+        <h3>Economie de timp reală</h3>
+        <p>Angajații care știu să folosească AI termină sarcinile repetitive în jumătate din timp. Emailuri, rapoarte, rezumate — în minute, nu ore.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <h3>Rămâi competitiv</h3>
+        <p>Companiile care adoptă AI acum au un avantaj clar față de concurență. Fiecare lună de întârziere costă mai mult decât trainingul.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Aplicabil imediat</h3>
+        <p>Nu predăm teorie. Fiecare sesiune include exerciții pe cazuri reale din domeniul tău — HR, marketing, financiar, operațiuni.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <h3>Fără risc tehnic</h3>
+        <p>Zero cunoștințe de programare necesare. Dacă angajatul tău știe să scrie un email, poate folosi AI. Atât de simplu.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">👥</div>
+        <h3>Pentru toată echipa</h3>
+        <p>De la junior la manager, de la HR la contabilitate. Adaptăm exercițiile la rolul fiecărui participant.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏆</div>
+        <h3>Certificat de participare</h3>
+        <p>Fiecare participant primește un certificat de absolvire. O dovadă concretă a investiției tale în oameni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Programa</div>
+      <h2 class="section-title">Ce acoperim în training</h2>
+      <p class="section-sub">Alegi varianta potrivită pentru echipa ta — o zi intensivă sau două zile complete cu sesiuni aplicate pe departamente.</p>
+    </div>
+
+    <div class="program-toggle">
+      <button class="toggle-btn active" onclick="switchDay(1)">1 Zi Intensivă</button>
+      <button class="toggle-btn" onclick="switchDay(2)">2 Zile Complete</button>
+    </div>
+
+    <div id="day1" class="program-day active">
+      <div class="day-header">
+        <h3>Ziua 1 — Fundamente AI &amp; Aplicații Practice</h3>
+        <p>De la zero la productiv cu AI — în 8 ore</p>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-time">09:00 – 10:30</div>
+          <div class="session-content">
+            <h4>Ce este AI-ul? Demistificăm tehnologia</h4>
+            <p>Ce poate și ce nu poate face AI-ul, cum funcționează ChatGPT și Claude, mituri comune și realitate.</p>
+            <div class="session-tags"><span class="tag">Teorie</span><span class="tag">Demo live</span><span class="tag">Q&A</span></div>
+          </div>
+        </div>
+        <div class="session">
+          <div class="session-time">10:45 – 12:15</div>
+          <div class="session-content">
+            <h4>Instrumentele esențiale — în practică</h4>
+            <p>Mâini pe tastatură: ChatGPT, Claude, Gemini. Fiecare participant lucrează direct în platforme.</p>
+            <div class="session-tags"><span class="tag">Hands-on</span><span class="tag">Exerciții</span></div>
+          </div>
+        </div>
+        <div class="session">
+          <div class="session-time">13:30 – 15:00</div>
+          <div class="session-content">
+            <h4>Prompt Engineering — cum să obții rezultate utile</h4>
+            <p>Formula care schimbă totul: cum să formulezi cereri clare și să obții răspunsuri precise, nu generice.</p>
+            <div class="session-tags"><span class="tag">Hands-on</span><span class="tag">Șabloane</span><span class="tag">Exerciții</span></div>
+          </div>
+        </div>
+        <div class="session">
+          <div class="session-time">15:15 – 17:00</div>
+          <div class="session-content">
+            <h4>AI în munca zilnică</h4>
+            <p>Email, rapoarte, rezumate, cercetare, prezentări — participanții aplică AI pe sarcini reale din jobul lor.</p>
+            <div class="session-tags"><span class="tag">Aplicat</span><span class="tag">Cazuri reale</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="program-note"><strong>Inclus:</strong> Materiale de curs, șabloane de prompts, acces la resurse post-training, certificat de participare.</p>
+    </div>
+
+    <div id="day2" class="program-day">
+      <div class="day-header">
+        <h3>Ziua 2 — Departamente, Automatizare &amp; Proiect Aplicat</h3>
+        <p>Adâncim cunoștințele și fiecare participant rezolvă o problemă reală din jobul său</p>
+      </div>
+      <div class="sessions">
+        <div class="session">
+          <div class="session-time">09:00 – 10:30</div>
+          <div class="session-content">
+            <h4>AI pe departamente</h4>
+            <p>Sesiuni specializate: HR (fișe de post, interviuri, onboarding), Marketing (conținut, campanii), Financiar (analiză, raportare), Operațiuni (procese, documentație).</p>
+            <div class="session-tags"><span class="tag">HR</span><span class="tag">Marketing</span><span class="tag">Financiar</span><span class="tag">Ops</span></div>
+          </div>
+        </div>
+        <div class="session">
+          <div class="session-time">10:45 – 12:15</div>
+          <div class="session-content">
+            <h4>Automatizare fără programare</h4>
+            <p>Cum să conectezi AI-ul cu celelalte aplicații pe care le folosești. Introducere în Zapier și Make — fluxuri simple care economisesc ore pe săptămână.</p>
+            <div class="session-tags"><span class="tag">Automatizare</span><span class="tag">No-code</span><span class="tag">Demo</span></div>
+          </div>
+        </div>
+        <div class="session">
+          <div class="session-time">13:30 – 14:30</div>
+          <div class="session-content">
+            <h4>Riscuri, etică și confidențialitate</h4>
+            <p>Ce nu trebuie să introduci în AI, cum protejezi datele companiei, limite legale și bune practici.</p>
+            <div class="session-tags"><span class="tag">GDPR</span><span class="tag">Securitate</span><span class="tag">Etică</span></div>
+          </div>
+        </div>
+        <div class="session">
+          <div class="session-time">14:45 – 17:00</div>
+          <div class="session-content">
+            <h4>🏁 Proiect aplicat final</h4>
+            <p>Fiecare participant identifică o problemă reală din jobul său și o rezolvă cu AI, ghidat de trainer. Prezentare scurtă în fața grupului.</p>
+            <div class="session-tags"><span class="tag">Aplicat</span><span class="tag">Individual</span><span class="tag">Prezentare</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="program-note"><strong>Ziua 2</strong> include tot ce e în Ziua 1, plus sesiunile avansate de mai sus. <strong>Recomandat pentru echipe de management sau companii care vor adoptare rapidă și profundă.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FREE MODULES -->
+<section class="free-modules" id="lectii-gratuite">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Încearcă acum</div>
+      <h2 class="section-title">2 lecții gratuite — direct în browser</h2>
+      <p class="section-sub">Vrei să simți cum e trainingul înainte să decizi? Parcurge aceste două lecții interactive chiar acum, fără să te înregistrezi.</p>
+    </div>
+    <div class="modules-grid">
+      <!-- Module 1 -->
+      <div class="module-card" onclick="openModule(1)">
+        <div class="module-card-top">
+          <div class="free-badge">✦ GRATUIT</div>
+          <div class="module-num">Lecția 1 din 8 · Sesiunea de dimineață</div>
+          <h3>Ce este AI-ul?</h3>
+          <p>Demistificăm inteligența artificială în 10 minute</p>
+        </div>
+        <div class="module-card-bottom">
+          <ul class="module-topics">
+            <li>Ce înseamnă cu adevărat „inteligență artificială"</li>
+            <li>Ce poate și ce nu poate face un AI</li>
+            <li>Mituri comune vs. realitate</li>
+            <li>Mini-quiz de verificare</li>
+          </ul>
+          <button class="btn-start">▶ Începe lecția gratuită</button>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module-card" onclick="openModule(2)">
+        <div class="module-card-top" style="background: linear-gradient(135deg, #0369a1, #0ea5e9);">
+          <div class="free-badge">✦ GRATUIT</div>
+          <div class="module-num">Lecția 3 din 8 · Sesiunea de după-amiază</div>
+          <h3>Prompt Engineering de bază</h3>
+          <p>Învață formula care transformă AI-ul într-un asistent util</p>
+        </div>
+        <div class="module-card-bottom">
+          <ul class="module-topics">
+            <li>De ce contează cum formulezi o cerere</li>
+            <li>Formula în 4 pași pentru prompts clare</li>
+            <li>Înainte vs. după — exemple concrete</li>
+            <li>Sandbox live — încearcă singur</li>
+          </ul>
+          <button class="btn-start" style="background: #0369a1;">▶ Începe lecția gratuită</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section id="format">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Cum funcționează</div>
+      <h2 class="section-title">Alegem formatul care ți se potrivește</h2>
+      <p class="section-sub">Trainingul se adaptează la tine — fie că preferi față în față sau online.</p>
+    </div>
+    <div class="format-grid">
+      <div class="format-card">
+        <div class="format-icon">🏢</div>
+        <h3>La biroul vostru</h3>
+        <p>Venim la sediul companiei tale cu tot ce e necesar. O experiență completă, fără logistica deplasării angajaților.</p>
+        <ul class="format-list">
+          <li><span class="check">✓</span> Sesiune la sediul companiei tale, oriunde în România</li>
+          <li><span class="check">✓</span> Maxim 15 participanți per sesiune</li>
+          <li><span class="check">✓</span> Echipament audio-video inclus</li>
+          <li><span class="check">✓</span> Exerciții personalizate pe industria ta</li>
+          <li><span class="check">✓</span> Q&A cu trainerul după fiecare sesiune</li>
+        </ul>
+      </div>
+      <div class="format-card">
+        <div class="format-icon">💻</div>
+        <h3>Online — live &amp; interactiv</h3>
+        <p>Aceeași calitate, fără deplasare. Ideal pentru echipe distribuite sau companii care vor mai mulți participanți.</p>
+        <ul class="format-list">
+          <li><span class="check">✓</span> Sesiuni live pe Zoom sau Microsoft Teams</li>
+          <li><span class="check">✓</span> Maxim 20 participanți per sesiune</li>
+          <li><span class="check">✓</span> Înregistrare disponibilă 30 de zile</li>
+          <li><span class="check">✓</span> Breakout rooms pentru exerciții în echipă</li>
+          <li><span class="check">✓</span> Materiale digitale trimise înainte de training</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>Gata să îți antrenezi echipa?</h2>
+    <p>Completează formularul și te contactăm în 24 de ore cu o ofertă personalizată.</p>
+    <div class="contact-form">
+      <div id="form-content">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nume complet</label>
+            <input type="text" placeholder="Andrei Ionescu">
+          </div>
+          <div class="form-group">
+            <label>Companie</label>
+            <input type="text" placeholder="Compania SRL">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="andrei@compania.ro">
+          </div>
+          <div class="form-group">
+            <label>Telefon</label>
+            <input type="tel" placeholder="+40 700 000 000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Număr de participanți</label>
+          <select>
+            <option value="">Selectează...</option>
+            <option>5–10 angajați</option>
+            <option>10–20 angajați</option>
+            <option>20–50 angajați</option>
+            <option>Peste 50 angajați</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Format preferat</label>
+          <select>
+            <option value="">Selectează...</option>
+            <option>La sediul nostru (in-person)</option>
+            <option>Online – live</option>
+            <option>Nu știu încă</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mesaj (opțional)</label>
+          <textarea placeholder="Spune-ne ceva despre echipa ta sau despre provocările cu care se confruntă..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm(event)">Solicită oferta gratuită →</button>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="check-circle">✓</div>
+        <h3>Mulțumim! Am primit mesajul tău.</h3>
+        <p>Te contactăm în maximum 24 de ore cu o ofertă personalizată pentru echipa ta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">patronache<span style="color:#a78bfa">.ai</span></a>
+  <p>Training AI pentru companii din România</p>
+  <p style="margin-top:0.5rem"><a href="mailto:hello@patronache.ai">hello@patronache.ai</a></p>
+  <p style="margin-top:1.5rem; font-size:0.75rem">© 2025 Patronache.ai · Toate drepturile rezervate</p>
+</footer>
+
+<!-- ── MODULE 1 MODAL ── -->
+<div class="modal-overlay" id="modal1">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="m1-title">Lecția 1 — Ce este AI-ul?</div>
+      <button class="modal-close" onclick="closeModal(1)">✕</button>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="m1-progress" style="width:25%"></div>
+    </div>
+    <div class="modal-body" id="m1-body"></div>
+    <div class="modal-footer">
+      <div class="step-indicator" id="m1-steps">Pasul 1 din 4</div>
+      <div class="modal-nav">
+        <button class="btn-back" id="m1-back" onclick="navModule(1,-1)" style="display:none">← Înapoi</button>
+        <button class="btn-next" id="m1-next" onclick="navModule(1,1)">Continuă →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODULE 2 MODAL ── -->
+<div class="modal-overlay" id="modal2">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Lecția 3 — Prompt Engineering</div>
+      <button class="modal-close" onclick="closeModal(2)">✕</button>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="m2-progress" style="width:33%"></div>
+    </div>
+    <div class="modal-body" id="m2-body"></div>
+    <div class="modal-footer">
+      <div class="step-indicator" id="m2-steps">Pasul 1 din 3</div>
+      <div class="modal-nav">
+        <button class="btn-back" id="m2-back" onclick="navModule(2,-1)" style="display:none">← Înapoi</button>
+        <button class="btn-next" id="m2-next" onclick="navModule(2,1)">Continuă →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── PROGRAM TOGGLE ──
+function switchDay(day) {
+  document.querySelectorAll('.program-day').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('day' + day).classList.add('active');
+  document.querySelectorAll('.toggle-btn')[day - 1].classList.add('active');
+}
+
+// ── MODULE 1 STATE ──
+const m1 = { step: 0, total: 4, quizAnswer: null, quizCorrect: false };
+const m2 = { step: 0, total: 3 };
+const modules = { 1: m1, 2: m2 };
+
+// ── MODULE 1 CONTENT ──
+const m1Steps = [
+  // Step 0: What is AI
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 1 din 4</div>
+      <div class="slide-title">Ce înseamnă, de fapt, „inteligență artificială"?</div>
+      <div class="slide-body">
+        AI-ul (inteligența artificială) este un <strong>software care poate analiza text, imagini sau date și poate genera răspunsuri inteligente</strong> — similar cu modul în care un om ar răspunde la o întrebare.
+        <br><br>
+        Nu e un robot. Nu gândește ca un om. Nu are emoții sau conștiință. Este, în esență, un program extrem de avansat care a „citit" miliarde de texte și a învățat să recunoască tipare.
+      </div>
+      <div class="info-box">
+        💡 <strong>Analogie simplă:</strong> Gândește-te la AI ca la un coleg nou, extrem de citit, care a parcurs tot Internetul. Știe multe, răspunde rapid — dar tot tu trebuie să îi dai instrucțiuni clare.
+      </div>
+    </div>
+  `,
+  // Step 1: Can vs Can't
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 2 din 4</div>
+      <div class="slide-title">Ce poate și ce nu poate face AI-ul</div>
+      <div class="slide-body">Haideți să clarificăm limitele reale:</div>
+      <div class="comparison-grid">
+        <div class="comparison-item good">
+          <div class="comparison-label">✓ Ce poate face bine</div>
+          Scrie emailuri și rapoarte<br>
+          Rezumă documente lungi<br>
+          Generează idei și variante<br>
+          Explică concepte complexe<br>
+          Traduce și reformulează texte<br>
+          Răspunde la întrebări generale
+        </div>
+        <div class="comparison-item bad">
+          <div class="comparison-label">✗ Ce nu poate face</div>
+          Accesa datele interne ale firmei<br>
+          Garanta că informațiile sunt corecte<br>
+          Lua decizii în locul tău<br>
+          Simți emoții sau empatiza<br>
+          Cunoaște evenimentele recente<br>
+          Înlocui judecata umană
+        </div>
+      </div>
+      <div class="info-box">
+        ⚠️ <strong>Important:</strong> AI-ul poate greși. Verifică întotdeauna informațiile critice înainte să le folosești.
+      </div>
+    </div>
+  `,
+  // Step 2: Myths
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 3 din 4</div>
+      <div class="slide-title">3 mituri comune despre AI</div>
+      <div class="slide-body">Înainte de quiz, să demontăm cele mai frecvente greșeli de înțelegere:</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem">
+        <div style="padding:1rem 1.2rem;border-radius:10px;border:1px solid var(--border);background:white">
+          <div style="font-size:0.75rem;font-weight:700;color:#dc2626;text-transform:uppercase;margin-bottom:0.3rem">Mitul 1</div>
+          <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem">„AI-ul o să ne fure joburile"</div>
+          <div style="font-size:0.875rem;color:var(--muted)">Realitate: AI-ul automatizează sarcini, nu joburi complete. Cei care știu să îl folosească vor fi mai valoroși, nu înlocuiți.</div>
+        </div>
+        <div style="padding:1rem 1.2rem;border-radius:10px;border:1px solid var(--border);background:white">
+          <div style="font-size:0.75rem;font-weight:700;color:#dc2626;text-transform:uppercase;margin-bottom:0.3rem">Mitul 2</div>
+          <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem">„Trebuie să știu programare"</div>
+          <div style="font-size:0.875rem;color:var(--muted)">Realitate: Instrumentele AI moderne se folosesc în limbaj natural. Dacă știi să scrii un email, poți folosi AI.</div>
+        </div>
+        <div style="padding:1rem 1.2rem;border-radius:10px;border:1px solid var(--border);background:white">
+          <div style="font-size:0.75rem;font-weight:700;color:#dc2626;text-transform:uppercase;margin-bottom:0.3rem">Mitul 3</div>
+          <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem">„AI-ul are întotdeauna dreptate"</div>
+          <div style="font-size:0.875rem;color:var(--muted)">Realitate: AI-ul poate „hallucina" — inventa fapte plauzibile dar false. Gândirea critică rămâne esențială.</div>
+        </div>
+      </div>
+    </div>
+  `,
+  // Step 3: Quiz
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 4 din 4 — Mini-quiz</div>
+      <div class="slide-title">Testează ce ai reținut</div>
+      <div class="slide-body" style="margin-bottom:1.2rem">Un singur exercițiu rapid:</div>
+      <div class="quiz-question">Care dintre următoarele afirmații despre AI este <u>corectă</u>?</div>
+      <ul class="quiz-options" id="m1-quiz-options">
+        <li class="quiz-option" onclick="selectQuizAnswer(0, false)">
+          <span class="opt-letter">A</span> AI-ul gândește și simte ca un om
+        </li>
+        <li class="quiz-option" onclick="selectQuizAnswer(1, true)">
+          <span class="opt-letter">B</span> AI-ul poate greși — trebuie să verifici informațiile critice
+        </li>
+        <li class="quiz-option" onclick="selectQuizAnswer(2, false)">
+          <span class="opt-letter">C</span> Ai nevoie de cunoștințe de programare pentru a folosi AI
+        </li>
+        <li class="quiz-option" onclick="selectQuizAnswer(3, false)">
+          <span class="opt-letter">D</span> AI-ul va înlocui complet toate joburile în 2 ani
+        </li>
+      </ul>
+      <div class="quiz-feedback correct-fb" id="quiz-fb-correct">
+        ✓ <strong>Corect!</strong> AI-ul este un instrument puternic, dar nu infailibil. Verificarea informațiilor critice este esențială.
+      </div>
+      <div class="quiz-feedback wrong-fb" id="quiz-fb-wrong">
+        ✗ <strong>Nu chiar.</strong> Răspunsul corect era B — AI-ul poate greși și trebuie verificat. Nu gândește ca un om și nu necesită programare.
+      </div>
+    </div>
+  `,
+  // Step 4: Completion
+  () => `
+    <div class="completion-screen">
+      <span class="completion-emoji">🎉</span>
+      <h3>Ai finalizat prima lecție!</h3>
+      <p>Înțelegi acum ce este AI-ul, ce poate face și — la fel de important — ce nu poate face. Ești pregătit să treci la aplicații practice.</p>
+      <div class="completion-badge">✦ Lecția 1 completată</div>
+      <br><br>
+      <a href="#contact" class="btn-cta-modal" onclick="closeModal(1)">Solicită trainingul complet →</a>
+    </div>
+  `
+];
+
+// ── MODULE 2 CONTENT ──
+const m2Steps = [
+  // Step 0: What is a prompt
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 1 din 3</div>
+      <div class="slide-title">De ce contează cum îi vorbești AI-ului</div>
+      <div class="slide-body">
+        Un „prompt" este pur și simplu <strong>instrucțiunea pe care o dai AI-ului</strong>. Calitatea răspunsului depinde 80% de calitatea promptului tău.
+        <br><br>
+        Gândește-te la un angajat nou, extrem de capabil, care face exact ce îi spui — nimic mai mult, nimic mai puțin. Dacă instrucțiunea e vagă, și rezultatul va fi vag.
+      </div>
+      <div class="comparison-grid">
+        <div class="comparison-item bad">
+          <div class="comparison-label">✗ Prompt slab</div>
+          <em>„Scrie un email."</em><br><br>
+          AI-ul nu știe: pentru cine? despre ce? ce ton? ce lungime?
+        </div>
+        <div class="comparison-item good">
+          <div class="comparison-label">✓ Prompt bun</div>
+          <em>„Scrie un email profesional de 150 de cuvinte către un client nou, prin care îl invit la o întâlnire online joi la ora 14:00."</em>
+        </div>
+      </div>
+      <div class="info-box">
+        💡 Diferența dintre un prompt slab și unul bun înseamnă adesea diferența dintre 10 minute de editare și un text gata de trimis.
+      </div>
+    </div>
+  `,
+  // Step 1: The formula
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 2 din 3</div>
+      <div class="slide-title">Formula în 4 pași pentru un prompt eficient</div>
+      <div class="slide-body">Folosește acest șablon și vei obține rezultate mult mai bune:</div>
+      <div class="formula-grid">
+        <div class="formula-item">
+          <div class="formula-item-label">1. Rol</div>
+          <div class="formula-item-title">Cine ești tu?</div>
+          <div class="formula-item-desc">„Acționează ca un manager de HR cu 10 ani experiență..."</div>
+        </div>
+        <div class="formula-item">
+          <div class="formula-item-label">2. Context</div>
+          <div class="formula-item-title">Care e situația?</div>
+          <div class="formula-item-desc">„...pentru o companie de 50 de angajați din IT..."</div>
+        </div>
+        <div class="formula-item">
+          <div class="formula-item-label">3. Sarcina</div>
+          <div class="formula-item-title">Ce vrei să facă?</div>
+          <div class="formula-item-desc">„...creează o fișă de post pentru un Developer Junior..."</div>
+        </div>
+        <div class="formula-item">
+          <div class="formula-item-label">4. Format</div>
+          <div class="formula-item-title">Cum vrei rezultatul?</div>
+          <div class="formula-item-desc">„...în bullet points, maxim 300 de cuvinte."</div>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:1.2rem">
+        ✨ <strong>Rezultat complet:</strong> „Acționează ca un manager de HR cu 10 ani experiență, pentru o companie de 50 de angajați din IT. Creează o fișă de post pentru un Developer Junior în bullet points, maxim 300 de cuvinte."
+      </div>
+    </div>
+  `,
+  // Step 2: Sandbox
+  () => `
+    <div class="lesson-slide">
+      <div class="slide-eyebrow">Pasul 3 din 3 — Exercițiu live</div>
+      <div class="slide-title">Încearcă singur — scrie un prompt</div>
+      <div class="slide-body">Folosește formula (Rol + Context + Sarcină + Format) sau alege un exemplu de mai jos:</div>
+      <div class="sandbox-examples">
+        <span class="sandbox-example" onclick="fillExample('Scrie un email profesional de 100 de cuvinte prin care îl anunț pe șeful meu că voi lipsi joi din cauza unei întâlniri medicale.')">📧 Email absență</span>
+        <span class="sandbox-example" onclick="fillExample('Rezumă în 5 bullet points beneficiile muncii hibride pentru angajați și companii.')">📋 Rezumat bullet points</span>
+        <span class="sandbox-example" onclick="fillExample('Acționează ca un consultant de marketing. Propune 3 idei de campanii pe social media pentru o brutărie din Cluj, cu buget redus.')">💡 Idei marketing</span>
+      </div>
+      <div class="sandbox-label">Promptul tău:</div>
+      <textarea class="sandbox-input" id="sandbox-input" rows="4" placeholder="Scrie promptul tău aici folosind formula: Rol + Context + Sarcină + Format..."></textarea>
+      <button class="sandbox-send" onclick="sendPrompt()" id="sandbox-btn">
+        <span>▶</span> Generează răspuns AI
+      </button>
+      <div class="sandbox-response" id="sandbox-response">
+        <div class="response-header">Răspuns AI</div>
+        <div class="response-text" id="response-text"></div>
+      </div>
+    </div>
+  `,
+  // Step 3: Completion
+  () => `
+    <div class="completion-screen">
+      <span class="completion-emoji">🚀</span>
+      <h3>Știi acum să vorbești cu AI-ul!</h3>
+      <p>Formula Rol + Context + Sarcină + Format te va ajuta să obții răspunsuri utile de fiecare dată. În trainingul complet, exersăm asta pe cazurile reale din jobul tău.</p>
+      <div class="completion-badge">✦ Lecția 3 completată</div>
+      <br><br>
+      <a href="#contact" class="btn-cta-modal" onclick="closeModal(2)">Solicită trainingul complet →</a>
+    </div>
+  `
+];
+
+// ── MODAL LOGIC ──
+function openModal(id) {
+  const m = modules[id];
+  m.step = 0;
+  renderModule(id);
+  document.getElementById('modal' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById('modal' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openModule(id) { openModal(id); }
+
+function renderModule(id) {
+  const m = modules[id];
+  const steps = id === 1 ? m1Steps : m2Steps;
+  const total = m.total;
+  const step = m.step;
+  const isLast = step === total; // completion screen
+  const pct = isLast ? 100 : Math.round(((step + 1) / total) * 100);
+
+  document.getElementById('m' + id + '-progress').style.width = pct + '%';
+  document.getElementById('m' + id + '-steps').textContent = isLast ? 'Completat!' : `Pasul ${step + 1} din ${total}`;
+  document.getElementById('m' + id + '-body').innerHTML = steps[step]();
+
+  const backBtn = document.getElementById('m' + id + '-back');
+  const nextBtn = document.getElementById('m' + id + '-next');
+
+  backBtn.style.display = step > 0 ? 'block' : 'none';
+
+  if (isLast) {
+    nextBtn.style.display = 'none';
+    backBtn.style.display = 'none';
+    document.querySelector('#modal' + id + ' .modal-footer').style.display = 'none';
+  } else {
+    document.querySelector('#modal' + id + ' .modal-footer').style.display = 'flex';
+    nextBtn.style.display = 'block';
+
+    if (id === 1 && step === 3) {
+      nextBtn.textContent = 'Ver rezultatul →';
+      nextBtn.disabled = !m1.quizCorrect && m1.quizAnswer === null ? false : false;
+    } else if (isLast - 1) {
+      nextBtn.textContent = 'Finalizează ✓';
+    } else {
+      nextBtn.textContent = 'Continuă →';
+    }
+  }
+}
+
+function navModule(id, dir) {
+  const m = modules[id];
+  if (id === 1 && m.step === 3 && dir === 1) {
+    // require quiz answer
+    if (m1.quizAnswer === null) {
+      document.getElementById('m1-quiz-options').style.animation = 'none';
+      setTimeout(() => document.getElementById('m1-quiz-options').style.animation = '', 10);
+      return;
+    }
+  }
+  m.step = Math.max(0, Math.min(m.step + dir, m.total));
+  renderModule(id);
+}
+
+function selectQuizAnswer(index, isCorrect) {
+  if (m1.quizAnswer !== null) return;
+  m1.quizAnswer = index;
+  m1.quizCorrect = isCorrect;
+
+  const opts = document.querySelectorAll('#m1-quiz-options .quiz-option');
+  opts.forEach((opt, i) => {
+    if (i === 1) opt.classList.add('correct');
+    else if (i === index && !isCorrect) opt.classList.add('wrong');
+  });
+
+  document.getElementById('quiz-fb-correct').classList.toggle('show', isCorrect);
+  document.getElementById('quiz-fb-wrong').classList.toggle('show', !isCorrect);
+
+  document.getElementById('m1-next').textContent = 'Vezi rezultatul →';
+}
+
+// ── PROMPT SANDBOX ──
+const mockResponses = {
+  email: `Subiect: Absență joi, [data]\n\nStimate [Numele șefului],\n\nVă scriu pentru a vă informa că joi, din cauza unei consultații medicale programate, nu voi putea fi prezent la birou.\n\nVoi fi disponibil pe email pe parcursul zilei și voi asigura că toate sarcinile urgente sunt delegate corespunzător înainte de absență.\n\nMulțumesc pentru înțelegere.\n\nCu stimă,\n[Numele tău]`,
+  rezumat: `Beneficiile muncii hibride:\n\n• Flexibilitate crescută — angajații pot echilibra mai bine viața profesională și personală\n• Productivitate mai mare — concentrare mai bună în zilele de acasă, colaborare eficientă la birou\n• Reducerea costurilor — mai puțin spațiu de birouri necesar, economii la naveta zilnică\n• Acces la talente din alte orașe sau țări — fără limitare geografică\n• Retenție mai bună — beneficiu apreciat de angajați în deciziile de rămânere în companie`,
+  marketing: `3 idei de campanii pentru brutărie — buget redus:\n\n1. „Dimineața perfectă" (Instagram/Facebook)\nPostează în fiecare zi fotografii apetisante cu produsele proaspete, dimineața devreme. Hashtag: #BrutarieCLUJ. Organic, zero costuri.\n\n2. Parteneriat cu cafenele locale\nOferi produse de test cafenelelor din zonă în schimbul tag-urilor pe social media. Reach crescut fără publicitate plătită.\n\n3. Concurs saptamanal „Reteta ta preferata"\nInvita clienții să trimită poze cu produsele achiziționate pentru un coș cadou săptămânal. Engagement crescut, content generat de utilizatori.`,
+  default: `Am înțeles cererea ta. Iată răspunsul:\n\nBazat pe instrucțiunile tale, am analizat contextul și am pregătit un răspuns personalizat.\n\nNotă: Acesta este un demo al sandbox-ului — în trainingul real vei folosi ChatGPT, Claude sau Gemini direct, cu răspunsuri live generate de AI pentru orice prompt introduci.\n\nForte bine că ai folosit formula! Cu cât promptul e mai specific (rol, context, sarcină, format), cu atât rezultatul e mai util.`
+};
+
+function fillExample(text) {
+  document.getElementById('sandbox-input').value = text;
+}
+
+function sendPrompt() {
+  const input = document.getElementById('sandbox-input').value.trim();
+  if (!input) return;
+
+  const btn = document.getElementById('sandbox-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span>⏳</span> Se generează...';
+
+  const responseEl = document.getElementById('sandbox-response');
+  const textEl = document.getElementById('response-text');
+
+  responseEl.classList.remove('show');
+  textEl.textContent = '';
+
+  setTimeout(() => {
+    const lower = input.toLowerCase();
+    let response = mockResponses.default;
+    if (lower.includes('email') || lower.includes('absență') || lower.includes('absen')) response = mockResponses.email;
+    else if (lower.includes('rezumat') || lower.includes('bullet') || lower.includes('hibrid')) response = mockResponses.rezumat;
+    else if (lower.includes('marketing') || lower.includes('campanie') || lower.includes('social') || lower.includes('brutărie') || lower.includes('idei')) response = mockResponses.marketing;
+
+    responseEl.classList.add('show');
+    typeText(textEl, response, () => {
+      btn.disabled = false;
+      btn.innerHTML = '<span>▶</span> Generează răspuns nou';
+      document.getElementById('m2-next').textContent = 'Finalizează ✓';
+    });
+  }, 1200);
+}
+
+function typeText(el, text, onDone) {
+  let i = 0;
+  el.innerHTML = '<span class="typing-cursor"></span>';
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      el.textContent = text.slice(0, i + 1);
+      i++;
+    } else {
+      clearInterval(interval);
+      if (onDone) onDone();
+    }
+  }, 12);
+}
+
+// ── FORM ──
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('form-content').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+
+// ── ESCAPE TO CLOSE MODALS ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal(1);
+    closeModal(2);
+  }
+});
+
+// ── CLOSE ON OVERLAY CLICK ──
+document.getElementById('modal1').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal1')) closeModal(1);
+});
+document.getElementById('modal2').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal2')) closeModal(2);
+});
+</script>
+</body>
+</html>
