@@ -1482,29 +1482,31 @@ const curriculum = [
             <p class="tab-label">Pasul 1 — Descarcă sample CSV-ul</p>
             <p>Am pregătit un extras de cont realist (anonim, context românesc): 189 de tranzacții pe 4 luni, în RON.</p>
             <p><a href="sample-files/bank-statement-sample.csv" download class="btn-download-csv">📥 Descarcă bank-statement-sample.csv</a></p>
-            <p class="tab-label">Pasul 2 — Uploadează în Claude (recomandat) sau ChatGPT</p>
-            <p>Claude generează cod HTML mai curat pentru această sarcină. Dacă folosești ChatGPT, e ok și el — dar Claude e best pentru output cod.</p>
-            <p class="tab-label">Pasul 3 — Copiază promptul de mai jos</p>
+            <p class="tab-label">Pasul 2 — Deschide Claude (claude.ai)</p>
+            <p>Pentru acest exercițiu, <strong>Claude e clar mai bun decât ChatGPT</strong> — are feature-ul „Artifacts" care randează HTML-ul direct în chat ca aplicație interactivă, fără să mai salvezi fișiere. ChatGPT funcționează cu Canvas dar e mai inconsistent. Folosește Claude pentru rezultatul cel mai impresionant.</p>
+            <p class="tab-label">Pasul 3 — Uploadează CSV-ul + copiază promptul</p>
             <div class="prompt-box">
               <span class="prompt-copy-label">COPIAZĂ ASTA</span>
               Am uploadat un CSV cu extras de cont (4 luni de tranzacții, în RON, context românesc).<br><br>
-              Generează un dashboard HTML interactiv complet, într-un SINGUR fișier (HTML + CSS + JS inline). Folosește Chart.js prin CDN pentru graphs.<br><br>
+              Construiește un <strong>artifact HTML interactiv</strong> — un dashboard complet pe care să-l pot folosi direct în chat, fără să-l salvez ca fișier. Folosește Chart.js prin CDN pentru graphs.<br><br>
               Dashboard-ul trebuie să conțină:<br>
               1. Header cu sumar: total venituri, total cheltuieli, sold final, procent economisit pe perioada acoperită.<br>
               2. Grafic donut cu cheltuielile pe categorii (categorisează automat: Mâncare, Restaurante, Transport, Utilități, Abonamente, Shopping, Sănătate, Altele).<br>
               3. Grafic bar cu evoluția cheltuielilor pe lună.<br>
               4. Top 5 vendors după sumă totală cheltuită.<br>
-              5. Secțiunea „Insights" cu 3-5 observații concrete despre obiceiurile de cheltuieli.<br><br>
-              Stil: clean, modern, mobile-friendly. Folosește un accent color elegant. Tipografie sans-serif.<br><br>
-              Output: doar codul HTML complet, gata de copiat și salvat ca dashboard.html.
+              5. Secțiunea „Insights" cu 3-5 observații concrete despre obiceiurile mele de cheltuieli, în limba română.<br><br>
+              Stil: clean, modern, mobile-friendly, dark theme cu accent color albastru. Tipografie sans-serif.<br><br>
+              Important: răspunde generând artifact-ul direct (nu trebuie să-mi explici codul, doar să-l construiești).
             </div>
-            <p class="tab-label">Pasul 4 — Salvează și deschide</p>
-            <ol>
-              <li>Copiază tot codul HTML primit (Claude îți dă întreg fișierul într-un block de cod)</li>
-              <li>Salvează ca <code>dashboard.html</code> pe desktop</li>
-              <li>Dublu-click → se deschide în browser cu graphs interactive</li>
-            </ol>
-            <div class="success-box">✓ Felicitări — în 5 minute ai construit ceva care, comercial, costă 10-30 EUR/lună (apps de personal finance tracking).</div>
+            <p class="tab-label">Pasul 4 — Vezi dashboard-ul live în chat</p>
+            <p>Claude va deschide automat o fereastră de preview lateral cu dashboard-ul randat — graphs interactive, sumar, insights. Poți să interacționezi direct cu el în chat.</p>
+            <ul>
+              <li>Dă click pe categorii în graficul donut să vezi detalii</li>
+              <li>Hover pe bar chart să vezi sumele exacte</li>
+              <li>Citește insights-urile generate special pentru datele tale</li>
+            </ul>
+            <p>Vrei modificări? Cere-i direct: <em>„Schimbă culorile pe tema dark green"</em> sau <em>„Adaugă un grafic cu cheltuielile pe zi a săptămânii"</em> — artifact-ul se actualizează live.</p>
+            <div class="success-box">✓ În 5 minute ai construit ceva care, comercial, costă 10-30 EUR/lună (apps de personal finance tracking). Fără cod, fără setup, randat live în chat.</div>
             <p class="tab-label">Pasul 5 (Bonus) — Cu extrasul tău real</p>
             <p>Dacă vrei rezultatul aplicat pe banii tăi:</p>
             <ol>
