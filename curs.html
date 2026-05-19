@@ -202,6 +202,9 @@
     .prompt-copy-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #ea580c; margin-bottom: 0.5rem; display: block; }
     .fill-in { background: #fed7aa; color: #9a3412; border-radius: 4px; padding: 1px 5px; font-weight: 600; }
     .tab-label { font-size: 0.875rem; font-weight: 800; color: var(--dark); margin: 1.25rem 0 0.4rem; }
+    .btn-download-csv { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.85rem 1.4rem; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.92rem; margin: 0.75rem 0; transition: all 0.2s; }
+    .btn-download-csv:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,64,175,0.3); }
+    .lesson-body code { background: var(--light); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.85em; color: var(--primary); }
     .diagnostic-card { background: white; border: 1.5px solid #e2e8f0; border-radius: 9px; padding: 1rem 1.25rem; margin: 0.75rem 0; }
     .diagnostic-prompt { font-style: italic; color: var(--text); margin-bottom: 0.5rem; font-size: 0.95rem; line-height: 1.6; }
     .diagnostic-card details summary { font-size: 0.78rem; font-weight: 700; color: #ea580c; cursor: pointer; padding: 0.4rem 0; list-style: none; display: flex; align-items: center; gap: 0.5rem; user-select: none; }
@@ -1474,22 +1477,42 @@ const curriculum = [
             <li><strong>Excel Copilot</strong> — similar pentru cei care lucrează în Excel/Microsoft 365.</li>
           </ul>
           <div class="exercise-block">
-            <span class="exercise-label">✦ Exercițiu — Analiză pe date reale</span>
-            <p>Ai nevoie de un CSV cu date. Două variante:</p>
-            <ul>
-              <li><strong>Date proprii:</strong> exportă din CRM, Google Analytics, Excel — orice ai. Anonimizează numele.</li>
-              <li><strong>Date publice:</strong> caută „sample dataset CSV" și descarcă unul (sales, e-commerce, etc.)</li>
-            </ul>
-            <p>În ChatGPT Plus (sau echivalent), încarcă fișierul și folosește acest prompt:</p>
+            <span class="exercise-label">✦ Exercițiu — Dashboard interactiv dintr-un extras de cont</span>
+            <p>În 5 minute, AI-ul transformă 189 de tranzacții într-un dashboard HTML interactiv complet, cu graphs reale. Îl deschizi în browser și vezi unde îți merg banii.</p>
+            <p class="tab-label">Pasul 1 — Descarcă sample CSV-ul</p>
+            <p>Am pregătit un extras de cont realist (anonim, context românesc): 189 de tranzacții pe 4 luni, în RON.</p>
+            <p><a href="sample-files/bank-statement-sample.csv" download class="btn-download-csv">📥 Descarcă bank-statement-sample.csv</a></p>
+            <p class="tab-label">Pasul 2 — Uploadează în Claude (recomandat) sau ChatGPT</p>
+            <p>Claude generează cod HTML mai curat pentru această sarcină. Dacă folosești ChatGPT, e ok și el — dar Claude e best pentru output cod.</p>
+            <p class="tab-label">Pasul 3 — Copiază promptul de mai jos</p>
             <div class="prompt-box">
               <span class="prompt-copy-label">COPIAZĂ ASTA</span>
-              Am uploadat un CSV cu <span class="fill-in">[descriere date]</span>.<br><br>
-              1. Confirmă-mi în 2-3 propoziții ce ai înțeles din date (câte rânduri, ce coloane, perioada acoperită).<br>
-              2. Identifică 3 trenduri sau pattern-uri interesante.<br>
-              3. Sugerează 3 întrebări pe care ar trebui să le pun acestor date pentru a obține insight-uri utile.<br><br>
-              După ce confirmi, voi alege una din întrebări pentru deep dive.
+              Am uploadat un CSV cu extras de cont (4 luni de tranzacții, în RON, context românesc).<br><br>
+              Generează un dashboard HTML interactiv complet, într-un SINGUR fișier (HTML + CSS + JS inline). Folosește Chart.js prin CDN pentru graphs.<br><br>
+              Dashboard-ul trebuie să conțină:<br>
+              1. Header cu sumar: total venituri, total cheltuieli, sold final, procent economisit pe perioada acoperită.<br>
+              2. Grafic donut cu cheltuielile pe categorii (categorisează automat: Mâncare, Restaurante, Transport, Utilități, Abonamente, Shopping, Sănătate, Altele).<br>
+              3. Grafic bar cu evoluția cheltuielilor pe lună.<br>
+              4. Top 5 vendors după sumă totală cheltuită.<br>
+              5. Secțiunea „Insights" cu 3-5 observații concrete despre obiceiurile de cheltuieli.<br><br>
+              Stil: clean, modern, mobile-friendly. Folosește un accent color elegant. Tipografie sans-serif.<br><br>
+              Output: doar codul HTML complet, gata de copiat și salvat ca dashboard.html.
             </div>
-            <p>Asta îți arată ce e posibil — și o să fii surprins cât de mult o singură conversație îți poate da.</p>
+            <p class="tab-label">Pasul 4 — Salvează și deschide</p>
+            <ol>
+              <li>Copiază tot codul HTML primit (Claude îți dă întreg fișierul într-un block de cod)</li>
+              <li>Salvează ca <code>dashboard.html</code> pe desktop</li>
+              <li>Dublu-click → se deschide în browser cu graphs interactive</li>
+            </ol>
+            <div class="success-box">✓ Felicitări — în 5 minute ai construit ceva care, comercial, costă 10-30 EUR/lună (apps de personal finance tracking).</div>
+            <p class="tab-label">Pasul 5 (Bonus) — Cu extrasul tău real</p>
+            <p>Dacă vrei rezultatul aplicat pe banii tăi:</p>
+            <ol>
+              <li>Exportă extrasul de cont CSV de la banca ta (orice bancă mare în RO are export — BCR, BT, ING, Raiffeisen)</li>
+              <li>Înainte de upload: deschide în Excel/Sheets, înlocuiește numele dacă apar (rar — majoritatea extrăselor sunt deja anonime)</li>
+              <li>Folosește exact același prompt</li>
+            </ol>
+            <p>Notă privacy: dacă datele sunt sensibile, folosește Claude (Anthropic are clauze mai stricte pe antrenare) sau ChatGPT Teams/Enterprise.</p>
           </div>
         `
       },
