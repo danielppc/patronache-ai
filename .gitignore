@@ -1,0 +1,13 @@
+# Internal planning — keep local only
+CONTEXT.md
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
