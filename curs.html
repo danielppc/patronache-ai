@@ -221,6 +221,17 @@
     .token-viz-arrow { text-align: center; color: var(--muted); font-size: 1.1rem; margin: 0.4rem 0; }
     .token-viz-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
 
+    /* CONTEXT WINDOW VISUALIZATION */
+    .ctx-viz { background: var(--light); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+    .ctx-chat { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cmsg { padding: 0.55rem 0.9rem; border-radius: 12px; font-size: 0.82rem; max-width: 78%; line-height: 1.5; }
+    .cmsg.u { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .cmsg.a { background: white; border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .cmsg.out { opacity: 0.3; }
+    .ctx-marker { display: flex; align-items: center; gap: 0.6rem; font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin: 0.6rem 0 0.3rem; }
+    .ctx-marker::before, .ctx-marker::after { content: ''; flex: 1; height: 2px; background: var(--primary); border-radius: 2px; }
+    .ctx-in-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--success); margin: 0.5rem 0 0.25rem; text-align: center; }
+
     .btn-download-csv { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.85rem 1.4rem; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.92rem; margin: 0.75rem 0; transition: all 0.2s; }
     .btn-download-csv:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,64,175,0.3); }
     .lesson-body code { background: var(--light); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.85em; color: var(--primary); }
@@ -379,6 +390,23 @@ const curriculum = [
           <div class="highlight-box">💡 De aceea AI-ul uneori pierde firul în răspunsuri foarte lungi — generează secvențial, nu vede imaginea completă înainte să înceapă să scrie.</div>
           <h2>Fereastra de context — memoria AI-ului</h2>
           <p>AI-ul nu are memorie permanentă. Fiecare conversație nouă începe de la zero. Ceea ce „știe" în conversația curentă se numește <strong>fereastră de context</strong> — tot ce a fost scris în acea sesiune.</p>
+          <div class="ctx-viz">
+            <div class="token-viz-label">Cum vede AI-ul o conversație lungă</div>
+            <div class="ctx-chat">
+              <div class="cmsg u out">Salut, sunt manager într-o firmă de IT.</div>
+              <div class="cmsg a out">Cum te pot ajuta?</div>
+              <div class="cmsg u out">Lucrez la un proiect important pentru ClientX, deadline pe 30 mai.</div>
+              <div class="cmsg a out">Înțeles. Care e contextul proiectului?</div>
+              <div class="cmsg u out">Migrare backend pentru o platformă e-commerce, 6 oameni în echipă.</div>
+              <div class="ctx-marker">↑ Posibil uitat când conversația devine lungă</div>
+              <div class="ctx-in-label">↓ Fereastra activă — ce „vede" AI-ul acum ↓</div>
+              <div class="cmsg u">Cum scriu un mesaj de status pentru manager?</div>
+              <div class="cmsg a">Iată o structură: 1) progres, 2) blockere, 3) next steps...</div>
+              <div class="cmsg u">Fă-l mai scurt și mai direct.</div>
+              <div class="cmsg a">Versiune scurtă: [...]</div>
+            </div>
+            <div class="token-viz-note">Mesajele de sus pot „cădea" din fereastră când conversația devine lungă — AI-ul răspunde doar pe baza a ce încape în memoria activă (limita variază: 8k-200k tokens, în funcție de model). Dacă în mesajul 1 ai spus ceva important (rolul, proiectul, deadline-ul), repetă-l mai jos — sau riști să fie ignorat.</div>
+          </div>
           <p><strong>Implicație practică:</strong> dacă vrei ca AI-ul să știe cine ești și cu ce lucrezi, trebuie să îi spui la fiecare conversație nouă. Exact asta vei învăța în Modulul 3.</p>
           <h2>De ce inventează uneori lucruri false</h2>
           <p>AI-ul generează text care sună plauzibil — chiar și atunci când nu știe răspunsul corect. Fenomenul se numește <strong>halucinație</strong>.</p>
