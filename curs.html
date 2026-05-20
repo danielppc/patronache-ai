@@ -206,6 +206,21 @@
     .prompt-copy-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #ea580c; margin-bottom: 0.5rem; display: block; }
     .fill-in { background: #fed7aa; color: #9a3412; border-radius: 4px; padding: 1px 5px; font-weight: 600; }
     .tab-label { font-size: 0.875rem; font-weight: 800; color: var(--dark); margin: 1.25rem 0 0.4rem; }
+    /* TOKEN VISUALIZATION */
+    .token-viz { background: var(--light); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+    .token-viz-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 0.5rem; }
+    .token-viz-text { font-size: 0.95rem; color: var(--text); line-height: 1.7; padding: 0.75rem 0.95rem; background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.5rem; font-style: italic; }
+    .token-viz-tokens { display: flex; flex-wrap: wrap; gap: 4px; padding: 0.75rem; background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1.25rem; }
+    .tok { display: inline-block; padding: 3px 8px; border-radius: 5px; font-size: 0.82rem; font-family: 'SF Mono', Menlo, Monaco, monospace; color: var(--dark); white-space: pre; }
+    .tok-1 { background: #dbeafe; }
+    .tok-2 { background: #fef3c7; }
+    .tok-3 { background: #dcfce7; }
+    .tok-4 { background: #fce7f3; }
+    .tok-5 { background: #e0e7ff; }
+    .tok-cursor { background: var(--primary); color: white; animation: blink 0.8s infinite; }
+    .token-viz-arrow { text-align: center; color: var(--muted); font-size: 1.1rem; margin: 0.4rem 0; }
+    .token-viz-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+
     .btn-download-csv { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.85rem 1.4rem; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.92rem; margin: 0.75rem 0; transition: all 0.2s; }
     .btn-download-csv:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,64,175,0.3); }
     .lesson-body code { background: var(--light); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.85em; color: var(--primary); }
@@ -346,6 +361,21 @@ const curriculum = [
           </div>
           <h2>Cum procesează AI-ul mesajul tău</h2>
           <p>Când trimiți un mesaj, AI-ul nu îl citește ca un om. Îl împarte în bucăți mici numite <strong>tokens</strong> (aproximativ 3/4 dintr-un cuvânt obișnuit), analizează tiparul acestor tokens și generează răspunsul token cu token, de la stânga la dreapta.</p>
+          <div class="token-viz">
+            <div class="token-viz-label">1 · Mesajul tău</div>
+            <div class="token-viz-text">Salut! Cum funcționează ChatGPT?</div>
+            <div class="token-viz-arrow">↓</div>
+            <div class="token-viz-label">2 · AI-ul împarte mesajul în tokens</div>
+            <div class="token-viz-tokens">
+              <span class="tok tok-1">Sal</span><span class="tok tok-2">ut</span><span class="tok tok-3">!</span><span class="tok tok-4"> Cum</span><span class="tok tok-5"> func</span><span class="tok tok-1">țion</span><span class="tok tok-2">ează</span><span class="tok tok-3"> Chat</span><span class="tok tok-4">GPT</span><span class="tok tok-5">?</span>
+            </div>
+            <div class="token-viz-arrow">↓</div>
+            <div class="token-viz-label">3 · Generează răspunsul, token cu token</div>
+            <div class="token-viz-tokens">
+              <span class="tok tok-3">Chat</span><span class="tok tok-4">GPT</span><span class="tok tok-5"> func</span><span class="tok tok-1">țion</span><span class="tok tok-2">ează</span><span class="tok tok-3"> pe</span><span class="tok tok-4"> baza</span><span class="tok tok-5"> unor</span><span class="tok tok-1"> modele</span><span class="tok tok-2"> antren</span><span class="tok tok-3">ate</span><span class="tok-cursor tok">|</span>
+            </div>
+            <div class="token-viz-note">Fiecare cuvânt e împărțit în bucăți. Cuvintele frecvente devin tokens scurte, cele complexe devin mai multe. AI-ul nu vede textul ca tine — vede o succesiune de bucăți colorate.</div>
+          </div>
           <div class="highlight-box">💡 De aceea AI-ul uneori pierde firul în răspunsuri foarte lungi — generează secvențial, nu vede imaginea completă înainte să înceapă să scrie.</div>
           <h2>Fereastra de context — memoria AI-ului</h2>
           <p>AI-ul nu are memorie permanentă. Fiecare conversație nouă începe de la zero. Ceea ce „știe" în conversația curentă se numește <strong>fereastră de context</strong> — tot ce a fost scris în acea sesiune.</p>
@@ -401,7 +431,7 @@ const curriculum = [
           </div>
           <h2>Ce înseamnă asta concret pentru tine</h2>
           <div class="steps-list">
-            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Identifică sarcinile repetitive din jobul tău</h4><p>Emailuri standard, rapoarte periodice, căutare de informații — acestea sunt primele candidate pentru AI.</p></div></div>
+            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Gândește în sarcini, nu în joburi</h4><p>Granularitate fină — sarcinile sunt cele afectate, nu jobul ca întreg. Acesta e modul de a gândi care îți permite să vezi unde AI-ul ajută cu adevărat.</p></div></div>
             <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Investește în abilitățile care rămân ale oamenilor</h4><p>Judecată, comunicare, relații, leadership. AI-ul te eliberează de volumul administrativ — tu decizi unde mergi cu libertatea aia.</p></div></div>
             <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Începe acum, nu mai târziu</h4><p>Nu există moment perfect. Curba de învățare e mică. Avantajul față de cei care nu îl folosesc crește cu fiecare lună.</p></div></div>
           </div>
@@ -477,7 +507,7 @@ const curriculum = [
               <li>În <strong>Modulul 3</strong> — adaugi top oportunitățile în fișierul tău de context</li>
               <li>În <strong>Modulul 4</strong> — alegi sarcini concrete pe care să le aplici</li>
               <li>În <strong>Modulul 5</strong> — automatizezi cele 2-3 cele mai repetitive</li>
-              <li>În <strong>Capstone (Modulul 7)</strong> — compari cu unde ești după 90 de zile</li>
+              <li>În <strong>Modulul 7 (Plan personal AI)</strong> — compari cu unde ești după 90 de zile</li>
             </ul>
           </div>
           <h2>Cât durează să devii un AI-first worker</h2>
@@ -2404,7 +2434,7 @@ const curriculum = [
             <li><strong>Practice:</strong> Hugging Face (modele open source), Replit + Cursor (build cu AI)</li>
           </ul>
           <div class="success-box">✓ <strong>Reality check:</strong> 95% din cei care citesc lecția asta nu vor schimba cariera. Și e ok. Pentru ei, M1-M5 sunt mai importante. Această lecție e pentru restul de 5% — și pentru ca toți să înțeleagă peisajul.</div>
-          <div class="highlight-box">🎯 <strong>Ai parcurs aproape tot cursul.</strong> Mai rămâne capstone-ul — un singur exercițiu de reflecție și planificare pe 90 de zile. Apoi ești AI-first worker funcțional.</div>
+          <div class="highlight-box">🎯 <strong>Ai parcurs aproape tot cursul.</strong> Mai rămâne ultimul modul — un singur exercițiu de reflecție și planificare pe 90 de zile. Apoi ești AI-first worker funcțional.</div>
         `
       }
     ]
