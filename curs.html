@@ -373,7 +373,7 @@ const curriculum = [
           <h2>Ce s-a mai întâmplat când a apărut o tehnologie nouă</h2>
           <p>Calculatoarele au eliminat meseria de „calcul uman" — oameni angajați să facă matematică manual. Dar au creat milioane de joburi noi: IT, design, analiză de date.</p>
           <p>Internetul a desființat agenții de turism tradiționale. A creat rezervări online, bloguri de călătorie, muncă la distanță la scară globală.</p>
-          <p>Tehnologia elimină <em>sarcini</em>, nu oameni — și creează altele noi în locul lor. Tiparul se repetă de 200 de ani.</p>
+          <p>Tehnologia elimină <em>sarcini</em>, nu oameni — și creează altele noi în locul lor. Tiparul se repetă de secole.</p>
           <h2>Ce sarcini sunt cel mai expuse</h2>
           <p>Sarcinile cele mai vulnerabile sunt cele <strong>repetitive, predictibile și bazate pe procesare de informații</strong>:</p>
           <ul>
@@ -416,8 +416,8 @@ const curriculum = [
         body: `
           <h2>Două persoane, același job</h2>
           <div class="compare-grid">
-            <div class="compare-item bad"><span class="compare-label">Profesionistul obișnuit</span>Primește o solicitare de ofertă. Deschide Word, scrie de la zero — 45 minute. Trimite emailul de follow-up a doua zi — 10 minute.<br><br>Total: ~55 minute pentru ceva standard.</div>
-            <div class="compare-item good"><span class="compare-label">AI-first worker</span>Primește aceeași solicitare. Dă contextul în AI, obține prima versiune în 2 minute. Editează, personalizează — 8 minute total. Follow-up: 3 minute.<br><br>Total: ~11 minute. Restul: muncă de valoare mai mare.</div>
+            <div class="compare-item bad"><span class="compare-label">Profesionistul obișnuit</span><strong>Email dificil (refuz client):</strong> 30 min să gândească tonul, să scrie, să reediteze de 3 ori.<br><br><strong>După o ședință:</strong> 30 min de notițe + 20 min să trimită 5 emailuri de follow-up = 50 min.<br><br>Total săptămânal pe astfel de sarcini: <strong>~5-7 ore</strong>.</div>
+            <div class="compare-item good"><span class="compare-label">AI-first worker</span><strong>Același email dificil:</strong> AI propune 3 variante în 30 sec, ajustezi una în 5 min total.<br><br><strong>După aceeași ședință:</strong> transcript automat + AI extrage acțiuni + drafturi de follow-up = 10 min.<br><br>Total săptămânal pe astfel de sarcini: <strong>~1-2 ore</strong>. Restul: muncă de valoare mai mare.</div>
           </div>
           <h2>Ce înseamnă „AI-first" cu adevărat</h2>
           <p>Nu e despre a folosi ChatGPT ocazional. E despre un <strong>reflex mental diferit</strong>: înainte să faci ceva singur, te întrebi automat — „poate AI-ul să mă ajute cu asta?"</p>
@@ -442,6 +442,44 @@ const curriculum = [
             <div class="formula-item"><div class="fi-num">2. CONTEXTUL PREGĂTIT</div><div class="fi-title">AI-ul știe cine ești</div><div class="fi-desc">Nu repeta de fiecare dată cine ești și cu ce lucrezi. Pregătești contextul o singură dată și îl dai la fiecare conversație nouă. Modulul 3 te învață exact cum.</div></div>
             <div class="formula-item"><div class="fi-num">3. ITERARE RAPIDĂ</div><div class="fi-title">Prima variantă e un start</div><div class="fi-desc">Primul răspuns e un punct de plecare, nu rezultatul final. Rafinezi rapid: „mai scurt", „alt ton", „adaugă X". 3 iterații = 5 minute, nu 30.</div></div>
           </div>
+          <div class="exercise-block">
+            <span class="exercise-label">✦ Exercițiul tău personal — AI roadmap-ul tău</span>
+            <p>Acesta nu e un exercițiu pe care îl uiți după 5 minute. E artefactul de care vei avea nevoie pe tot parcursul cursului — în Modulul 3 îl adaugi în fișierul tău de context, în Modulul 4 alegi sarcini din el, în Modulul 5 îl folosești ca să decizi ce automatizezi.</p>
+            <p class="tab-label">Pasul 1 — Listează (10 minute)</p>
+            <p>Deschide un document (Google Docs, Notion, hârtie — orice). Notează tot ce faci într-o săptămână tipică de muncă. Nu filtra, nu prioritiza încă. Scrie tot.</p>
+            <p>Categorii ca să te ghidezi:</p>
+            <ul>
+              <li>Emailuri (ce tipuri se repetă? cui scrii frecvent?)</li>
+              <li>Ședințe (recurente? 1:1s, team meetings, clienți?)</li>
+              <li>Documente / rapoarte / propuneri</li>
+              <li>Research / căutare informații</li>
+              <li>Sarcini administrative (facturi, calendar, organizare)</li>
+              <li>Decizii / aprobări / review-uri</li>
+            </ul>
+            <p class="tab-label">Pasul 2 — Pune AI-ul să analizeze lista</p>
+            <p>Deschide ChatGPT sau Claude, copiază lista, și folosește acest prompt:</p>
+            <div class="prompt-box">
+              <span class="prompt-copy-label">COPIAZĂ ASTA</span>
+              Iată lista sarcinilor mele tipice de muncă într-o săptămână:<br><br>
+              <span class="fill-in">[lipește aici lista ta]</span><br><br>
+              Analizează lista din perspectiva unui expert în AI productivity și automatizare. Răspunde cu:<br><br>
+              1. Top 5 sarcini care ar avea cel mai mare câștig dacă ar fi accelerate sau automatizate cu AI<br>
+              2. Pentru fiecare: cum concret (tool, flux de lucru, prompt)<br>
+              3. Estimare aproximativă de timp economisit săptămânal pentru fiecare<br>
+              4. Care e cea mai mare oportunitate „quick win" (câștig mare, efort mic)<br>
+              5. Care 1-2 sarcini ar trebui să rămână 100% umane (judecată, relații, decizii sensibile)<br><br>
+              Fii direct, nu vag. Folosește exemple concrete.
+            </div>
+            <p class="tab-label">Pasul 3 — Salvează</p>
+            <p>Salvează lista ta + analiza AI-ului într-un loc accesibil (Google Doc, Notion). Asta e <strong>AI roadmap-ul tău personal</strong>.</p>
+            <p>Vei reveni la el pe parcursul cursului:</p>
+            <ul>
+              <li>În <strong>Modulul 3</strong> — adaugi top oportunitățile în fișierul tău de context</li>
+              <li>În <strong>Modulul 4</strong> — alegi sarcini concrete pe care să le aplici</li>
+              <li>În <strong>Modulul 5</strong> — automatizezi cele 2-3 cele mai repetitive</li>
+              <li>În <strong>Capstone (Modulul 7)</strong> — compari cu unde ești după 90 de zile</li>
+            </ul>
+          </div>
           <h2>Cât durează să devii un AI-first worker</h2>
           <div class="steps-list">
             <div class="step-item"><div class="step-num">S1-2</div><div class="step-content"><h4>Săptămânile 1-2</h4><p>Exersezi cu sarcini mici: emailuri, rezumate, idei. Înveți ce funcționează și ce nu.</p></div></div>
@@ -449,9 +487,8 @@ const curriculum = [
             <div class="step-item"><div class="step-num">L2-3</div><div class="step-content"><h4>Lunile 2-3</h4><p>Reflexul AI e natural. Productivitatea ta e vizibil diferită față de colegii care nu îl folosesc.</p></div></div>
             <div class="step-item"><div class="step-num">L3+</div><div class="step-content"><h4>După 3 luni</h4><p>Construiești sisteme: prompts salvate, fluxuri repetabile, context pregătit. Nu câștigi minute — câștigi ore.</p></div></div>
           </div>
-          <div class="success-box">✓ Ești în Modulul 1. Ai înțeles ce e AI-ul, cum funcționează și ce face diferența. Tot ce urmează e practic — faci, nu citești.</div>
-        `,
-        quiz: { q: "Ce definește cel mai bine un AI-first worker?", opts: ["Cineva care folosește exclusiv instrumente AI plătite","Cineva cu reflexul de a întreba 'poate AI-ul să mă ajute?' și care integrează AI în fluxul zilnic","Cineva care lasă AI-ul să ia toate deciziile","Cineva care a studiat informatică sau machine learning"], correct: 1, fb: ["Fals — versiunile gratuite sunt suficiente pentru a fi AI-first.","Corect! E vorba de un reflex mental și o integrare continuă, nu de un tool specific.","Fals — un AI-first worker păstrează judecata proprie și verifică mereu.","Fals — nu e nevoie de background tehnic."] }
+          <div class="success-box">✓ Ești în Modulul 1. Ai înțeles ce e AI-ul, cum funcționează și ce face diferența. Plus ai un AI roadmap personal pe care îl vei folosi pe tot parcursul cursului. Tot ce urmează e practic — faci, nu citești.</div>
+        `
       },
       {
         id: "1-5", title: "Primii tăi pași", duration: "10 min",
@@ -985,6 +1022,7 @@ const curriculum = [
             <li><strong>Pentru sesiuni lungi:</strong> îl uploadezi ca document atașat</li>
             <li><strong>Pentru sarcini repetitive:</strong> îl pui într-un Project sau GPT (lecția 3.5)</li>
           </ul>
+          <div class="highlight-box">🔗 <strong>Conectează cu AI roadmap-ul tău (din lecția 1.4):</strong> Adaugă în fișierul de context top 3 sarcini din lista ta personală pe care AI-ul a identificat-o ca oportunități. Astfel, în orice conversație nouă, AI-ul știe nu doar cine ești — ci și pe ce vrei să te concentrezi.</div>
           <div class="success-box">✓ <strong>Actualizează fișierul lunar.</strong> Proiectele se schimbă, rolul evoluează. 5 minute pe lună menținut, ore câștigate săptămânal.</div>
         `
       },
@@ -1662,6 +1700,7 @@ const curriculum = [
         body: `
           <h2>Pune tot ce ai învățat la lucru pentru rolul tău</h2>
           <p>Alege rolul cel mai apropiat de tine. Fiecare path are: workflow zilnic, tool-uri specifice, rezultat concret.</p>
+          <div class="highlight-box">🔗 <strong>Înainte de a alege path-ul:</strong> deschide AI roadmap-ul tău din lecția 1.4 (lista de sarcini + analiza AI-ului). Identifică 3 sarcini concrete pe care vrei să le rezolvi în acest workshop. Path-ul ales mai jos îți va da workflow-ul potrivit pentru ele.</div>
           <h2>Cele 5 path-uri</h2>
           <div class="tool-grid">
             <div class="tool-card"><div class="tool-icon">📣</div><h4>Marketer</h4><p>Content, campanii, analitice, brand.</p></div>
@@ -2128,6 +2167,7 @@ const curriculum = [
         body: `
           <h2>Pune totul la lucru — 4 path-uri</h2>
           <p>Alege path-ul cel mai apropiat de viața ta. Fiecare are 3 workflow-uri concrete pe care le construiești săptămâna asta. Vei termina workshop-ul cu cel puțin un sistem activ care îți economisește timp imediat.</p>
+          <div class="highlight-box">🔗 <strong>Folosește AI roadmap-ul tău din lecția 1.4:</strong> reia lista de sarcini repetitive și analiza AI-ului. Care 2-3 sarcini erau marcate ca „quick wins"? Acelea sunt candidatele perfecte pentru primul tău workflow automat. Vei lucra direct pe ele aici.</div>
           <h2>Cele 4 path-uri</h2>
           <div class="tool-grid">
             <div class="tool-card"><div class="tool-icon">📅</div><h4>Productivitate personală</h4><p>Pentru oricine vrea să-și organizeze viața mai bine — email, calendar, cheltuieli, note.</p></div>
@@ -2389,6 +2429,7 @@ const curriculum = [
             <div class="step-item"><div class="step-num">M6</div><div class="step-content"><h4>Modul 6 — Strategic</h4><p>Înțelegi riscurile reale și strategia pe termen lung.</p></div></div>
           </div>
           <p>E mai mult decât cred majoritatea. Acum: cum transformi asta în obișnuință permanentă.</p>
+          <div class="highlight-box">🔗 <strong>Întoarce-te la AI roadmap-ul tău din lecția 1.4:</strong> deschide lista de sarcini și analiza AI-ului. Câte din cele 5 oportunități identificate atunci le-ai aplicat deja prin curs? Care e diferența între cum lucrai la începutul cursului și cum lucrezi acum? Asta e progresul tău real — și e fundația planului de mai jos.</div>
           <div class="exercise-block">
             <span class="exercise-label">✦ Exercițiu final — Planul tău de 90 de zile</span>
             <p>Deschide un document (Google Docs, Notion, Word). Scrie un plan de 1-2 pagini structurat pe 3 perioade.</p>
