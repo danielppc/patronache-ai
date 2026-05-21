@@ -2554,11 +2554,15 @@ function isModuleUnlocked(moduleIndex) {
 function buildSidebar() {
   const container = document.getElementById('sidebar-inner');
   container.innerHTML = '';
+  // Determine which module contains the active lesson (so the sidebar opens it)
+  const activeModuleIndex = currentLessonId
+    ? curriculum.findIndex(m => m.lessons.some(l => l.id === currentLessonId))
+    : 0;
   curriculum.forEach((mod, mi) => {
     const unlocked = isModuleUnlocked(mi);
     const allDone = mod.lessons.every(l => isCompleted(l.id));
     const div = document.createElement('div');
-    div.className = 'sidebar-module' + (mi === 0 ? ' open' : '');
+    div.className = 'sidebar-module' + (mi === activeModuleIndex ? ' open' : '');
     div.innerHTML = `
       <div class="sidebar-module-header" onclick="toggleSidebarModule(this)">
         <div class="sidebar-module-num ${allDone ? 'done' : ''}">${allDone ? '✓' : mod.id}</div>
