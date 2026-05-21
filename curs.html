@@ -708,29 +708,40 @@ const curriculum = [
           <h2>Anatomia unui prompt few-shot</h2>
           <div class="highlight-box"><strong>Structura:</strong><br><br>[Instrucțiune scurtă]<br>Exemplu 1: Input → Rezultat<br>Exemplu 2: Input → Rezultat<br>Acum tu: Input nou → ?</div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ Exercițiu — Convertește titluri pentru LinkedIn</span>
-            <p>Vei vedea cât de bine funcționează few-shot pentru un format specific.</p>
+            <span class="exercise-label">✦ Exercițiu — AI învață stilul tău de a rezuma ședințe</span>
+            <p>Vei vedea cum few-shot îi învață AI-ului <strong>vocea ta personală</strong>, nu doar un format. 2 exemple — și AI-ul rezumă orice ședință în stilul tău.</p>
             <p class="tab-label">Tab 1 — fără exemple</p>
             <div class="prompt-box">
               <span class="prompt-copy-label">COPIAZĂ ASTA</span>
-              Convertește titlul de mai jos într-o versiune mai potrivită pentru o postare pe LinkedIn:<br><br>
-              „Am implementat un proces nou de raportare săptămânală."
+              Rezumă notele de ședință de mai jos:<br><br>
+              Call cu clientul X (firma Y). Au cerut features noi: integrare cu Salesforce și raport săptămânal automat pe email. Echipa lor are 12 oameni. Buget: 5000 EUR/lună. Sunt în paralel în evaluare cu un competitor — decizie până pe 15 octombrie. Le-am promis o demo personalizată săptămâna viitoare. Maria pregătește demo-ul. Trebuie să trimit propunere până vineri.
             </div>
-            <p class="tab-label">Tab 2 — cu 2 exemple</p>
+            <p>Citește răspunsul. Probabil e ok — paragrafe, formulări corecte, dar generic. Nu sună a tine.</p>
+            <p class="tab-label">Tab 2 — cu 2 exemple în stilul tău</p>
             <div class="prompt-box">
               <span class="prompt-copy-label">COPIAZĂ ASTA</span>
-              Convertește titluri obișnuite în versiuni captivante pentru LinkedIn. Stilul: scurt, observație + lecție, fără hashtaguri, fără emoji.<br><br>
+              Iată stilul meu de a rezuma ședințe — bullet-uri scurte, fără introducere, fără propoziții complete, cu acțiuni clare. Replică acest stil.<br><br>
               Exemplul 1:<br>
-              Input: „Am redus timpul de procesare al facturilor cu 30%."<br>
-              Rezultat: „Am eliminat 4 pași dintr-un proces de 12 pași. Rezultatul: 30% mai rapid. Lecția: înainte să automatizezi ceva, întreabă-te dacă pasul trebuie să existe."<br><br>
+              Note: Discuție cu echipa marketing. Maria a zis că bugetul Q3 e cu 15% mai mic decât anticipam. Vasile vrea să mute focusul de pe Facebook ads pe LinkedIn pentru B2B. Lansarea produsului nou se amână cu 2 săptămâni. Cătălin va aduce o propunere de retargeting pe joi.<br>
+              Rezumat în stilul meu:<br>
+              - Buget Q3: -15% față de plan<br>
+              - Shift focus: Facebook → LinkedIn (B2B)<br>
+              - Lansare amânată 2 săpt<br>
+              - Propunere retargeting: Cătălin, joi<br><br>
               Exemplul 2:<br>
-              Input: „Am testat o nouă unealtă AI pentru notițe de ședință."<br>
-              Rezultat: „Am testat 3 unelte AI pentru notițele de ședință. 2 au eșuat, 1 a funcționat. Diferența nu a fost tehnologia — a fost cât de ușor era să o deschizi în 5 secunde."<br><br>
+              Note: 1:1 cu George (manager). Proiectul Atlas e cu 2 săptămâni în întârziere din cauza problemelor cu API-ul terț. Mihai ar putea ajuta cu backup. La review-ul Q4, George vrea să vadă mai multă vizibilitate pe rezultate. M-a întrebat și despre planul de development — vrea să iau un curs de leadership Q1. Rămas să-i trimit un sumar pe email.<br>
+              Rezumat în stilul meu:<br>
+              - Atlas: 2 săpt întârziere (cauză: API terț)<br>
+              - Backup: Mihai (disponibil când termină task curent)<br>
+              - Q4 review: George vrea mai multă vizibilitate pe rezultate<br>
+              - Curs leadership Q1: de aprobat<br>
+              - Acțiune: sumar email pentru George<br><br>
               Acum tu:<br>
-              Input: „Am implementat un proces nou de raportare săptămânală."<br>
-              Rezultat:
+              Note: Call cu clientul X (firma Y). Au cerut features noi: integrare cu Salesforce și raport săptămânal automat pe email. Echipa lor are 12 oameni. Buget: 5000 EUR/lună. Sunt în paralel în evaluare cu un competitor — decizie până pe 15 octombrie. Le-am promis o demo personalizată săptămâna viitoare. Maria pregătește demo-ul. Trebuie să trimit propunere până vineri.<br>
+              Rezumat în stilul meu:
             </div>
-            <p>Compară rezultatele. Diferența nu mai e ce ai spus — e ce ai arătat.</p>
+            <p>Compară rezultatele. Versiunea cu 2 exemple sună mult mai aproape de cum ai scrie tu. Asta e puterea few-shot: nu îi spui AI-ului „fii concis" — îi <em>arăți</em> exact ce înseamnă „concis" pentru tine.</p>
+            <div class="highlight-box">💡 <strong>Aplicație imediată:</strong> Salvează un prompt cu 2-3 exemple de rezumate scrise de tine. De câte ori ai nevoie să rezumi o ședință, lipești noile note și AI-ul răspunde în stilul tău. În Modulul 3 înveți cum să faci asta permanent prin fișierul de context.</div>
           </div>
           <div class="warning-box">⚠️ Few-shot nu e despre cantitate. 2-3 exemple bune sunt mai eficiente decât 10 medii. Alege exemple care reprezintă cu adevărat ce vrei.</div>
         `
