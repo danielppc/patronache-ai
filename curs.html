@@ -2681,6 +2681,7 @@ function openLesson(lessonId) {
   const lesson = getAllLessons().find(l => l.id === lessonId);
   if (!lesson) return;
   currentLessonId = lessonId;
+  localStorage.setItem('patronache_last_lesson', lessonId);
 
   // find module
   let modTitle = '', modIndex = 0, lessonIndex = 0;
@@ -2908,6 +2909,7 @@ function typeText(el, text, cb) {
 // ─────────────────────────────────────────
 function showDashboard() {
   currentLessonId = null;
+  localStorage.removeItem('patronache_last_lesson');
   document.getElementById('lesson-view').classList.remove('active');
   document.getElementById('cert-screen').classList.remove('active');
   document.getElementById('dashboard').style.display = 'block';
@@ -2946,6 +2948,11 @@ function closeSidebar() {
 buildSidebar();
 buildDashboard();
 updateUI();
+// Restore last opened lesson (if any)
+const lastLesson = localStorage.getItem('patronache_last_lesson');
+if (lastLesson && getAllLessons().some(l => l.id === lastLesson)) {
+  openLesson(lastLesson);
+}
 </script>
 </body>
 </html>
