@@ -207,6 +207,26 @@
     .prompt-copy-btn:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
     .prompt-copy-btn.copied { background: #dcfce7; color: #166534; border-color: #86efac; }
 
+    /* PROMPT BUILDER */
+    .prompt-builder { background: var(--light); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+    .pb-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 0.85rem; }
+    .pb-field { margin-bottom: 0.7rem; }
+    .pb-field label { display: block; font-size: 0.78rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--dark); }
+    .pb-field textarea { width: 100%; padding: 0.65rem 0.85rem; border: 1.5px solid var(--border); border-left-width: 4px; border-radius: 7px; font-family: inherit; font-size: 0.88rem; line-height: 1.5; resize: vertical; min-height: 50px; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+    .pb-field textarea:focus { border-color: var(--primary); border-left-width: 4px; }
+    .pb-field textarea[data-pb="obiectiv"] { border-left-color: #3b82f6; }
+    .pb-field textarea[data-pb="context"] { border-left-color: #10b981; }
+    .pb-field textarea[data-pb="limite"] { border-left-color: #f59e0b; }
+    .pb-field textarea[data-pb="format"] { border-left-color: #8b5cf6; }
+    .pb-result { background: var(--dark); color: white; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1rem; }
+    .pb-result-label { font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 0.4rem; }
+    .pb-result-text { font-size: 0.88rem; line-height: 1.65; min-height: 1.6em; white-space: pre-wrap; }
+    .pb-result-text.empty { color: #94a3b8; font-style: italic; }
+    .pb-copy { background: var(--primary); color: white; border: none; border-radius: 8px; padding: 0.65rem 1.1rem; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem; font-family: inherit; transition: all 0.15s; }
+    .pb-copy:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .pb-copy.copied { background: #166534; }
+    .pb-copy:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
     /* OCLF FORMULA STACK */
     .oclf-viz { background: var(--light); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
     .oclf-layer { background: white; border-left: 4px solid; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; position: relative; }
@@ -684,6 +704,20 @@ const curriculum = [
           </div>
           <h2>Cum arată un prompt complet</h2>
           <div class="highlight-box">✨ <strong>Exemplu Obiectiv + Context + Limite + Format:</strong><br><br>„Scrie un email <strong>[Obiectiv]</strong> unui client B2B din industria de retail care nu a răspuns la oferta noastră de 2 săptămâni <strong>[Context]</strong>. Tonul trebuie să fie prietenos dar direct, fără să sune disperat, fără să oferi reduceri <strong>[Limite]</strong>. 3 paragrafe scurte, cu o întrebare clară la final <strong>[Format]</strong>."</div>
+          <h2>Construiește singur — interactiv</h2>
+          <p>Scrie ce vrei în fiecare câmp. Promptul complet se asamblează automat dedesubt. La final îl copiezi și îl trimiți direct în ChatGPT / Claude.</p>
+          <div class="prompt-builder">
+            <div class="pb-label">✏️ Construiește-ți propriul prompt</div>
+            <div class="pb-field"><label>🎯 Obiectiv</label><textarea data-pb="obiectiv" placeholder="Ce vrei să facă AI-ul? Ex: Scrie-mi un email..."></textarea></div>
+            <div class="pb-field"><label>📍 Context</label><textarea data-pb="context" placeholder="Cine ești, care e situația? Ex: Sunt manager într-o firmă IT, vorbesc cu un client important..."></textarea></div>
+            <div class="pb-field"><label>🚧 Limite</label><textarea data-pb="limite" placeholder="Lungime, ton, ce să evite? Ex: Maxim 150 cuvinte, ton direct, fără jargon..."></textarea></div>
+            <div class="pb-field"><label>📐 Format</label><textarea data-pb="format" placeholder="Cum vrei structurat? Ex: 3 paragrafe scurte cu o întrebare la final..."></textarea></div>
+            <div class="pb-result">
+              <div class="pb-result-label">Promptul tău complet</div>
+              <div class="pb-result-text empty" id="pb-output">Completează câmpurile de mai sus pentru a vedea promptul construit live...</div>
+            </div>
+            <button class="pb-copy" id="pb-copy" onclick="copyBuiltPrompt(this)" disabled>📋 Copiază promptul</button>
+          </div>
           <div class="exercise-block">
             <span class="exercise-label">✦ Exercițiu — Construiește-ți propriul prompt</span>
             <p>Vei trimite aceeași sarcină în două moduri: o dată fără formulă, o dată cu. Compari rezultatele.</p>
@@ -2722,8 +2756,56 @@ function openLesson(lessonId) {
   buildSidebar();
   updateUI();
   addCopyButtonsToPrompts();
+  initPromptBuilder();
   closeSidebar();
   document.getElementById('main').scrollTo(0, 0);
+}
+
+// ─────────────────────────────────────────
+// INTERACTIVE PROMPT BUILDER (M2.2)
+// ─────────────────────────────────────────
+function initPromptBuilder() {
+  const inputs = document.querySelectorAll('.pb-field textarea[data-pb]');
+  const output = document.getElementById('pb-output');
+  const copyBtn = document.getElementById('pb-copy');
+  if (!inputs.length || !output) return;
+
+  function update() {
+    const parts = [];
+    inputs.forEach(input => {
+      let val = input.value.trim();
+      if (val) {
+        // Ensure each segment ends with proper punctuation
+        if (!/[.!?]$/.test(val)) val += '.';
+        parts.push(val);
+      }
+    });
+    if (parts.length === 0) {
+      output.textContent = 'Completează câmpurile de mai sus pentru a vedea promptul construit live...';
+      output.classList.add('empty');
+      if (copyBtn) copyBtn.disabled = true;
+    } else {
+      output.textContent = parts.join(' ');
+      output.classList.remove('empty');
+      if (copyBtn) copyBtn.disabled = false;
+    }
+  }
+
+  inputs.forEach(input => input.addEventListener('input', update));
+}
+
+function copyBuiltPrompt(btn) {
+  const output = document.getElementById('pb-output');
+  if (!output || output.classList.contains('empty')) return;
+  navigator.clipboard.writeText(output.textContent).then(() => {
+    const original = btn.innerHTML;
+    btn.innerHTML = '✓ Copiat!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 1800);
+  });
 }
 
 // ─────────────────────────────────────────
