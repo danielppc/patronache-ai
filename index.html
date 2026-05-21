@@ -459,7 +459,7 @@
         <div class="mockup-progress-bar"><div class="mockup-progress-fill"></div></div>
         <div class="mockup-body">
           <div class="mockup-module-label">Modulul 2 · Cum vorbești cu AI-ul</div>
-          <div class="mockup-lesson-title">Formula: Goal + Context + Constraints + Format</div>
+          <div class="mockup-lesson-title">Formula: Obiectiv + Context + Limite + Format</div>
           <div class="mockup-content-line full"></div>
           <div class="mockup-content-line medium"></div>
           <div class="mockup-content-line full"></div>
@@ -653,7 +653,7 @@
         <div class="preview-bottom">
           <ul class="preview-topics">
             <li>De ce contează cum formulezi cererea</li>
-            <li>Formula: Goal + Context + Constraints + Format</li>
+            <li>Formula: Obiectiv + Context + Limite + Format</li>
             <li>Înainte vs. după — exemple reale</li>
             <li>Sandbox live — încearcă singur</li>
           </ul>
@@ -862,7 +862,7 @@ const modules = [
   ]},
   { num:2, title:"Cum vorbești cu AI-ul", tagline:"Obții răspunsuri utile din prima încercare", sub:"7 lecții · ~60 min", lessons:[
     {t:"De ce contează cum formulezi cererea", d:"7 min"},
-    {t:"Formula: Goal + Context + Constraints + Format", d:"10 min"},
+    {t:"Formula: Obiectiv + Context + Limite + Format", d:"10 min"},
     {t:"Few-shot: învață AI-ul prin exemple", d:"8 min"},
     {t:"Pune AI-ul să te întrebe", d:"6 min"},
     {t:"Iterare — primul răspuns nu e final", d:"9 min"},
@@ -1080,12 +1080,12 @@ const slides2 = [
   </div>`,
   () => `<div class="lesson-slide">
     <div class="slide-eye">Pasul 2 din 3</div>
-    <div class="slide-title">Formula: Goal + Context + Constraints + Format</div>
+    <div class="slide-title">Formula: Obiectiv + Context + Limite + Format</div>
     <div class="slide-body">Folosește acest șablon și vei obține rezultate mult mai bune:</div>
     <div class="formula-grid">
-      <div class="formula-item"><div class="fi-tag">1. Goal</div><div class="fi-title">Ce vrei să obții?</div><div class="fi-desc">„Creează o fișă de post pentru Developer Junior..."</div></div>
+      <div class="formula-item"><div class="fi-tag">1. Obiectiv</div><div class="fi-title">Ce vrei să obții?</div><div class="fi-desc">„Creează o fișă de post pentru Developer Junior..."</div></div>
       <div class="formula-item"><div class="fi-tag">2. Context</div><div class="fi-title">Cine ești, care e situația?</div><div class="fi-desc">„Sunt manager HR la o companie IT de 50 angajați..."</div></div>
-      <div class="formula-item"><div class="fi-tag">3. Constraints</div><div class="fi-title">Ce limite are răspunsul?</div><div class="fi-desc">„Maxim 300 cuvinte. Fără jargon corporate. Limba română."</div></div>
+      <div class="formula-item"><div class="fi-tag">3. Limite</div><div class="fi-title">Ce limite are răspunsul?</div><div class="fi-desc">„Maxim 300 cuvinte. Fără jargon corporate. Limba română."</div></div>
       <div class="formula-item"><div class="fi-tag">4. Format</div><div class="fi-title">Cum vrei rezultatul?</div><div class="fi-desc">„Bullet points cu secțiuni clare: rol, cerințe, beneficii."</div></div>
     </div>
     <div class="info-box">✨ <strong>Combinat:</strong> „Sunt manager HR la o companie IT de 50 angajați. Creează o fișă de post pentru Developer Junior. Maxim 300 cuvinte, fără jargon. Format: bullet points cu secțiuni — rol, cerințe, beneficii."</div>
@@ -1093,7 +1093,7 @@ const slides2 = [
   () => `<div class="lesson-slide">
     <div class="slide-eye">Pasul 3 din 3 — Exercițiu live</div>
     <div class="slide-title">Încearcă singur — scrie un prompt</div>
-    <div class="slide-body">Folosește formula (Goal + Context + Constraints + Format) sau alege un exemplu:</div>
+    <div class="slide-body">Folosește formula (Obiectiv + Context + Limite + Format) sau alege un exemplu:</div>
     <div class="sb-chips">
       <span class="sb-chip" onclick="fillSb('Scrie un email profesional de 100 de cuvinte prin care îl anunț pe șeful meu că voi lipsi joi.')">📧 Email absență</span>
       <span class="sb-chip" onclick="fillSb('Rezumă în 5 bullet points beneficiile muncii hibride pentru angajați și companii.')">📋 Rezumat</span>
@@ -1110,7 +1110,7 @@ const slides2 = [
   () => `<div class="completion">
     <span>🚀</span>
     <h3>Știi acum să vorbești cu AI-ul!</h3>
-    <p>Formula Goal + Context + Constraints + Format îți va economisi timp de fiecare dată. Cursul complet include 7 lecții despre cum vorbești eficient cu AI-ul cu exerciții pe cazuri din jobul tău.</p>
+    <p>Formula Obiectiv + Context + Limite + Format îți va economisi timp de fiecare dată. Cursul complet include 7 lecții despre cum vorbești eficient cu AI-ul cu exerciții pe cazuri din jobul tău.</p>
     <div class="completion-badge">✦ Lecția 2.2 completată</div><br><br>
     <a href="#pret" class="btn-cta-modal" onclick="closeModal(2)">Cumpără cursul complet →</a>
   </div>`
@@ -1177,7 +1177,7 @@ const sbResponses = {
   email: `Subiect: Absență joi — [data]\n\nStimate [Nume],\n\nVă informez că joi nu voi putea fi prezent din cauza unei situații personale urgente.\n\nVoi fi disponibil pe email și voi asigura predarea sarcinilor urgente înainte de absență.\n\nMulțumesc pentru înțelegere.\n\nCu stimă,\n[Numele tău]`,
   rezumat: `Beneficiile muncii hibride:\n\n• Flexibilitate crescută — angajații echilibrează mai bine viața profesională și personală\n• Productivitate mai mare — concentrare la domiciliu, colaborare la birou\n• Reducerea costurilor operaționale — spațiu de birouri mai mic\n• Acces la talente fără limite geografice\n• Retenție crescută — beneficiu apreciat în deciziile de rămânere în companie`,
   marketing: `3 idei de campanii pentru cafenea — buget redus:\n\n1. „Dimineața ta" (Instagram/Facebook)\nPostează zilnic poze apetisante cu cafeaua proaspătă. Organic, zero costuri directe.\n\n2. Colaborare cu influenceri locali mici\nInvită micro-influenceri (1k-10k urmăritori) la o cafea gratuită în schimbul unui story autentic.\n\n3. Provocarea săptămânii\nClienții postează poza cu comanda și tagul cafenelei pentru o băutură gratuită. Reach crescut prin conținut generat de utilizatori.`,
-  default: `Răspuns generat pe baza promptului tău:\n\nAcesta este un demo al sandbox-ului de prompt engineering. În cursul complet vei folosi ChatGPT, Claude sau Gemini direct — cu răspunsuri live, personalizate pentru orice prompt introduci.\n\nFolosind formula Goal + Context + Constraints + Format, AI-ul înțelege exact ce vrei și livrează rezultate utile de prima dată.`
+  default: `Răspuns generat pe baza promptului tău:\n\nAcesta este un demo al sandbox-ului de prompt engineering. În cursul complet vei folosi ChatGPT, Claude sau Gemini direct — cu răspunsuri live, personalizate pentru orice prompt introduci.\n\nFolosind formula Obiectiv + Context + Limite + Format, AI-ul înțelege exact ce vrei și livrează rezultate utile de prima dată.`
 };
 
 function fillSb(txt) { document.getElementById('sb-input').value = txt; }

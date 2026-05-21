@@ -390,23 +390,6 @@ const curriculum = [
           <div class="highlight-box">💡 De aceea AI-ul uneori pierde firul în răspunsuri foarte lungi — generează secvențial, nu vede imaginea completă înainte să înceapă să scrie.</div>
           <h2>Fereastra de context — memoria AI-ului</h2>
           <p>AI-ul nu are memorie permanentă. Fiecare conversație nouă începe de la zero. Ceea ce „știe" în conversația curentă se numește <strong>fereastră de context</strong> — tot ce a fost scris în acea sesiune.</p>
-          <div class="ctx-viz">
-            <div class="token-viz-label">Cum vede AI-ul o conversație lungă</div>
-            <div class="ctx-chat">
-              <div class="cmsg u out">Salut, sunt manager într-o firmă de IT.</div>
-              <div class="cmsg a out">Cum te pot ajuta?</div>
-              <div class="cmsg u out">Lucrez la un proiect important pentru ClientX, deadline pe 30 mai.</div>
-              <div class="cmsg a out">Înțeles. Care e contextul proiectului?</div>
-              <div class="cmsg u out">Migrare backend pentru o platformă e-commerce, 6 oameni în echipă.</div>
-              <div class="ctx-marker">↑ Posibil uitat când conversația devine lungă</div>
-              <div class="ctx-in-label">↓ Fereastra activă — ce „vede" AI-ul acum ↓</div>
-              <div class="cmsg u">Cum scriu un mesaj de status pentru manager?</div>
-              <div class="cmsg a">Iată o structură: 1) progres, 2) blockere, 3) next steps...</div>
-              <div class="cmsg u">Fă-l mai scurt și mai direct.</div>
-              <div class="cmsg a">Versiune scurtă: [...]</div>
-            </div>
-            <div class="token-viz-note">Mesajele de sus pot „cădea" din fereastră când conversația devine lungă — AI-ul răspunde doar pe baza a ce încape în memoria activă (limita variază: 8k-200k tokens, în funcție de model). Dacă în mesajul 1 ai spus ceva important (rolul, proiectul, deadline-ul), repetă-l mai jos — sau riști să fie ignorat.</div>
-          </div>
           <p><strong>Implicație practică:</strong> dacă vrei ca AI-ul să știe cine ești și cu ce lucrezi, trebuie să îi spui la fiecare conversație nouă. Exact asta vei învăța în Modulul 3.</p>
           <h2>De ce inventează uneori lucruri false</h2>
           <p>AI-ul generează text care sună plauzibil — chiar și atunci când nu știe răspunsul corect. Fenomenul se numește <strong>halucinație</strong>.</p>
@@ -659,27 +642,27 @@ const curriculum = [
           <h2>Cele 4 lucruri pe care AI-ul le vrea mereu</h2>
           <p>Nu trebuie să le dai pe toate de fiecare dată — dar cu cât adaugi mai multe, cu atât răspunsul e mai precis:</p>
           <ol>
-            <li><strong>Goal</strong> — ce vrei să obții concret</li>
+            <li><strong>Obiectiv</strong> — ce vrei să obții concret</li>
             <li><strong>Context</strong> — cine ești, care e situația, pentru cine</li>
-            <li><strong>Constraints</strong> — limitele răspunsului (lungime, ton, ce să evite)</li>
+            <li><strong>Limite</strong> — limitele răspunsului (lungime, ton, ce să evite)</li>
             <li><strong>Format</strong> — cum vrei structurat (listă, paragrafe, tabel)</li>
           </ol>
           <p>Lecția următoare îți arată cum să le combini într-un prompt complet.</p>
         `
       },
       {
-        id: "2-2", title: "Formula: Goal + Context + Constraints + Format", duration: "10 min",
+        id: "2-2", title: "Formula: Obiectiv + Context + Limite + Format", duration: "10 min",
         body: `
           <h2>O formulă care funcționează de fiecare dată</h2>
           <p>Există zeci de „tehnici de prompting" pe internet. 90% din ce ai nevoie încape în 4 elemente simple. Le poți combina în orice ordine, le poți omite pe unele — dar dacă promptul tău nu produce ce vrei, lipsește aproape sigur una din ele.</p>
           <div class="formula-box">
-            <div class="formula-item"><div class="fi-num">1. GOAL</div><div class="fi-title">Ce vrei să obții</div><div class="fi-desc">Acțiunea concretă pe care vrei să o facă AI-ul. <em>„Scrie un email...", „Rezumă documentul..."</em></div></div>
+            <div class="formula-item"><div class="fi-num">1. OBIECTIV</div><div class="fi-title">Ce vrei să obții</div><div class="fi-desc">Acțiunea concretă pe care vrei să o facă AI-ul. <em>„Scrie un email...", „Rezumă documentul..."</em></div></div>
             <div class="formula-item"><div class="fi-num">2. CONTEXT</div><div class="fi-title">Cine ești și situația</div><div class="fi-desc">Rolul tău, compania, publicul, ce a precedat. <em>„Sunt manager de proiect, vorbesc cu un client important..."</em></div></div>
-            <div class="formula-item"><div class="fi-num">3. CONSTRAINTS</div><div class="fi-title">Limitele răspunsului</div><div class="fi-desc">Ce trebuie să respecte și ce să evite. <em>„Maxim 120 de cuvinte. Fără jargon. Nu menționa concurența."</em></div></div>
+            <div class="formula-item"><div class="fi-num">3. LIMITE</div><div class="fi-title">Limitele răspunsului</div><div class="fi-desc">Ce trebuie să respecte și ce să evite. <em>„Maxim 120 de cuvinte. Fără jargon. Nu menționa concurența."</em></div></div>
             <div class="formula-item"><div class="fi-num">4. FORMAT</div><div class="fi-title">Cum vrei rezultatul</div><div class="fi-desc">Structura rezultat-ului. <em>„Listă cu 5 puncte", „Tabel", „Paragraf scurt"</em></div></div>
           </div>
           <h2>Cum arată un prompt complet</h2>
-          <div class="highlight-box">✨ <strong>Exemplu Goal + Context + Constraints + Format:</strong><br><br>„Scrie un email <strong>[Goal]</strong> unui client B2B din industria de retail care nu a răspuns la oferta noastră de 2 săptămâni <strong>[Context]</strong>. Tonul trebuie să fie prietenos dar direct, fără să sune disperat, fără să oferi reduceri <strong>[Constraints]</strong>. 3 paragrafe scurte, cu o întrebare clară la final <strong>[Format]</strong>."</div>
+          <div class="highlight-box">✨ <strong>Exemplu Obiectiv + Context + Limite + Format:</strong><br><br>„Scrie un email <strong>[Obiectiv]</strong> unui client B2B din industria de retail care nu a răspuns la oferta noastră de 2 săptămâni <strong>[Context]</strong>. Tonul trebuie să fie prietenos dar direct, fără să sune disperat, fără să oferi reduceri <strong>[Limite]</strong>. 3 paragrafe scurte, cu o întrebare clară la final <strong>[Format]</strong>."</div>
           <div class="exercise-block">
             <span class="exercise-label">✦ Exercițiu — Construiește-ți propriul prompt</span>
             <p>Vei trimite aceeași sarcină în două moduri: o dată fără formulă, o dată cu. Compari rezultatele.</p>
@@ -693,9 +676,9 @@ const curriculum = [
             <p>Acum în alt chat, copiază varianta completă:</p>
             <div class="prompt-box">
               <span class="prompt-copy-label">COPIAZĂ ASTA</span>
-              [GOAL] Scrie-mi un mesaj pentru <span class="fill-in">[persoana / grup]</span> despre <span class="fill-in">[subiect]</span>.<br><br>
+              [OBIECTIV] Scrie-mi un mesaj pentru <span class="fill-in">[persoana / grup]</span> despre <span class="fill-in">[subiect]</span>.<br><br>
               [CONTEXT] Sunt <span class="fill-in">[rolul tău]</span> la <span class="fill-in">[compania / domeniul]</span>. Situația e: <span class="fill-in">[explică în 1-2 propoziții]</span>.<br><br>
-              [CONSTRAINTS] Ton <span class="fill-in">[formal / prietenos / urgent]</span>. Maxim <span class="fill-in">[X]</span> cuvinte. Evită <span class="fill-in">[ce să NU includă]</span>.<br><br>
+              [LIMITE] Ton <span class="fill-in">[formal / prietenos / urgent]</span>. Maxim <span class="fill-in">[X]</span> cuvinte. Evită <span class="fill-in">[ce să NU includă]</span>.<br><br>
               [FORMAT] <span class="fill-in">[3 paragrafe / listă cu bullet-uri / mesaj scurt]</span>.
             </div>
             <p>Compară cele două rezultate:</p>
@@ -2735,7 +2718,7 @@ function completeLesson(lessonId, nextId) {
 // ─────────────────────────────────────────
 const sbMock = {
   default: `Bună întrebare! Iată răspunsul meu:\n\nAcesta este un demo al sandbox-ului. În cursul complet vei folosi ChatGPT sau Claude direct — cu răspunsuri live, personalizate.\n\nCu cât promptul e mai specific, cu atât rezultatul e mai util!`,
-  formula: `Bazat pe formula Goal + Context + Constraints + Format, iată rezultatul:\n\nScop: Demonstrarea formulei în 4 elemente\n\nRezultat: Cu o instrucțiune clară, AI-ul produce exact ce ai nevoie — fără iterații inutile. Încearcă să modifici oricare din cele 4 elemente și observă cum se schimbă răspunsul.`,
+  formula: `Bazat pe formula Obiectiv + Context + Limite + Format, iată rezultatul:\n\nScop: Demonstrarea formulei în 4 elemente\n\nRezultat: Cu o instrucțiune clară, AI-ul produce exact ce ai nevoie — fără iterații inutile. Încearcă să modifici oricare din cele 4 elemente și observă cum se schimbă răspunsul.`,
   writing: `Iată o variantă îmbunătățită:\n\nEmailul a fost restructurat pentru claritate și profesionalism. Tonul a fost ajustat pentru a fi direct dar cordial. Propoziția de deschidere a fost reformulată pentru a capta atenția imediat.\n\nVarianta aceasta economisește ~8 minute față de rescrierea manuală.`
 };
 
