@@ -719,29 +719,23 @@ const curriculum = [
             <button class="pb-copy" id="pb-copy" onclick="copyBuiltPrompt(this)" disabled>📋 Copiază promptul</button>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ Exercițiu — Construiește-ți propriul prompt</span>
-            <p>Vei trimite aceeași sarcină în două moduri: o dată fără formulă, o dată cu. Compari rezultatele.</p>
-            <p class="tab-label">Tab 1 — fără formulă</p>
-            <p>Copiază mesajul de mai jos în ChatGPT sau Claude:</p>
+            <span class="exercise-label">✦ Exercițiu — Simte diferența în AI real</span>
+            <p>Folosește builder-ul de mai sus pentru o sarcină reală pe care o ai astăzi (un email, un mesaj, o cerere). Apoi compară cu varianta vagă.</p>
+            <p class="tab-label">Pasul 1 — Construiește varianta OCLF</p>
+            <p>Completează cele 4 câmpuri din builder pentru sarcina ta. Apasă „Copiază promptul" și trimite-l în Claude sau ChatGPT.</p>
+            <p class="tab-label">Pasul 2 — Trimite varianta vagă, separat</p>
+            <p>Într-un chat nou (separat), scrie aceeași sarcină în 1 singură linie scurtă. De exemplu:</p>
             <div class="prompt-box">
-              <span class="prompt-copy-label">COPIAZĂ ASTA</span>
+              <span class="prompt-copy-label">VARIANTA VAGĂ</span>
               Scrie-mi un mesaj pentru <span class="fill-in">[persoana / grup]</span> despre <span class="fill-in">[subiect]</span>.
             </div>
-            <p class="tab-label">Tab 2 — cu formula completă</p>
-            <p>Acum în alt chat, copiază varianta completă:</p>
-            <div class="prompt-box">
-              <span class="prompt-copy-label">COPIAZĂ ASTA</span>
-              [OBIECTIV] Scrie-mi un mesaj pentru <span class="fill-in">[persoana / grup]</span> despre <span class="fill-in">[subiect]</span>.<br><br>
-              [CONTEXT] Sunt <span class="fill-in">[rolul tău]</span> la <span class="fill-in">[compania / domeniul]</span>. Situația e: <span class="fill-in">[explică în 1-2 propoziții]</span>.<br><br>
-              [LIMITE] Ton <span class="fill-in">[formal / prietenos / urgent]</span>. Maxim <span class="fill-in">[X]</span> cuvinte. Evită <span class="fill-in">[ce să NU includă]</span>.<br><br>
-              [FORMAT] <span class="fill-in">[3 paragrafe / listă cu bullet-uri / mesaj scurt]</span>.
-            </div>
-            <p>Compară cele două rezultate:</p>
+            <p class="tab-label">Pasul 3 — Compară</p>
             <ul>
-              <li>Care e mai aproape de ce ai trimite cu adevărat?</li>
+              <li>Care răspuns e mai aproape de ce ai trimite cu adevărat?</li>
               <li>Care a necesitat mai puține editări din partea ta?</li>
               <li>Ce element din formulă a făcut cea mai mare diferență?</li>
             </ul>
+            <p>Asta e momentul „aha" — vezi singur de ce contează formula.</p>
           </div>
           <h2>Nu folosi formula mecanic</h2>
           <p>Pentru sarcini simple, Goal + Format e suficient. Pentru sarcini cu mize ridicate sau context complicat, adaugă Context + Constraints. Formula e un ghid, nu o regulă.</p>
