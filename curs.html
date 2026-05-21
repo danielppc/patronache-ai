@@ -202,7 +202,28 @@
     /* EXERCISE / PROMPT FORMAT */
     .exercise-block { background: #fff8f1; border: 1.5px solid #fed7aa; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
     .exercise-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #ea580c; margin-bottom: 0.75rem; display: block; }
-    .prompt-box { background: white; border: 1.5px solid #e2e8f0; border-radius: 9px; padding: 1rem 1.25rem; font-size: 0.9rem; line-height: 1.75; color: var(--text); margin: 0.75rem 0; }
+    .prompt-box { background: white; border: 1.5px solid #e2e8f0; border-radius: 9px; padding: 1rem 1.25rem; font-size: 0.9rem; line-height: 1.75; color: var(--text); margin: 0.75rem 0; position: relative; }
+    .prompt-copy-btn { position: absolute; top: 0.7rem; right: 0.7rem; background: white; border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.65rem; font-size: 0.68rem; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 0.3rem; font-family: inherit; }
+    .prompt-copy-btn:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+    .prompt-copy-btn.copied { background: #dcfce7; color: #166534; border-color: #86efac; }
+
+    /* OCLF FORMULA STACK */
+    .oclf-viz { background: var(--light); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+    .oclf-layer { background: white; border-left: 4px solid; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; position: relative; }
+    .oclf-layer.obiectiv { border-left-color: #3b82f6; }
+    .oclf-layer.context { border-left-color: #10b981; }
+    .oclf-layer.limite { border-left-color: #f59e0b; }
+    .oclf-layer.format { border-left-color: #8b5cf6; }
+    .oclf-tag { font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+    .oclf-layer.obiectiv .oclf-tag { color: #3b82f6; }
+    .oclf-layer.context .oclf-tag { color: #10b981; }
+    .oclf-layer.limite .oclf-tag { color: #f59e0b; }
+    .oclf-layer.format .oclf-tag { color: #8b5cf6; }
+    .oclf-text { font-size: 0.88rem; line-height: 1.55; color: var(--text); }
+    .oclf-combine { text-align: center; color: var(--muted); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0.85rem 0 0.6rem; }
+    .oclf-combine::before { content: '↓ '; }
+    .oclf-result { background: var(--dark); color: white; border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; line-height: 1.6; }
+    .oclf-result-label { font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #93c5fd; margin-bottom: 0.4rem; }
     .prompt-copy-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #ea580c; margin-bottom: 0.5rem; display: block; }
     .fill-in { background: #fed7aa; color: #9a3412; border-radius: 4px; padding: 1px 5px; font-weight: 600; }
     .tab-label { font-size: 0.875rem; font-weight: 800; color: var(--dark); margin: 1.25rem 0 0.4rem; }
@@ -661,8 +682,31 @@ const curriculum = [
             <div class="formula-item"><div class="fi-num">3. LIMITE</div><div class="fi-title">Limitele răspunsului</div><div class="fi-desc">Ce trebuie să respecte și ce să evite. <em>„Maxim 120 de cuvinte. Fără jargon. Nu menționa concurența."</em></div></div>
             <div class="formula-item"><div class="fi-num">4. FORMAT</div><div class="fi-title">Cum vrei rezultatul</div><div class="fi-desc">Structura rezultat-ului. <em>„Listă cu 5 puncte", „Tabel", „Paragraf scurt"</em></div></div>
           </div>
-          <h2>Cum arată un prompt complet</h2>
-          <div class="highlight-box">✨ <strong>Exemplu Obiectiv + Context + Limite + Format:</strong><br><br>„Scrie un email <strong>[Obiectiv]</strong> unui client B2B din industria de retail care nu a răspuns la oferta noastră de 2 săptămâni <strong>[Context]</strong>. Tonul trebuie să fie prietenos dar direct, fără să sune disperat, fără să oferi reduceri <strong>[Limite]</strong>. 3 paragrafe scurte, cu o întrebare clară la final <strong>[Format]</strong>."</div>
+          <h2>Cum se construiește un prompt complet</h2>
+          <p>Vizual, fiecare element adaugă o piesă. Iată un exemplu real, descompus pe straturi:</p>
+          <div class="oclf-viz">
+            <div class="oclf-layer obiectiv">
+              <div class="oclf-tag">🎯 Obiectiv</div>
+              <div class="oclf-text">Scrie-mi un email.</div>
+            </div>
+            <div class="oclf-layer context">
+              <div class="oclf-tag">📍 Context</div>
+              <div class="oclf-text">Sunt manager într-o firmă IT și vorbesc cu un client B2B din industria de retail care nu a răspuns la oferta noastră de 2 săptămâni.</div>
+            </div>
+            <div class="oclf-layer limite">
+              <div class="oclf-tag">🚧 Limite</div>
+              <div class="oclf-text">Ton prietenos dar direct. Maxim 150 cuvinte. Fără să sune disperat. Fără să ofer reduceri.</div>
+            </div>
+            <div class="oclf-layer format">
+              <div class="oclf-tag">📐 Format</div>
+              <div class="oclf-text">3 paragrafe scurte, cu o întrebare clară la final.</div>
+            </div>
+            <div class="oclf-combine">se combină într-un singur prompt</div>
+            <div class="oclf-result">
+              <div class="oclf-result-label">Promptul tău complet</div>
+              Scrie-mi un email pentru un client B2B din retail care nu a răspuns la oferta noastră de 2 săptămâni. Sunt manager într-o firmă IT. Ton prietenos dar direct, maxim 150 cuvinte, fără să sune disperat, fără reduceri. Format: 3 paragrafe scurte, cu o întrebare clară la final.
+            </div>
+          </div>
           <div class="exercise-block">
             <span class="exercise-label">✦ Exercițiu — Construiește-ți propriul prompt</span>
             <p>Vei trimite aceeași sarcină în două moduri: o dată fără formulă, o dată cu. Compari rezultatele.</p>
@@ -2700,8 +2744,52 @@ function openLesson(lessonId) {
 
   buildSidebar();
   updateUI();
+  addCopyButtonsToPrompts();
   closeSidebar();
   document.getElementById('main').scrollTo(0, 0);
+}
+
+// ─────────────────────────────────────────
+// COPY-TO-CLIPBOARD FOR PROMPT BOXES
+// ─────────────────────────────────────────
+function addCopyButtonsToPrompts() {
+  document.querySelectorAll('.prompt-box').forEach(box => {
+    if (box.querySelector('.prompt-copy-btn')) return; // already has button
+    const btn = document.createElement('button');
+    btn.className = 'prompt-copy-btn';
+    btn.innerHTML = '📋 Copiază';
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      // Clone the box, remove the button and the label, extract text
+      const clone = box.cloneNode(true);
+      const btnClone = clone.querySelector('.prompt-copy-btn');
+      if (btnClone) btnClone.remove();
+      const labelClone = clone.querySelector('.prompt-copy-label');
+      if (labelClone) labelClone.remove();
+      const text = clone.innerHTML
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<[^>]+>/g, '')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/\n\s*\n/g, '\n\n')
+        .trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerHTML = '✓ Copiat!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = '📋 Copiază';
+          btn.classList.remove('copied');
+        }, 1800);
+      }).catch(() => {
+        btn.innerHTML = '✗ Eroare';
+        setTimeout(() => { btn.innerHTML = '📋 Copiază'; }, 1800);
+      });
+    };
+    box.appendChild(btn);
+  });
 }
 
 let quizAnswered = false;
