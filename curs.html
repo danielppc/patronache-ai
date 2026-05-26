@@ -101,6 +101,8 @@
     .lesson-title { font-size: 1.6rem; font-weight: 900; color: var(--dark); letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 0.75rem; }
     .lesson-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.78rem; color: var(--muted); }
     .lesson-meta-item { display: flex; align-items: center; gap: 0.3rem; }
+    .module-outcome { background: white; border: 1.5px solid var(--border); border-left: 4px solid var(--primary); border-radius: 8px; padding: 0.85rem 1rem; margin: 1rem 0 0; font-size: 0.86rem; line-height: 1.55; color: var(--text); }
+    .module-outcome strong { color: var(--dark); }
     .lesson-body { font-size: 0.975rem; color: var(--text); line-height: 1.8; }
     .lesson-body h2 { font-size: 1.15rem; font-weight: 800; color: var(--dark); margin: 2rem 0 0.75rem; letter-spacing: -0.3px; }
     .lesson-body h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 1.5rem 0 0.5rem; }
@@ -333,7 +335,7 @@
     <div class="dashboard" id="dashboard">
       <div class="dashboard-welcome">
         <h1>Bun venit la curs! 👋</h1>
-        <p>Ai 40 de lecții practice care te duc de la zero la productiv cu AI. Începe cu Modulul 1 — durează ~45 minute.</p>
+        <p>Ai 40 de lecții practice care te ajută să-ți construiești propriul sistem de lucru cu AI: roadmap, prompturi, context, workflow-uri, automatizări și plan pe 90 de zile. Începe cu Modulul 1 — durează ~45 minute.</p>
       </div>
       <div class="dashboard-modules" id="dash-modules">
         <!-- filled by JS -->
@@ -383,6 +385,9 @@ const curriculum = [
             <li>Nu e periculos prin sine — e un instrument, ca emailul sau Excel-ul</li>
             <li>Nu te va înlocui automat — dar cineva care îl folosește bine ar putea</li>
           </ul>
+          <h2>Când AI-ul e o idee proastă</h2>
+          <p>Un profesionist bun nu folosește AI peste tot. Îl folosește acolo unde ajută și îl oprește acolo unde riscul e mai mare decât câștigul.</p>
+          <div class="warning-box">⚠️ <strong>Nu folosi AI fără verificare</strong> pentru date confidențiale, decizii legale/medicale/financiare importante, evaluarea oamenilor, comunicări sensibile trimise automat sau afirmații factuale pe care nu le poți verifica. AI-ul accelerează munca, dar responsabilitatea rămâne la tine.</div>
           <h2>Cele 3 instrumente pe care le vei folosi</h2>
           <div class="tool-grid">
             <div class="tool-card"><div class="tool-icon"><span class="tool-logo chatgpt"><svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg></span></div><h4>ChatGPT</h4><p>Cel mai cunoscut. Bun la orice. Varianta gratuită e funcțională, iar modelele premium sunt excelente pentru muncă serioasă.</p></div>
@@ -398,6 +403,7 @@ const curriculum = [
             <li><strong>Grok (xAI)</strong> — al lui Elon, integrat în X/Twitter. Mai puțin filtrat, acces la date în timp real.</li>
           </ul>
           <p>Pentru muncă profesională, cele 3 principale rămân alegerea sigură. Restul sunt opțiuni interesante pentru cazuri specifice (cost, context lung, open-source).</p>
+          <div class="highlight-box">💡 <strong>Important:</strong> tool-urile se schimbă. Butoanele, limitele gratuite și numele funcțiilor pot arăta diferit peste 3 luni. Caută principiul stabil din spate: upload de fișiere, context permanent, web search, generare imagini, automatizare, export. Cursul te învață aceste principii, nu doar unde e un buton azi.</div>
           <h2>De ce acum contează</h2>
           <p>AI-ul nu mai e un experiment — e deja integrat în tool-urile pe care le folosești zilnic: Google, Microsoft Office, Notion, Canva. Diferența dintre cei care îl folosesc și cei care nu devine vizibilă rapid.</p>
           <p>Nu trebuie să devii expert. Trebuie să știi suficient cât să îl folosești cu cap — și exact asta înveți în acest curs.</p>
@@ -645,6 +651,11 @@ const curriculum = [
           <p>AI-ul nu are context despre tine, compania ta sau situația ta concretă. Tot ce știe e ce îi scrii în mesajul curent. Fiecare conversație nouă e un start de la zero cu un coleg care nu te cunoaște.</p>
           <p>Când instrucțiunea e vagă, AI-ul completează singur ce lipsește — cu presupuneri generice. Când e specifică, nu mai ghicește, execută.</p>
           <div class="highlight-box">💡 <strong>Regula de aur:</strong> Dacă ai trimite aceeași instrucțiune unui angajat nou care nu știe nimic despre munca ta, ar putea s-o îndeplinească corect? Dacă nu — lipsește ceva.</div>
+          <h2>Înainte / după: aceeași sarcină, alt rezultat</h2>
+          <div class="compare-grid">
+            <div class="compare-item bad"><span class="compare-label">Prompt slab</span>„Scrie un email de follow-up."<br><br><strong>Ce primești:</strong> un email politicos, generic, cu fraze pe care le-ai văzut de 100 de ori. Poate fi trimis oricui, deci nu e cu adevărat pentru situația ta.</div>
+            <div class="compare-item good"><span class="compare-label">Prompt bun</span>„Sunt consultant marketing. Am avut ieri un call cu owner-ul unei cafenele din București care vrea mai mulți clienți la prânz. Scrie un follow-up scurt, cald, cu 3 pași concreți și o întrebare de închidere."<br><br><strong>Ce primești:</strong> mesaj contextual, util, cu următorul pas clar.</div>
+          </div>
           <div class="exercise-block">
             <span class="exercise-label">✦ Exercițiu — Diagnostichează prompturile</span>
             <p>Fiecare prompt de mai jos produce un răspuns mediocru. Citește-l, gândește-te ce lipsește, apoi deschide răspunsul.</p>
@@ -974,6 +985,19 @@ const curriculum = [
             </ol>
             <p>După ce le folosești, notează: care a economisit cel mai mult timp? Care merită rafinat și salvat ca șablon permanent?</p>
           </div>
+          <h2>Checkpoint Modulul 2 — poți formula singur?</h2>
+          <div class="exercise-block">
+            <span class="exercise-label">✦ Verifică-te singur</span>
+            <p>Alege o sarcină reală din săptămâna ta și scrie un prompt fără să copiezi șabloanele de mai sus. Verifică-l cu această listă:</p>
+            <ul>
+              <li>Obiectivul este clar?</li>
+              <li>AI-ul știe cine ești și care e contextul?</li>
+              <li>Ai pus limite: lungime, ton, ce să evite?</li>
+              <li>Ai cerut formatul exact?</li>
+              <li>Ai inclus cum vei evalua dacă răspunsul e bun?</li>
+            </ul>
+            <p>Dacă lipsește ceva, rescrie promptul. Când poți face asta fără efort, ai trecut de la „încerc ChatGPT" la „știu să dau instrucțiuni".</p>
+          </div>
           <div class="success-box">✓ Felicitări — ai terminat Modulul 2. Știi acum cum să formulezi prompturi care produc rezultate utile, cum să iterezi când nu sunt grozave, și ai o bibliotecă personală de șabloane. Următorul pas: în Modulul 3 înveți cum să nu mai repeți contextul de fiecare dată.</div>
         `
       }
@@ -1261,22 +1285,22 @@ const curriculum = [
         body: `
           <h2>Pune tot la lucru</h2>
           <p>Ai învățat cele 3 niveluri (custom instructions, fișier de context, projects/GPTs) și cum gândește AI-ul când primește informații. Acum le combini într-un sistem complet, calibrat pentru rolul tău.</p>
-          <p>Alege un path — cel mai aproape de ce faci tu. Fiecare path are șabloane concrete și un rezultat final: <strong>un sistem AI personalizat pe care îl folosești de mâine.</strong></p>
-          <h2>Cele 4 path-uri</h2>
+          <p>Alege un profil — cel mai aproape de ce faci tu. Fiecare profil are șabloane concrete și un rezultat final: <strong>un sistem AI personalizat pe care îl folosești de mâine.</strong></p>
+          <h2>Cele 4 profile</h2>
           <div class="tool-grid">
-            <div class="tool-card"><div class="tool-icon">💼</div><h4>Path 1: Job / Angajat</h4><p>Profesionist în companie. Sarcini: emailuri, rapoarte, ședințe, prezentări.</p></div>
-            <div class="tool-card"><div class="tool-icon">🏢</div><h4>Path 2: Business owner</h4><p>Conduci propria afacere. Sarcini: clienți, ofertare, marketing, decizii.</p></div>
-            <div class="tool-card"><div class="tool-icon">✍️</div><h4>Path 3: Content creator</h4><p>Creezi conținut regulat. Sarcini: idei, postări, articole, distribuție.</p></div>
-            <div class="tool-card"><div class="tool-icon">🔍</div><h4>Path 4: Research / Analiză</h4><p>Lucrezi cu informație multă. Sarcini: sinteză, comparații, rapoarte.</p></div>
+            <div class="tool-card"><div class="tool-icon">💼</div><h4>Profil 1: Job / Angajat</h4><p>Profesionist în companie. Sarcini: emailuri, rapoarte, ședințe, prezentări.</p></div>
+            <div class="tool-card"><div class="tool-icon">🏢</div><h4>Profil 2: Business owner</h4><p>Conduci propria afacere. Sarcini: clienți, ofertare, marketing, decizii.</p></div>
+            <div class="tool-card"><div class="tool-icon">✍️</div><h4>Profil 3: Content creator</h4><p>Creezi conținut regulat. Sarcini: idei, postări, articole, distribuție.</p></div>
+            <div class="tool-card"><div class="tool-icon">🔍</div><h4>Profil 4: Research / Analiză</h4><p>Lucrezi cu informație multă. Sarcini: sinteză, comparații, rapoarte.</p></div>
           </div>
-          <h2>Cei 3 pași — aceiași pentru toate path-urile</h2>
+          <h2>Cei 3 pași — aceiași pentru toate profilele</h2>
           <ol>
             <li><strong>Custom instructions</strong> — setarea permanentă (15 min, un singur task)</li>
             <li><strong>Fișier de context personalizat</strong> — pentru rolul tău (15 min, refolosibil)</li>
-            <li><strong>Un Project / GPT</strong> — pentru cea mai frecventă sarcină a path-ului (10 min, impact maxim)</li>
+            <li><strong>Un Project / GPT</strong> — pentru cea mai frecventă sarcină a profilului (10 min, impact maxim)</li>
           </ol>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 1 — Job / Angajat</span>
+            <span class="exercise-label">✦ PROFIL 1 — Job / Angajat</span>
             <p>Pentru profesioniștii care lucrează într-o companie.</p>
             <p class="tab-label">Custom instructions</p>
             <div class="prompt-box">
@@ -1299,7 +1323,7 @@ const curriculum = [
             </div>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 2 — Business owner / Antreprenor</span>
+            <span class="exercise-label">✦ PROFIL 2 — Business owner / Antreprenor</span>
             <p>Pentru cei care își conduc propria afacere.</p>
             <p class="tab-label">Custom instructions</p>
             <div class="prompt-box">
@@ -1322,7 +1346,7 @@ const curriculum = [
             </div>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 3 — Content creator</span>
+            <span class="exercise-label">✦ PROFIL 3 — Content creator</span>
             <p>Pentru cei care creează conținut (blog, social, newsletter, video).</p>
             <p class="tab-label">Custom instructions</p>
             <div class="prompt-box">
@@ -1344,7 +1368,7 @@ const curriculum = [
             </div>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 4 — Research / Analiză</span>
+            <span class="exercise-label">✦ PROFIL 4 — Research / Analiză</span>
             <p>Pentru cei care lucrează cu informație multă (analiști, consultanți, cercetători).</p>
             <p class="tab-label">Custom instructions</p>
             <div class="prompt-box">
@@ -1366,7 +1390,7 @@ const curriculum = [
             </div>
           </div>
           <h2>După workshop — ce ai construit</h2>
-          <p>Dacă ai parcurs un path complet:</p>
+          <p>Dacă ai parcurs un profil complet:</p>
           <ul>
             <li>✅ Custom instructions setate permanent</li>
             <li>✅ Un fișier de context calibrat pe rolul tău</li>
@@ -1390,7 +1414,7 @@ const curriculum = [
           <div class="steps-list">
             <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Emailuri sensibile</h4><p>Refuz, feedback negativ, escalare către management, mesaje către un client supărat. Aici tonul greșit poate strica o relație.</p></div></div>
             <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Propuneri / oferte pentru clienți</h4><p>Emailuri unde trebuie să convingi, dar fără să suni „de vânzător". Concret, valoare, fără hype.</p></div></div>
-            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Follow-up systems</h4><p>Cadența de follow-up când clientul nu răspunde. Când pe împingi, când renunți. AI-ul ajută cu varianta — tu decizi când.</p></div></div>
+            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Cadența de follow-up</h4><p>Ritmul în care reiei legătura când clientul nu răspunde. Când pe împingi, când renunți. AI-ul ajută cu varianta — tu decizi când.</p></div></div>
             <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Email primit → acțiune</h4><p>Transformă un email complex primit într-un task clar: ce trebuie să faci, până când, ce să răspunzi.</p></div></div>
           </div>
           <h2>Tehnica „nu sună a AI"</h2>
@@ -1417,7 +1441,7 @@ const curriculum = [
         `
       },
       {
-        id: "4-2", title: "AI pentru ședințe — note-takers automate", duration: "10 min",
+        id: "4-2", title: "AI pentru ședințe — asistenți care iau notițe", duration: "10 min",
         body: `
           <h2>Cel mai mare câștig de timp pentru oricine are ședințe</h2>
           <p>O ședință de 45 de minute = 15-30 min de note de rezumat după. Înmulțit cu 5-10 ședințe pe săptămână, ajungi la 2-3 ore pierdute doar pe note. AI-ul face asta în 1 minut.</p>
@@ -1476,8 +1500,8 @@ const curriculum = [
           <h2>Workflow-ul de research în 4 faze</h2>
           <div class="steps-list">
             <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Înțelegere rapidă (5 min)</h4><p>„Explică-mi <span style="color:#ea580c">[domeniul]</span> ca și cum sunt un profesionist inteligent care nu cunoaște zona. Acoperă: ce e, jucătorii principali, modelul economic, conceptele cheie. Maxim 500 cuvinte."</p></div></div>
-            <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Mapping (10 min)</h4><p>„Dă-mi un mapping al jucătorilor principali din <span style="color:#ea580c">[domeniu]</span>. Pentru fiecare: poziționare, propunere de valoare, segment țintă, diferențiatori. Format tabel."</p></div></div>
-            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Deep dive pe întrebarea ta (15 min)</h4><p>„Acum că ai context, răspunde la întrebarea mea specifică: <span style="color:#ea580c">[întrebare]</span>. Distinge clar între fapt verificabil și opinie/estimare."</p></div></div>
+            <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Harta domeniului (10 min)</h4><p>„Dă-mi o hartă a jucătorilor principali din <span style="color:#ea580c">[domeniu]</span>. Pentru fiecare: poziționare, propunere de valoare, segment țintă, diferențiatori. Format tabel."</p></div></div>
+            <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Aprofundare pe întrebarea ta (15 min)</h4><p>„Acum că ai context, răspunde la întrebarea mea specifică: <span style="color:#ea580c">[întrebare]</span>. Distinge clar între fapt verificabil și opinie/estimare."</p></div></div>
             <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Verificare (5 min)</h4><p>„Care din afirmațiile de mai sus ar trebui verificate dintr-o sursă primară înainte să le folosesc într-un raport/decizie? Listează 3-5 puncte critice."</p></div></div>
           </div>
           <h2>Tool-uri specializate pentru research</h2>
@@ -1534,8 +1558,8 @@ const curriculum = [
           <p>Când vrei să analizezi un document mare:</p>
           <ul>
             <li><strong>Nu cere „rezumă tot"</strong> — vei primi un rezumat generic. Pune întrebare specifică.</li>
-            <li><strong>Chunking</strong> — împarte documentul în 3-4 părți, analizează separat, apoi sintetizezi.</li>
-            <li><strong>Rezumat cascadat</strong> — rezumat pe fiecare secțiune → rezumat de rezumate → întrebare finală.</li>
+            <li><strong>Împarte documentul în bucăți</strong> — taie-l în 3-4 părți, analizează fiecare separat, apoi cere AI-ului să combine concluziile.</li>
+            <li><strong>Rezumare în trepte</strong> — întâi un rezumat scurt pentru fiecare secțiune, apoi un rezumat al rezumatelor, apoi pui întrebarea ta finală peste el.</li>
             <li><strong>Întrebări specifice &gt; cereri generale</strong> — „Care sunt cele 3 riscuri principale menționate?" e mai bun decât „rezumă".</li>
           </ul>
           <div class="exercise-block">
@@ -1565,10 +1589,10 @@ const curriculum = [
           </ul>
           <h2>Use cases reale</h2>
           <div class="steps-list">
-            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Exploratory analysis</h4><p>„Iată datele de vânzări din ultimii 12 luni. Ce trenduri vezi? Care sunt outlierii? Ce ar fi interesant să aflu?"</p></div></div>
+            <div class="step-item"><div class="step-num">1</div><div class="step-content"><h4>Explorare inițială a datelor</h4><p>„Iată datele de vânzări din ultimele 12 luni. Ce tendințe vezi? Care sunt valorile atipice? Ce ar fi interesant să aflu?"</p></div></div>
             <div class="step-item"><div class="step-num">2</div><div class="step-content"><h4>Grafice pentru prezentări</h4><p>„Fă un grafic clar cu evoluția veniturilor pe trimestre, evidențiind Q3 ca anomalie. Stil minimal, gata de pus în slide."</p></div></div>
             <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Întrebări specifice</h4><p>„Pe câți clienți i-am pierdut în Q2 care au plătit &gt;1000 euro/lună? Comparat cu Q1?"</p></div></div>
-            <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Forecasting simplu</h4><p>„Bazat pe trend-ul de creștere din ultimii 6 luni, estimează unde vom fi în Q1 anul viitor. Include o gamă optimistă/pesimistă."</p></div></div>
+            <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Prognoză simplă</h4><p>„Bazat pe tendința de creștere din ultimele 6 luni, estimează unde vom fi în Q1 anul viitor. Include o gamă optimistă/pesimistă."</p></div></div>
           </div>
           <h2>Limitări — la ce să fii atent</h2>
           <div class="warning-box">⚠️ <strong>Halucinații pe date:</strong> AI-ul poate inventa cifre dacă datele lipsesc. Verifică totalurile importante manual (sumă în Excel, comparație rapidă).</div>
@@ -1624,7 +1648,7 @@ const curriculum = [
         `
       },
       {
-        id: "4-6", title: "AI pentru learning rapid (tutor personal)", duration: "10 min",
+        id: "4-6", title: "AI pentru învățare rapidă (tutor personal)", duration: "10 min",
         body: `
           <h2>Cea mai subevaluată utilizare a AI-ului</h2>
           <p>Majoritatea folosesc AI-ul pentru <em>rezultat</em> — să scrie ceva. Foarte puțini îl folosesc pentru <em>input</em> — să învețe ceva. E o pierdere, pentru că AI-ul ca tutor personalizat depășește cu mult orice curs online sau carte pentru subiecte care nu cer expertiză profundă.</p>
@@ -1636,11 +1660,11 @@ const curriculum = [
             <div class="step-item"><div class="step-num">3</div><div class="step-content"><h4>Tu explici înapoi</h4><p>„Iată cum aș explica eu conceptul: <span style="color:#ea580c">[explicația ta]</span>. Ce am greșit sau ce am omis? Fii dur."</p></div></div>
             <div class="step-item"><div class="step-num">4</div><div class="step-content"><h4>Aplicare la cazul tău</h4><p>„Cum se aplică <span style="color:#ea580c">[concept]</span> în situația mea concretă: <span style="color:#ea580c">[context]</span>?"</p></div></div>
           </div>
-          <h2>Cele 4 workflow-uri de learning</h2>
+          <h2>Cele 4 fluxuri de învățare</h2>
           <div class="steps-list">
             <div class="step-item"><div class="step-num">A</div><div class="step-content"><h4>Înțelegere rapidă a unui domeniu nou</h4><p>1 oră → ai un imagine de ansamblu decent. Folosește workflow-ul din lecția 4.3.</p></div></div>
-            <div class="step-item"><div class="step-num">B</div><div class="step-content"><h4>Master pe un skill specific</h4><p>„Vreau să devin competent în <span style="color:#ea580c">[skill]</span> în 4 săptămâni. Propune-mi un plan de învățare săptămânal, cu exerciții. Vom face verificare săptămânală săptămânal."</p></div></div>
-            <div class="step-item"><div class="step-num">C</div><div class="step-content"><h4>Învață dintr-o carte fără s-o citești</h4><p>Lipești cuprinsul, AI-ul rezumă fiecare capitol. Apoi alegi 2-3 capitole de interes pentru deep dive. 80% din valoare în 20% din timp.</p></div></div>
+            <div class="step-item"><div class="step-num">B</div><div class="step-content"><h4>Stăpânește o competență anume</h4><p>„Vreau să devin competent în <span style="color:#ea580c">[competență]</span> în 4 săptămâni. Propune-mi un plan de învățare săptămânal, cu exerciții. Vom face verificare săptămânală."</p></div></div>
+            <div class="step-item"><div class="step-num">C</div><div class="step-content"><h4>Învață dintr-o carte fără s-o citești</h4><p>Lipești cuprinsul, AI-ul rezumă fiecare capitol. Apoi alegi 2-3 capitole de interes pentru aprofundare. 80% din valoare în 20% din timp.</p></div></div>
             <div class="step-item"><div class="step-num">D</div><div class="step-content"><h4>Limbă străină — partener de conversație</h4><p>„Vorbește cu mine în <span style="color:#ea580c">[limbă]</span> la nivel <span style="color:#ea580c">[intermediar]</span>. Corectează-mi greșelile când fac. Subiect: <span style="color:#ea580c">[tema]</span>."</p></div></div>
           </div>
           <div class="exercise-block">
@@ -1659,9 +1683,9 @@ const curriculum = [
           <p>Până acum am vorbit doar de text. Dar pentru prezentări, social media, ilustrații în rapoarte, AI-ul generează imagini de o calitate impresionantă. Începi gratuit, plătești doar dacă ai nevoie de premium.</p>
           <h2>Opțiuni gratuite — începe aici</h2>
           <div class="tool-grid">
-            <div class="tool-card"><div class="tool-icon">💬</div><h4>ChatGPT (free)</h4><p>Image gen integrat direct în chat. Limite zilnice pe planul gratuit. Pentru prototipuri rapide.</p></div>
-            <div class="tool-card"><div class="tool-icon"><span class="tool-logo gemini"><svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M12 0c0 6.627-5.373 12-12 12 6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z"/></svg></span></div><h4>Gemini (free)</h4><p>De la Google. Image gen integrat. Free cu limite generoase. Calitate decentă.</p></div>
-            <div class="tool-card"><div class="tool-icon">🔥</div><h4>Adobe Firefly</h4><p>Are tier free cu credite lunare. Imagini commercially-safe (antrenare pe Adobe Stock). Cel mai sigur pentru uz business.</p></div>
+            <div class="tool-card"><div class="tool-icon">💬</div><h4>ChatGPT (free)</h4><p>Generare de imagini integrată direct în chat. Limite zilnice pe planul gratuit. Pentru prototipuri rapide.</p></div>
+            <div class="tool-card"><div class="tool-icon"><span class="tool-logo gemini"><svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M12 0c0 6.627-5.373 12-12 12 6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z"/></svg></span></div><h4>Gemini (free)</h4><p>De la Google. Generare de imagini integrată. Gratuit cu limite generoase. Calitate decentă.</p></div>
+            <div class="tool-card"><div class="tool-icon">🔥</div><h4>Adobe Firefly</h4><p>Are plan gratuit cu credite lunare. Imagini sigure pentru uz comercial (antrenate doar pe Adobe Stock). Cel mai sigur pentru muncă într-o firmă.</p></div>
             <div class="tool-card"><div class="tool-icon">✨</div><h4>Canva AI</h4><p>Free tier cu limite. Integrat în Canva, perfect dacă faci deja design acolo.</p></div>
           </div>
           <h2>Opțiuni plătite — când ai nevoie de mai mult</h2>
@@ -1672,7 +1696,7 @@ const curriculum = [
           <div class="highlight-box">💡 <strong>Recomandare:</strong> Începe cu ChatGPT sau Gemini (free). Pentru 90% din nevoile profesionale e suficient. Upgrade-uri doar când simți o limitare concretă.</div>
           <h2>Use case-uri reale la birou</h2>
           <ul>
-            <li><strong>Alternativă la stock photos</strong> pentru prezentări — imagini unice, fără licențe</li>
+            <li><strong>Alternativă la imaginile de stoc</strong> pentru prezentări — imagini unice, fără licențe</li>
             <li><strong>Ilustrații de concept</strong> — explică o idee abstractă cu o imagine</li>
             <li><strong>Vizualizări de produs</strong> — prototip rapid pentru mockup-uri</li>
             <li><strong>Conținut pentru social media</strong> — postări, banner-e, anunțuri</li>
@@ -1681,8 +1705,8 @@ const curriculum = [
           <h2>Prompting pentru imagini — diferit de text</h2>
           <p>Promptul pentru imagini funcționează altfel. Structura care funcționează:</p>
           <div class="highlight-box">
-            <strong>Subiect + Setting + Stil + Mood + Tehnic</strong><br><br>
-            Exemplu: „Un birou modern minimalist <strong>[Subiect]</strong>, într-o seară de iarnă cu vedere către oraș <strong>[Setting]</strong>, fotografie cinematografică <strong>[Stil]</strong>, ton cald, intim <strong>[Mood]</strong>, lumină naturală caldă, focus pe primul plan <strong>[Tehnic]</strong>."
+            <strong>Subiect + Cadru + Stil + Atmosferă + Detalii tehnice</strong><br><br>
+            Exemplu: „Un birou modern minimalist <strong>[Subiect]</strong>, într-o seară de iarnă cu vedere către oraș <strong>[Cadru]</strong>, fotografie cinematografică <strong>[Stil]</strong>, ton cald, intim <strong>[Atmosferă]</strong>, lumină naturală caldă, focus pe primul plan <strong>[Detalii tehnice]</strong>."
           </div>
           <h2>Limitări — la ce să fii atent</h2>
           <div class="warning-box">⚠️ <strong>Text în imagini:</strong> AI-ul încă greșește cuvinte (chiar și 2025). Nu te baza pe el pentru text exact în imagini.</div>
@@ -1718,7 +1742,7 @@ const curriculum = [
             <div class="compare-item good">
               <span class="compare-label">✓ Folosește AI când</span>
               Prima ciornă / brainstorming<br>
-              Internal updates (low stakes)<br>
+              Comunicare internă cu miza mică<br>
               Structură + vizual ok, fără opinii puternice<br>
               Prezentări „mecanice" (status, raport lunar)
             </div>
@@ -1726,7 +1750,7 @@ const curriculum = [
               <span class="compare-label">✗ Evită AI când</span>
               Pitch important pentru client/investor<br>
               Conținut cu narațiune puternică (storytelling)<br>
-              Brand-sensitive (companii cu identitate strictă)<br>
+              Companii cu identitate de brand strictă<br>
               Decizii unde forma contează la fel de mult ca substanța
             </div>
           </div>
@@ -1763,15 +1787,22 @@ const curriculum = [
         id: "4-9", title: "Workshop — Workflow-uri pe rol", duration: "25 min",
         body: `
           <h2>Pune tot ce ai învățat la lucru pentru rolul tău</h2>
-          <p>Alege rolul cel mai apropiat de tine. Fiecare path are: workflow zilnic, tool-uri specifice, rezultat concret.</p>
-          <div class="highlight-box">🔗 <strong>Înainte de a alege path-ul:</strong> deschide AI roadmap-ul tău din lecția 1.4 (lista de sarcini + analiza AI-ului). Identifică 3 sarcini concrete pe care vrei să le rezolvi în acest workshop. Path-ul ales mai jos îți va da workflow-ul potrivit pentru ele.</div>
-          <h2>Cele 5 path-uri</h2>
+          <p>Alege profilul cel mai apropiat de tine. Fiecare profil are: flux zilnic, tool-uri specifice, rezultat concret.</p>
+          <div class="highlight-box">🔗 <strong>Înainte de a alege profilul:</strong> deschide AI roadmap-ul tău din lecția 1.4 (lista de sarcini + analiza AI-ului). Identifică 3 sarcini concrete pe care vrei să le rezolvi în acest workshop. Profilul ales mai jos îți va da fluxul potrivit pentru ele.</div>
+          <h2>Cele 5 profile</h2>
           <div class="tool-grid">
             <div class="tool-card"><div class="tool-icon">📣</div><h4>Marketer</h4><p>Content, campanii, analitice, brand.</p></div>
             <div class="tool-card"><div class="tool-icon">👔</div><h4>Manager</h4><p>1:1s, OKRs, recenzii, comunicare cu echipa.</p></div>
             <div class="tool-card"><div class="tool-icon">🎯</div><h4>Recruiter</h4><p>Job specs, outreach, screening, interviu.</p></div>
             <div class="tool-card"><div class="tool-icon">🚀</div><h4>Founder</h4><p>Decizii, comunicare, fundraising, vânzări.</p></div>
             <div class="tool-card"><div class="tool-icon">📊</div><h4>Analyst</h4><p>Research, rapoarte, comparații, observații.</p></div>
+          </div>
+          <h2>Dacă nu te regăsești în cele 5 profile</h2>
+          <p>Aplică aceeași logică pe roluri foarte comune în România:</p>
+          <div class="tool-grid">
+            <div class="tool-card"><div class="tool-icon">🧾</div><h4>Contabil / financiar</h4><p>Rezumat extrase, emailuri către clienți, verificare variații, checklist documente lipsă.</p></div>
+            <div class="tool-card"><div class="tool-icon">🏠</div><h4>Agent imobiliar</h4><p>Descrieri proprietăți, răspunsuri rapide, comparații de zonă, follow-up clienți.</p></div>
+            <div class="tool-card"><div class="tool-icon">🛒</div><h4>Magazin online</h4><p>Descrieri produse, răspunsuri suport, analiză review-uri, idei campanii sezoniere.</p></div>
           </div>
           <div class="exercise-block">
             <span class="exercise-label">✦ MARKETER — workflow zilnic</span>
@@ -1816,12 +1847,12 @@ const curriculum = [
             <span class="exercise-label">✦ RECRUITER — workflow zilnic</span>
             <p><strong>Pentru fiecare poziție nouă:</strong></p>
             <ul>
-              <li>ChatGPT: generează job spec din 5 bullet-uri (rol, must-haves, nice-to-haves, beneficii, growth path)</li>
+              <li>ChatGPT: generează fișa postului din 5 bullet-uri (rolul, ce e obligatoriu, ce e plus, beneficii, perspectivă de creștere)</li>
               <li>ChatGPT: scrie 3 variante de outreach (LinkedIn, email rece, follow-up)</li>
             </ul>
             <p><strong>Pentru screening CV-uri:</strong></p>
             <ul>
-              <li>ChatGPT: „Iată job spec-ul și 5 CV-uri. Compară pe criteriile <span style="color:#ea580c">[criterii]</span>. Format tabel. Recomandare clară pentru top 2."</li>
+              <li>ChatGPT: „Iată fișa postului și 5 CV-uri. Compară pe criteriile <span style="color:#ea580c">[criterii]</span>. Format tabel. Recomandare clară pentru top 2."</li>
             </ul>
             <div class="warning-box">⚠️ <strong>Guardrail pentru recrutare:</strong> folosește AI doar pe criterii relevante pentru rol (experiență, competențe, exemple concrete). Nu cere și nu accepta inferențe despre vârstă, gen, etnie, familie, sănătate sau alte atribute protejate. Decizia finală rămâne la om, iar CV-urile trebuie tratate ca date personale.</div>
             <p><strong>Pentru interviu:</strong></p>
@@ -1858,7 +1889,7 @@ const curriculum = [
             <p><strong>Research workflow (universal):</strong></p>
             <ul>
               <li>Perplexity / ChatGPT web: înțelegere rapidă a unui domeniu (workflow lecția 4.3)</li>
-              <li>Claude cu documente: deep dive pe rapoarte și PDF-uri</li>
+              <li>Claude cu documente: aprofundare pe rapoarte și PDF-uri</li>
               <li>ChatGPT Data Analyst: analize pe CSV-uri/Excel</li>
             </ul>
             <p><strong>Rezultate:</strong></p>
@@ -1875,15 +1906,16 @@ const curriculum = [
             <p><strong>Sarcina-test:</strong> Pentru următorul tău raport (săptămâna asta), folosește workflow-ul outline-secțiuni-editare. Notează diferența de timp față de scris manual.</p>
           </div>
           <h2>Ce ai construit după workshop</h2>
-          <p>Indiferent ce path ai ales, ai acum:</p>
+          <p>Indiferent ce profil ai ales, ai acum:</p>
           <ul>
             <li>✅ Un workflow zilnic clar, integrat cu tool-urile potrivite</li>
             <li>✅ Un Project / GPT specific pentru rolul tău</li>
             <li>✅ Un benchmark de timp economisit (l-ai măsurat)</li>
           </ul>
-          <div class="highlight-box">🎯 <strong>Artifact final Modulul 4:</strong> salvează într-un document scurt: 1 workflow pe rol, 3 prompturi pe care le vei refolosi, 1 exemplu înainte/după și un benchmark de timp. Acesta devine primul capitol din „AI Operating System"-ul tău personal.</div>
+          <div class="highlight-box">🎯 <strong>Artifact final Modulul 4:</strong> salvează într-un document scurt: 1 workflow pe rol, 3 prompturi pe care le vei refolosi, 1 exemplu înainte/după și un benchmark de timp. Acesta devine primul capitol din Sistemul tău AI personal.</div>
           <div class="success-box">✓ <strong>Felicitări — ai terminat Modulul 4.</strong> Ești acum un AI-first worker funcțional. Următorul pas în Modulul 5: cum să automatizezi sarcinile repetitive complet, fără să fie nevoie să mai deschizi AI-ul de fiecare dată.</div>
-        `
+        `,
+        quiz: { q: "Ai primit 20 de CV-uri și vrei să folosești AI ca să alegi top 3. Care e abordarea corectă?", opts: ["Uploadezi CV-urile și ceri AI-ului să aleagă candidații cei mai potriviți fără alte criterii","Ceri AI-ului să estimeze vârsta, genul și personalitatea candidaților ca să vezi potrivirea cu echipa","Dai criterii clare, relevante pentru rol, ceri tabel de comparație și păstrezi decizia finală la om","Lași AI-ul să trimită automat refuzuri candidaților respinși"], correct: 2, fb: ["Fals — fără criterii clare, AI-ul va inventa propriile criterii și poate introduce bias.","Fals — nu cere inferențe despre atribute personale sau protejate.","Corect! AI-ul asistă comparația pe criterii relevante, dar decizia rămâne umană.","Fals — comunicările externe sensibile trebuie revizuite de om."] }
       }
     ]
   },
@@ -2250,11 +2282,11 @@ const curriculum = [
       {
         id: "5-8", title: "Workshop — Construiește-ți primul sistem complet", duration: "25 min",
         body: `
-          <h2>Pune totul la lucru — 4 path-uri</h2>
-          <p>Alege path-ul cel mai apropiat de viața ta. Fiecare are 3 workflow-uri concrete pe care le construiești săptămâna asta. Vei termina workshop-ul cu cel puțin un sistem activ care îți economisește timp imediat.</p>
+          <h2>Pune totul la lucru — 4 profile</h2>
+          <p>Alege profilul cel mai apropiat de viața ta. Fiecare are 3 workflow-uri concrete pe care le construiești săptămâna asta. Vei termina workshop-ul cu cel puțin un sistem activ care îți economisește timp imediat.</p>
           <div class="highlight-box">🔗 <strong>Folosește AI roadmap-ul tău din lecția 1.4:</strong> reia lista de sarcini repetitive și analiza AI-ului. Care 2-3 sarcini erau marcate ca „quick wins"? Acelea sunt candidatele perfecte pentru primul tău workflow automat. Vei lucra direct pe ele aici.</div>
           <div class="warning-box">⚠️ <strong>Regula de lansare:</strong> primul tău sistem trebuie să fie mic, reversibil și ușor de verificat. Evită la început workflow-uri care trimit mesaje externe automat, modifică date critice sau procesează volume mari. Construiește întâi în modul „draft + notificare".</div>
-          <h2>Cele 4 path-uri</h2>
+          <h2>Cele 4 profile</h2>
           <div class="tool-grid">
             <div class="tool-card"><div class="tool-icon">📅</div><h4>Productivitate personală</h4><p>Pentru oricine vrea să-și organizeze viața mai bine — email, calendar, cheltuieli, note.</p></div>
             <div class="tool-card"><div class="tool-icon">💼</div><h4>Freelancer / solopreneur</h4><p>Pentru cei care lucrează pe cont propriu — clienți, facturi, propuneri, content.</p></div>
@@ -2262,7 +2294,7 @@ const curriculum = [
             <div class="tool-card"><div class="tool-icon">📚</div><h4>Knowledge worker</h4><p>Pentru cei care lucrează mult cu informație — research, documente, organizare.</p></div>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 1 — Productivitate personală</span>
+            <span class="exercise-label">✦ PROFIL 1 — Productivitate personală</span>
             <p>3 workflow-uri pentru organizarea vieții tale zilnice:</p>
             <p class="tab-label">Workflow 1 — Inbox curat în fiecare seară</p>
             <ol>
@@ -2285,7 +2317,7 @@ const curriculum = [
             <p><strong>Sarcina-test:</strong> alege 1 din cele 3 și construiește-l în Zapier săptămâna asta.</p>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 2 — Freelancer / solopreneur</span>
+            <span class="exercise-label">✦ PROFIL 2 — Freelancer / solopreneur</span>
             <p>3 workflow-uri pentru a economisi timp pe partea administrativă:</p>
             <p class="tab-label">Workflow 1 — Cerere de client → propunere ciornă</p>
             <ol>
@@ -2311,7 +2343,7 @@ const curriculum = [
             <p><strong>Sarcina-test:</strong> alege workflow-ul cu cel mai mare impact pe weekul tău. Construiește-l acum.</p>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 3 — Mic business / antreprenor</span>
+            <span class="exercise-label">✦ PROFIL 3 — Mic business / antreprenor</span>
             <p>3 workflow-uri pentru operațiuni zilnice:</p>
             <p class="tab-label">Workflow 1 — Mesaj nou pe Instagram/WhatsApp → categorisire</p>
             <ol>
@@ -2335,7 +2367,7 @@ const curriculum = [
             <p><strong>Sarcina-test:</strong> identifică ce sarcină faci cel mai des în business-ul tău. Construiește un workflow pentru ea.</p>
           </div>
           <div class="exercise-block">
-            <span class="exercise-label">✦ PATH 4 — Knowledge worker</span>
+            <span class="exercise-label">✦ PROFIL 4 — Knowledge worker</span>
             <p>3 workflow-uri pentru a procesa informație mai rapid:</p>
             <p class="tab-label">Workflow 1 — Newsletter-uri → rezumat săptămânal</p>
             <ol>
@@ -2358,7 +2390,7 @@ const curriculum = [
             <p><strong>Sarcina-test:</strong> automatizează partea ta cea mai consumatoare de timp — probabil sumarizarea sau organizarea documentelor.</p>
           </div>
           <h2>După workshop — ce ai construit</h2>
-          <p>Indiferent ce path ai ales, ai acum:</p>
+          <p>Indiferent ce profil ai ales, ai acum:</p>
           <ul>
             <li>✅ Cel puțin 1 workflow activ care economisește timp săptămânal</li>
             <li>✅ Înțelegere clară a conceptelor: trigger, action, AI step, multi-step</li>
@@ -2366,7 +2398,8 @@ const curriculum = [
           </ul>
           <div class="highlight-box">🎯 <strong>Artifact final Modulul 5:</strong> documentează workflow-ul într-o pagină: trigger, pași, tool-uri, cost estimat, riscuri, checkpoint uman, cum verifici primele 10 execuții și ce faci dacă eșuează. Asta îl face transferabil și ușor de îmbunătățit.</div>
           <div class="success-box">✓ <strong>Felicitări — ai terminat Modulul 5.</strong> Ești acum capabil să construiești sisteme reale, nu doar să folosești AI. Următorul pas în Modulul 6: riscurile la care să fii atent și unde merge AI în următorii ani.</div>
-        `
+        `,
+        quiz: { q: "Care workflow este cel mai bun candidat pentru prima ta automatizare?", opts: ["Un email rar și foarte sensibil către un client important","O sarcină repetitivă de 10+ ori pe lună, cu pași clari și risc mic","O decizie strategică unde contextul se schimbă de fiecare dată","Orice proces care implică plăți automate către furnizori"], correct: 1, fb: ["Fals — pentru comunicări sensibile începi cu ciornă + revizie umană.","Corect! Repetitiv, clar, risc mic: acesta e profilul ideal pentru primul workflow.","Fals — deciziile strategice sunt bune pentru AI ca sparring partner, nu pentru automatizare completă.","Fals — plățile cer aprobare umană și controale stricte."] }
       }
     ]
   },
@@ -2407,7 +2440,8 @@ const curriculum = [
           </div>
           <div class="warning-box">⚠️ <strong>Context UE/România:</strong> pentru date personale, gândește în logica GDPR: minimizare, scop clar, acces controlat. Pentru sisteme AI folosite în decizii cu impact asupra oamenilor, urmărește și evoluția EU AI Act. Nu trebuie să devii jurist — trebuie să știi când să întrebi responsabilul legal/IT înainte să automatizezi.</div>
           <div class="success-box">✓ Cele 5 riscuri pot fi gestionate cu reguli simple. Niciunul nu e motiv să eviți AI-ul — toate sunt motive să-l folosești <em>conștient</em>.</div>
-        `
+        `,
+        quiz: { q: "Ai un contract real de client și vrei să folosești AI ca să-l rezume. Care e varianta responsabilă?", opts: ["Îl uploadezi într-un cont personal gratuit și ceri un rezumat complet","Îl anonimizezi sau folosești un plan aprobat de companie, apoi verifici manual punctele importante","Ceri AI-ului să spună dacă acel contract este legal și trimiți concluzia clientului","Îi ceri AI-ului să rescrie automat contractul și îl trimiți fără revizie"], correct: 1, fb: ["Fals — contractele pot conține date confidențiale și obligații sensibile.","Corect! Datele sensibile cer anonimizare sau plan aprobat, iar concluziile importante se verifică.","Fals — AI-ul nu înlocuiește consultanța juridică.","Fals — documentele cu miză mare trebuie revizuite de om."] }
       },
       {
         id: "6-2", title: "Skill-urile care cresc, skill-urile care dispar", duration: "8 min",
@@ -2488,7 +2522,7 @@ const curriculum = [
           <ul>
             <li><strong>Contabil / financiar:</strong> AI rezumă extrase, explică variații, pregătește drafturi de email către clienți — omul verifică cifrele și conformitatea.</li>
             <li><strong>Agent imobiliar:</strong> descrieri de proprietăți, răspunsuri la întrebări frecvente, comparații de zonă — omul negociază și gestionează relația.</li>
-            <li><strong>HR într-o firmă medie:</strong> job specs, întrebări de interviu, sintetizare feedback — omul decide și protejează echitatea procesului.</li>
+            <li><strong>HR într-o firmă medie:</strong> fișe de post, întrebări de interviu, sintetizare feedback — omul decide și protejează echitatea procesului.</li>
             <li><strong>Owner de magazin online:</strong> descrieri de produse, răspunsuri suport, analiză review-uri — omul stabilește oferta și politica comercială.</li>
             <li><strong>Angajat în sector public / ONG:</strong> rezumate de documente, drafturi de rapoarte, clarificarea procedurilor — omul verifică sursele oficiale și responsabilitatea instituțională.</li>
           </ul>
@@ -2593,7 +2627,7 @@ const curriculum = [
             <li>Ce te oprește să implementezi tot ce ai învățat? (Și ce poți face pentru asta?)</li>
           </ul>
           <p>Salvează răspunsurile. Recitește-le peste 90 de zile. Vei fi uimit cât te-ai schimbat.</p>
-          <h2>Capstone — AI Operating System-ul tău</h2>
+          <h2>Capstone — Sistemul tău AI personal</h2>
           <p>Înainte să închizi cursul, asigură-te că ai aceste 6 piese salvate într-un singur folder/document:</p>
           <ul>
             <li><strong>Fișier de context personal</strong> — cine ești, rol, proiecte, ton, obiective</li>
@@ -2603,6 +2637,17 @@ const curriculum = [
             <li><strong>Checklist de siguranță</strong> — privacy, fapte, impact asupra oamenilor, aprobare umană</li>
             <li><strong>Plan pe 90 de zile</strong> — cele 3 obiceiuri, metrica de timp și următorul pas</li>
           </ul>
+          <h2>Rubrica de absolvire</h2>
+          <p>Acordă-ți câte 1 punct pentru fiecare piesă completă. Nu ai nevoie de perfecțiune; ai nevoie de un sistem funcțional.</p>
+          <div class="formula-box">
+            <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">Context file</div><div class="fi-desc">Ai un document cu rol, proiecte, stil, obiective și constrângeri.</div></div>
+            <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">3 prompturi</div><div class="fi-desc">Ai 3 șabloane testate pe sarcini reale, nu doar copiate.</div></div>
+            <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">Project / GPT</div><div class="fi-desc">Ai un spațiu AI dedicat unei sarcini frecvente.</div></div>
+            <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">Workflow proiectat</div><div class="fi-desc">Ai desenat trigger, pași, output și checkpoint uman.</div></div>
+            <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">Workflow live</div><div class="fi-desc">Ai cel puțin o automatizare mică care rulează real.</div></div>
+            <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">Safety checklist</div><div class="fi-desc">Știi când verifici fapte, când anonimizezi și când ceri aprobare umană.</div></div>
+          </div>
+          <div class="highlight-box">🎯 <strong>Scor recomandat:</strong> 4/6 = funcțional, 5/6 = foarte bine, 6/6 = Sistemul tău AI personal complet. Dacă ai sub 4, nu relua tot cursul — completează piesa lipsă care are cel mai mare impact săptămâna asta.</div>
           <div class="success-box">✓ <strong>Felicitări — ai terminat cursul Patronache.ai.</strong><br><br>Ești acum printre primii din România care înțeleg AI-ul profund și îl folosesc practic. Ai un avantaj real, acum. Folosește-l.<br><br>Pentru întrebări, comunitate sau actualizări — te aștept în pasul următor. Drum bun pe partea cealaltă.</div>
         `
       }
@@ -2610,10 +2655,41 @@ const curriculum = [
   }
 ];
 
+const moduleOutcomes = {
+  1: "Înțelegi ce este AI-ul, unde ajută, unde greșește și îți construiești primul AI roadmap personal.",
+  2: "Poți transforma o cerere vagă într-un prompt clar și salvezi primele șabloane pe care le vei refolosi.",
+  3: "Îți construiești contextul personal: custom instructions, fișier de context și un Project/GPT pentru rolul tău.",
+  4: "Aplici AI la munca reală: emailuri, ședințe, research, date, prezentări și workflow-uri pe rol.",
+  5: "Treci de la prompturi manuale la sisteme: cel puțin un workflow automat, cu verificări și limite clare.",
+  6: "Înveți să folosești AI cu judecată: privacy, bias, verificare, carieră și reguli pentru decizii sensibile.",
+  7: "Îți finalizezi Sistemul tău AI personal: context, prompturi, workflow, checklist și plan pe 90 de zile."
+};
+
+const moduleArtifacts = {
+  1: "AI Roadmap personal",
+  2: "Bibliotecă de prompturi + un prompt scris de tine",
+  3: "Fișier de context + Project/GPT pentru rolul tău",
+  4: "Workflow pe rol + exemplu înainte/după",
+  5: "Workflow automat documentat și testat",
+  6: "Checklist de siguranță și criterii de verificare",
+  7: "Sistemul tău AI personal complet + plan pe 90 de zile"
+};
+
+const moduleTrainerNotes = {
+  1: "Nu încerca să memorezi definiții. Scopul e să înțelegi suficient cât să folosești AI cu luciditate.",
+  2: "Aici se formează reflexul de instructor: cu cât dai instrucțiuni mai clare, cu atât primești muncă mai bună.",
+  3: "Contextul este multiplicatorul. Un AI fără context e generic; un AI calibrat pe tine devine util zilnic.",
+  4: "Nu căuta să folosești AI peste tot. Alege 2-3 sarcini reale și măsoară diferența.",
+  5: "Automatizarea bună începe mic. Ciornă înainte de trimitere, log înainte de încredere, om înainte de decizie.",
+  6: "Expertiza reală în AI înseamnă să știi și când să nu îl folosești.",
+  7: "Cursul se termină, sistemul începe. Următoarele 90 de zile decid dacă devine obicei."
+};
+
 // ─────────────────────────────────────────
 // STATE
 // ─────────────────────────────────────────
 const STORAGE_KEY = 'patronache_progress';
+const PREVIEW_UNLOCK_ALL_LESSONS = true;
 const fallbackStorage = {};
 function storageGet(key) {
   try { return window.localStorage.getItem(key); }
@@ -2648,6 +2724,7 @@ function totalLessons() { return getAllLessons().length; }
 
 // Module unlock: module N unlocks when module N-1 is fully complete (module 1 always open)
 function isModuleUnlocked(moduleIndex) {
+  if (PREVIEW_UNLOCK_ALL_LESSONS) return true;
   if (moduleIndex === 0) return true;
   const prev = curriculum[moduleIndex - 1];
   return prev.lessons.every(l => isCompleted(l.id));
@@ -2712,6 +2789,8 @@ function buildDashboard() {
       <div class="dmn ${allDone ? 'done' : ''}">${allDone ? '✓' : mod.id}</div>
       <h3>${mod.title}</h3>
       <p>${mod.sub}${!unlocked ? ' · 🔒 Completeaza modulul anterior' : ''}</p>
+      <p>${moduleOutcomes[mod.id] || ''}</p>
+      <p><strong>Ce rămâne cu tine:</strong> ${moduleArtifacts[mod.id] || 'un rezultat concret'}</p>
       <div class="dash-module-progress"><div class="dash-module-progress-fill" style="width:${pct}%"></div></div>
       <div class="dash-module-meta"><span>${done}/${total} lecții</span><span>${pct}%</span></div>`;
     if (unlocked) card.onclick = () => openLesson(mod.lessons[done < total ? done : 0].id);
@@ -2782,6 +2861,7 @@ function openLesson(lessonId) {
         <div class="lesson-meta-item">⏱ ${lesson.duration}</div>
         <div class="lesson-meta-item">${done ? '✓ Completată' : '○ Necompletată'}</div>
       </div>
+      ${lessonIndex === 0 ? `<div class="module-outcome"><strong>La finalul modulului:</strong> ${moduleOutcomes[mod.id] || 'vei avea un rezultat concret pe care îl poți folosi în munca ta.'}<br><strong>Rezultat de păstrat:</strong> ${moduleArtifacts[mod.id] || 'un rezultat concret salvat.'}<br><em>${moduleTrainerNotes[mod.id] || 'Aplică pe o sarcină reală, nu doar citi lecția.'}</em></div>` : ''}
     </div>
     <div class="lesson-body">${lesson.body}</div>
     ${interactiveHTML}
