@@ -26,10 +26,15 @@
   <script>
     (function() {
       let exitIntentShown = false;
-      document.addEventListener('mouseleave', function(e) {
-        if (e.clientY <= 0 && !exitIntentShown) {
+
+      document.addEventListener('mouseout', function(e) {
+        if (e.clientY < 0 && !exitIntentShown) {
           exitIntentShown = true;
-          ml('show', 'HniaVf', true);
+          setTimeout(function() {
+            if (typeof ml !== 'undefined') {
+              ml('show', 'HniaVf', true);
+            }
+          }, 100);
         }
       });
     })();
