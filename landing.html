@@ -22,6 +22,19 @@
       ml('account', '1152344');
   </script>
   <!-- End MailerLite Universal -->
+  <!-- Exit Intent Pop-up Trigger -->
+  <script>
+    (function() {
+      let exitIntentShown = false;
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= 0 && !exitIntentShown) {
+          exitIntentShown = true;
+          ml('show', 'HniaVf', true);
+        }
+      });
+    })();
+  </script>
+  <!-- End Exit Intent Pop-up -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
