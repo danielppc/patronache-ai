@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patronache.ai — Cursul tău</title>
+  <title>Învață AI — Cursul tău</title>
+  <meta name="robots" content="noindex,nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -306,7 +307,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-  <a href="index.html" class="topbar-logo">patronache<span>.ai</span></a>
+  <a href="index.html" class="topbar-logo">Învață<span> AI</span></a>
   <div class="topbar-progress-wrap">
     <div class="topbar-progress-label">
       <span id="progress-label">Progres curs</span>
@@ -352,7 +353,7 @@
       <p>Ai parcurs toate cele 40 de lecții și ești acum pregătit să folosești AI în munca ta de zi cu zi.</p>
       <div class="cert-box">
         <h3>Certificat de absolvire</h3>
-        <div class="cert-name">Patronache.ai — Curs AI Fundamental</div>
+        <div class="cert-name">Învață AI — Curs AI Fundamental</div>
         <div class="cert-course">40 lecții · 7 module · ~7 ore de conținut</div>
         <div class="cert-date">Completat în <span id="cert-date"></span></div>
       </div>
@@ -2650,7 +2651,7 @@ const curriculum = [
             <div class="formula-item"><div class="fi-num">1 punct</div><div class="fi-title">Safety checklist</div><div class="fi-desc">Știi când verifici fapte, când anonimizezi și când ceri aprobare umană.</div></div>
           </div>
           <div class="highlight-box">🎯 <strong>Scor recomandat:</strong> 4/6 = funcțional, 5/6 = foarte bine, 6/6 = Sistemul tău AI personal complet. Dacă ai sub 4, nu relua tot cursul — completează piesa lipsă care are cel mai mare impact săptămâna asta.</div>
-          <div class="success-box">✓ <strong>Felicitări — ai terminat cursul Patronache.ai.</strong><br><br>Ești acum printre primii din România care înțeleg AI-ul profund și îl folosesc practic. Ai un avantaj real, acum. Folosește-l.<br><br>Pentru întrebări, comunitate sau actualizări — te aștept în pasul următor. Drum bun pe partea cealaltă.</div>
+          <div class="success-box">✓ <strong>Felicitări — ai terminat cursul Învață AI.</strong><br><br>Ești acum printre primii din România care înțeleg AI-ul profund și îl folosesc practic. Ai un avantaj real, acum. Folosește-l.<br><br>Pentru întrebări, comunitate sau actualizări — te aștept în pasul următor. Drum bun pe partea cealaltă.</div>
         `
       }
     ]
@@ -2690,7 +2691,7 @@ const moduleTrainerNotes = {
 // ─────────────────────────────────────────
 // STATE
 // ─────────────────────────────────────────
-const STORAGE_KEY = 'patronache_progress';
+const STORAGE_KEY = 'invata_ai_progress';
 const PREVIEW_UNLOCK_ALL_LESSONS = true;
 const fallbackStorage = {};
 function storageGet(key) {
@@ -2807,7 +2808,7 @@ function openLesson(lessonId) {
   const lesson = getAllLessons().find(l => l.id === lessonId);
   if (!lesson) return;
   currentLessonId = lessonId;
-  storageSet('patronache_last_lesson', lessonId);
+  storageSet('invata_ai_last_lesson', lessonId);
 
   // find module
   let modTitle = '', modIndex = 0, lessonIndex = 0;
@@ -3036,7 +3037,7 @@ function typeText(el, text, cb) {
 // ─────────────────────────────────────────
 function showDashboard() {
   currentLessonId = null;
-  storageRemove('patronache_last_lesson');
+  storageRemove('invata_ai_last_lesson');
   document.getElementById('lesson-view').classList.remove('active');
   document.getElementById('cert-screen').classList.remove('active');
   document.getElementById('dashboard').style.display = 'block';
@@ -3076,7 +3077,7 @@ buildSidebar();
 buildDashboard();
 updateUI();
 // Restore last opened lesson (if any)
-const lastLesson = storageGet('patronache_last_lesson');
+const lastLesson = storageGet('invata_ai_last_lesson');
 if (lastLesson && getAllLessons().some(l => l.id === lastLesson)) {
   openLesson(lastLesson);
 }
