@@ -13,6 +13,15 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1152344');
+  </script>
+  <!-- End MailerLite Universal -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -741,14 +750,9 @@
         </ul>
       </div>
       <div class="leadmagnet-right">
-        <!-- TODO: Replace action with MailerLite form URL when account is set up -->
-        <form class="leadmagnet-form" action="https://assets.mailerlite.com/jsonp/PLACEHOLDER/forms/PLACEHOLDER/subscribe" method="POST" onsubmit="return handleNewsletterSubmit(event)">
-          <label for="newsletter-email" class="leadmagnet-label">Adresa ta de email</label>
-          <input type="email" id="newsletter-email" name="fields[email]" placeholder="nume@email.com" required>
-          <button type="submit" class="btn-newsletter">📩 Trimite-mi ghidul gratuit</button>
-          <div class="leadmagnet-trust">🔒 Datele tale sunt în siguranță · GDPR compliant</div>
-          <div class="leadmagnet-success" id="newsletter-success">✓ Mulțumesc! Verifică-ți inbox-ul în următoarele minute.</div>
-        </form>
+        <!-- MailerLite Form Embed -->
+        <div class="ml-embedded" data-form="EYQS9u"></div>
+        <!-- End MailerLite Form Embed -->
       </div>
     </div>
   </div>
