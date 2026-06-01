@@ -544,7 +544,7 @@
       <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să scrii emailuri și rapoarte în minute, nu ore</h4><p>Ciorne profesionale care sună a tine, nu a robot. Editezi în loc să începi de la zero.</p></div></div>
       <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să folosești AI pentru research și analiză</h4><p>Workflow-uri care îți dau în 30 min ce îți lua 3 ore pe Google.</p></div></div>
       <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să construiești workflow-uri repetitive cu AI</h4><p>Sisteme care merg singure. Setezi o dată, economisești săptămânal.</p></div></div>
-      <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să automatizezi sarcini fără să scrii o linie de cod</h4><p>Zapier + AI = sarcini repetitive care se rezolvă fără tine. Setezi o dată, rulează ani.</p></div></div>
+      <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să automatizezi sarcini fără să scrii o linie de cod</h4><p>Zapier + AI = sarcini repetitive care se rezolvă fără tine. Setezi o dată, merge ani la rând.</p></div></div>
       <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să transformi AI-ul într-un asistent personal</h4><p>Context care te cunoaște, Projects dedicate pe rolul tău, rezultat personalizat.</p></div></div>
       <div class="outcome-item"><div class="outcome-check">✓</div><div><h4>Să economisești 5–10 ore pe săptămână</h4><p>Pe sarcini administrative repetitive. Investești timpul în muncă de valoare mai mare.</p></div></div>
     </div>
@@ -573,7 +573,7 @@
       <div class="forwho-card">
         <div class="forwho-icon">🚀</div>
         <h3>Freelancerul care vrea să producă mai mult</h3>
-        <p>Conținut, propuneri, cercetare, prezentări — cu AI poți livra mai rapid și să iei mai multe proiecte fără să lucrezi mai mult.</p>
+        <p>Conținut, propuneri, cercetare, prezentări — cu AI poți să livrezi mai rapid și să iei mai multe proiecte fără să lucrezi mai mult.</p>
       </div>
     </div>
   </div>
@@ -802,7 +802,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Folosesc deja ChatGPT — mai are sens acest curs?</div>
-        <div class="faq-a">Da, și probabil mai mult decât crezi. Majoritatea utilizatorilor ChatGPT folosesc 10% din potențialul lui — îl tratează ca pe un chat. Cursul te învață ce nu vezi singur: cum să-l setezi să te cunoască permanent, cum să construiești workflow-uri automate, cum să eviți halucinațiile, cum să-l integrezi în munca de zi cu zi. Modulele 3-5 sunt special pentru utilizatori care folosesc deja AI-ul.</div>
+        <div class="faq-a">Da, și probabil mai mult decât crezi. Majoritatea utilizatorilor ChatGPT folosesc 10% din potențialul lui — îl tratează ca pe un chat. Cursul te învață ce nu vezi singur: cum să-l setezi să te cunoască permanent, cum să construiești workflow-uri automate, cum să eviți halucinațiile, cum să-l integrezi în munca de zi cu zi. Modulele 3–5 sunt gândite special pentru cei care folosesc deja AI-ul.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Cum rămâne cursul actualizat? AI-ul se schimbă rapid.</div>
@@ -826,23 +826,6 @@
   <p><a href="mailto:hello@invata-ai.com">hello@invata-ai.com</a></p>
   <p style="margin-top:1.25rem;font-size:0.72rem;">© 2026 Învață AI · Toate drepturile rezervate</p>
 </footer>
-
-<!-- EXIT INTENT POPUP -->
-<div class="exit-popup-overlay" id="exitPopup" onclick="if(event.target===this)closeExitPopup()">
-  <div class="exit-popup">
-    <button class="exit-popup-close" onclick="closeExitPopup()" aria-label="Închide">✕</button>
-    <div class="exit-popup-emoji">👋</div>
-    <h3 class="exit-popup-title">Stai puțin — îți dau ceva înainte să pleci</h3>
-    <p class="exit-popup-sub">7 prompts esențiale pentru profesioniștii români, ghid PDF gata de folosit. Plus un email pe săptămână cu tipsuri AI practice.</p>
-    <form class="exit-popup-form" action="https://assets.mailerlite.com/jsonp/PLACEHOLDER/forms/PLACEHOLDER/subscribe" method="POST" onsubmit="return handleExitSubmit(event)">
-      <input type="email" name="fields[email]" placeholder="Adresa ta de email" required>
-      <button type="submit" class="btn-exit-submit">📩 Trimite-mi ghidul gratuit</button>
-    </form>
-    <div class="exit-popup-success" id="exitPopupSuccess">✓ Mulțumesc! Verifică-ți inbox-ul în câteva minute.</div>
-    <a class="exit-popup-dismiss" onclick="closeExitPopup()">Nu, mulțumesc — continui să navighez</a>
-    <div class="exit-popup-trust">🔒 GDPR · Dezabonezi oricând · Fără spam</div>
-  </div>
-</div>
 
 <!-- MODAL 1 -->
 <div class="modal-overlay" id="modal1">
@@ -936,7 +919,7 @@ const modules = [
     {t:"Cum rămâi relevant în era AI", d:"7 min"},
     {t:"AI-first careers — pentru cei care vor mai mult", d:"8 min"},
   ]},
-  { num:7, title:"Plan personal AI", tagline:"Construiești-ți planul tău AI pe 90 de zile", sub:"1 lecție · ~15 min", lessons:[
+  { num:7, title:"Plan personal AI", tagline:"Îți construiești planul AI pe 90 de zile", sub:"1 lecție · ~15 min", lessons:[
     {t:"Construiește-ți planul AI pe 90 de zile", d:"15 min"},
   ]},
 ];
@@ -964,61 +947,6 @@ function toggleModule(header) {
 
 // ── FAQ ──
 function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
-
-// ── EXIT INTENT POPUP ──
-const EXIT_POPUP_KEY = 'exit_popup_dismissed';
-const EXIT_POPUP_TTL_DAYS = 7;
-let exitPopupShown = false;
-
-function shouldShowExitPopup() {
-  if (exitPopupShown) return false;
-  const dismissed = localStorage.getItem(EXIT_POPUP_KEY);
-  if (!dismissed) return true;
-  const elapsedDays = (Date.now() - parseInt(dismissed)) / (1000 * 60 * 60 * 24);
-  return elapsedDays > EXIT_POPUP_TTL_DAYS;
-}
-
-function showExitPopup() {
-  if (!shouldShowExitPopup()) return;
-  exitPopupShown = true;
-  document.getElementById('exitPopup').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeExitPopup() {
-  document.getElementById('exitPopup').classList.remove('show');
-  document.body.style.overflow = '';
-  localStorage.setItem(EXIT_POPUP_KEY, Date.now().toString());
-}
-
-function handleExitSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  form.querySelector('input').disabled = true;
-  form.querySelector('button').disabled = true;
-  form.querySelector('button').textContent = '⏳ Se trimite...';
-  setTimeout(() => {
-    document.getElementById('exitPopupSuccess').classList.add('show');
-    form.style.display = 'none';
-    localStorage.setItem(EXIT_POPUP_KEY, Date.now().toString());
-  }, 800);
-  return false;
-}
-
-// Trigger: mouse leaves through top of viewport (desktop only)
-function isMobile() { return window.innerWidth < 768 || 'ontouchstart' in window; }
-
-if (!isMobile()) {
-  document.addEventListener('mouseout', (e) => {
-    if (e.clientY <= 0 && !e.relatedTarget) {
-      showExitPopup();
-    }
-  });
-  // Also trigger after 60s on page as fallback for desktop users who don't move mouse out
-  setTimeout(() => {
-    if (shouldShowExitPopup()) showExitPopup();
-  }, 60000);
-}
 
 // ── NEWSLETTER ──
 function handleNewsletterSubmit(e) {
@@ -1141,7 +1069,7 @@ const slides2 = [
   () => `<div class="completion">
     <span>🚀</span>
     <h3>Știi acum să vorbești cu AI-ul!</h3>
-    <p>Formula Obiectiv + Context + Limite + Format îți va economisi timp de fiecare dată. Cursul complet include 7 lecții despre cum vorbești eficient cu AI-ul cu exerciții pe cazuri din jobul tău.</p>
+    <p>Formula Obiectiv + Context + Limite + Format îți va economisi timp de fiecare dată. Cursul complet include 7 lecții despre cum vorbești eficient cu AI-ul, cu exerciții pe cazuri din jobul tău.</p>
     <div class="completion-badge">✦ Lecția 2.2 completată</div><br><br>
     <a href="#pret" class="btn-cta-modal" onclick="closeModal(2)">Cumpără cursul complet →</a>
   </div>`
