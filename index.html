@@ -252,6 +252,15 @@
       }
     }
   </style>
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1152344');
+  </script>
+  <!-- End MailerLite Universal -->
 </head>
 <body>
   <nav>
@@ -278,13 +287,9 @@
         <p>Alătură-te celor 500+ oameni cu acces timpuriu. Ai o surpriză-n coloană de jos 👇</p>
 
         <!-- MailerLite Form Embed -->
-        <div id="mlb2-popupembed" style="display: block;">
-          <div class="email-input-group">
-            <input type="email" id="email-input" placeholder="Adresa ta de email..." required>
-            <button onclick="submitEmail()">Vreau acces</button>
-          </div>
-          <p class="form-note">Fără SPAM. Te vei retrage oricând.</p>
-        </div>
+        <div class="ml-embedded" data-form="EYQS9u"></div>
+        <!-- End MailerLite Form Embed -->
+        <p class="form-note">Fără SPAM. Te vei retrage oricând.</p>
       </div>
 
       <div class="coming-soon-benefits">
@@ -317,42 +322,5 @@
       <a href="#">Politică de confidențialitate</a>
     </p>
   </footer>
-
-  <script>
-    // MailerLite Form Integration
-    // Replace MAILERLITE_FORM_ID with your actual MailerLite form ID
-    function submitEmail() {
-      const emailInput = document.getElementById('email-input');
-      const email = emailInput.value.trim();
-
-      if (!email) {
-        alert('Te rog introdu adresa de email');
-        return;
-      }
-
-      // Validate email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Te rog introdu o adresă de email validă');
-        return;
-      }
-
-      // Send to MailerLite
-      // PLACEHOLDER: Replace with your actual MailerLite form submission endpoint
-      const mailerliteFormId = 'MAILERLITE_FORM_ID'; // You'll need to add this
-
-      // For now, show success message
-      alert('✅ Te-am adăugat în listă! Stai pe-acolo pentru surpriza din coloană de jos 👇');
-      emailInput.value = '';
-
-      // TODO: Integrate with actual MailerLite API
-      // fetch('https://mailerlite.com/api/v2/subscribers', { ... })
-    }
-
-    // Allow Enter key to submit
-    document.getElementById('email-input').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') submitEmail();
-    });
-  </script>
 </body>
 </html>
