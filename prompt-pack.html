@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 de prompturi esențiale pentru profesioniști — Învață AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1e40af; --primary-dark: #1e3a8a; --primary-light: #dbeafe;
+    --dark: #0f172a; --text: #1e293b; --muted: #64748b;
+    --light: #f8fafc; --border: #e2e8f0; --accent: #7c3aed;
+  }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: #eef2f7; line-height: 1.6; }
+  .page {
+    max-width: 820px; margin: 0 auto; background: white;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh; padding: 5rem 4rem; display: flex; flex-direction: column;
+    justify-content: center; background: linear-gradient(160deg, #0f172a 0%, #1e3a8a 100%); color: white;
+  }
+  .cover-logo { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 3rem; }
+  .cover-logo span { background: linear-gradient(120deg, #60a5fa, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #93c5fd; margin-bottom: 1.25rem; }
+  .cover h1 { font-size: 3.2rem; font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.5rem; }
+  .cover h1 em { font-style: normal; color: #a78bfa; }
+  .cover-sub { font-size: 1.15rem; color: #cbd5e1; max-width: 540px; line-height: 1.7; margin-bottom: 2.5rem; }
+  .cover-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 2rem; }
+  .cover-meta div { }
+  .cover-meta strong { display: block; font-size: 1.6rem; font-weight: 900; color: white; }
+  .cover-meta span { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* CONTENT */
+  .content { padding: 3.5rem 4rem; }
+  .intro h2 { font-size: 1.8rem; font-weight: 900; color: var(--dark); letter-spacing: -0.5px; margin-bottom: 1rem; }
+  .intro p { font-size: 1rem; color: var(--text); margin-bottom: 1rem; }
+  .intro .lead { font-size: 1.05rem; color: var(--muted); }
+  .formula { background: var(--light); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; margin: 2rem 0; }
+  .formula-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 1rem; }
+  .formula-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .formula-item { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; }
+  .formula-item b { display: block; color: var(--dark); font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .formula-item span { font-size: 0.85rem; color: var(--muted); }
+  .tip-box { background: #eff6ff; border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 0.92rem; color: var(--primary-dark); }
+
+  /* BEFORE / AFTER EXAMPLE */
+  .section-label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin: 2.25rem 0 1rem; }
+  .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; break-inside: avoid; page-break-inside: avoid; }
+  .example-col { border-radius: 12px; padding: 1.15rem 1.3rem; border: 1px solid var(--border); }
+  .example-col.bad { background: #fef2f2; border-color: #fecaca; }
+  .example-col.good { background: #f0fdf4; border-color: #bbf7d0; }
+  .example-tag { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+  .example-col.bad .example-tag { color: #dc2626; }
+  .example-col.good .example-tag { color: #16a34a; }
+  .example-prompt { font-size: 0.86rem; color: var(--text); line-height: 1.6; white-space: pre-wrap; }
+  .example-prompt .ph { color: var(--accent); font-weight: 600; }
+  .example-out { font-size: 0.82rem; color: var(--muted); margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px dashed currentColor; opacity: 0.95; }
+  .example-out b { color: inherit; }
+
+  /* ITERATE CHIPS */
+  .iterate { background: var(--light); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 1.6rem; margin: 1.75rem 0; break-inside: avoid; }
+  .iterate h4 { font-size: 1.02rem; font-weight: 800; color: var(--dark); margin-bottom: 0.4rem; }
+  .iterate p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
+  .chip { background: var(--primary-light); color: var(--primary-dark); border-radius: 50px; padding: 0.4rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+
+  /* SAFETY / WARN BOX */
+  .warn-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 12px 12px 0; padding: 1.2rem 1.45rem; margin: 1.75rem 0; break-inside: avoid; }
+  .warn-box h4 { font-size: 1rem; font-weight: 800; color: #92400e; margin-bottom: 0.6rem; }
+  .warn-box ul { margin: 0; padding-left: 1.15rem; }
+  .warn-box li { font-size: 0.88rem; color: #78350f; margin-bottom: 0.35rem; line-height: 1.55; }
+
+  /* TOC */
+  .toc { margin: 2.5rem 0; }
+  .toc-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 1rem; }
+  .toc ol { list-style: none; counter-reset: toc; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+  .toc li { counter-increment: toc; font-size: 0.92rem; color: var(--text); padding: 0.4rem 0; border-bottom: 1px dashed var(--border); display: flex; gap: 0.6rem; }
+  .toc li::before { content: counter(toc); font-weight: 800; color: var(--primary); min-width: 1.2rem; }
+
+  /* CATEGORY */
+  .category { margin-top: 3rem; }
+  .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--primary); }
+  .category-num { width: 44px; height: 44px; border-radius: 11px; background: var(--primary); color: white; font-weight: 900; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .category-header h3 { font-size: 1.4rem; font-weight: 900; color: var(--dark); letter-spacing: -0.5px; }
+  .category-header p { font-size: 0.85rem; color: var(--muted); margin-top: 0.1rem; }
+
+  /* PROMPT CARD */
+  .prompt { border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.5rem; margin-bottom: 1.1rem; break-inside: avoid; page-break-inside: avoid; }
+  .prompt-title { font-size: 1.02rem; font-weight: 800; color: var(--dark); margin-bottom: 0.3rem; }
+  .prompt-when { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.9rem; font-style: italic; }
+  .prompt-text { background: var(--light); border: 1px solid var(--border); border-radius: 9px; padding: 1rem 1.15rem; font-size: 0.9rem; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
+  .prompt-text .ph { color: var(--accent); font-weight: 600; }
+
+  /* CLOSING CTA */
+  .closing { margin-top: 3.5rem; background: linear-gradient(160deg, #0f172a 0%, #1e3a8a 100%); color: white; border-radius: 18px; padding: 3rem; text-align: center; }
+  .closing h2 { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 0.9rem; }
+  .closing h2 span { color: #a78bfa; }
+  .closing p { font-size: 1rem; color: #cbd5e1; max-width: 520px; margin: 0 auto 1.75rem; line-height: 1.7; }
+  .closing-list { list-style: none; max-width: 460px; margin: 0 auto 1.5rem; text-align: left; }
+  .closing-list li { font-size: 0.95rem; color: #e2e8f0; padding: 0.4rem 0 0.4rem 1.8rem; position: relative; }
+  .closing-list li::before { content: "✓"; position: absolute; left: 0; color: #a78bfa; font-weight: 900; }
+  .closing .price { font-size: 0.9rem; color: #93c5fd; margin-bottom: 1.5rem; }
+  .closing .price b { color: white; font-size: 1.1rem; }
+  .closing a { display: inline-block; background: white; color: var(--primary-dark); font-weight: 800; padding: 1rem 2.25rem; border-radius: 10px; text-decoration: none; font-size: 1rem; }
+  .closing .small { font-size: 0.78rem; color: #64748b; margin-top: 1.5rem; }
+
+  footer { padding: 2rem 4rem 3rem; text-align: center; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .cover { padding: 3rem 1.75rem; } .cover h1 { font-size: 2.2rem; }
+    .content { padding: 2.5rem 1.75rem; }
+    .formula-grid, .toc ol { grid-template-columns: 1fr; }
+    .closing { padding: 2rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+  }
+
+  /* PRINT — clean A4 PDF export */
+  @page { size: A4; margin: 16mm; }
+  @media print {
+    body { background: white; }
+    .page { max-width: none; }
+    .cover { min-height: auto; padding: 4rem 2rem; page-break-after: always; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cover, .category-num, .closing, .cover-logo span, .closing h2 span,
+    .example-col, .example-col.bad, .example-col.good, .iterate, .chip, .warn-box, .tip-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .content { padding: 0; }
+    .category { page-break-before: auto; }
+    .category-header { page-break-after: avoid; }
+    .prompt { box-shadow: none; }
+    .closing { color: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    footer { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-logo">Învață <span>AI</span></div>
+    <div class="cover-eyebrow">Ghid gratuit · în limba română</div>
+    <h1>50 de prompturi <em>esențiale</em> pentru profesioniști</h1>
+    <p class="cover-sub">Șabloane gata de folosit pentru emailuri, ședințe, research, rapoarte și mai mult. Copiezi, completezi spațiile și economisești ore în fiecare săptămână.</p>
+    <div class="cover-meta">
+      <div><strong>50</strong><span>Prompturi</span></div>
+      <div><strong>10</strong><span>Categorii</span></div>
+      <div><strong>100%</strong><span>În română</span></div>
+    </div>
+  </section>
+
+  <div class="content">
+
+    <!-- INTRO -->
+    <section class="intro">
+      <h2>Cum folosești acest ghid</h2>
+      <p class="lead">Fiecare prompt e un șablon. Tot ce vezi între <span style="color:var(--accent);font-weight:600;">[paranteze drepte]</span> înlocuiești cu detaliile tale. Cu cât ești mai specific, cu atât răspunsul e mai bun.</p>
+      <p>Funcționează în ChatGPT, Claude, Gemini sau orice alt asistent AI. Nu trebuie să le folosești cuvânt cu cuvânt — adaptează-le la situația ta.</p>
+
+      <div class="formula">
+        <div class="formula-title">Formula din spatele tuturor promptelor bune</div>
+        <div class="formula-grid">
+          <div class="formula-item"><b>1. Obiectiv</b><span>Ce vrei să obții, concret.</span></div>
+          <div class="formula-item"><b>2. Context</b><span>Cine ești și care e situația.</span></div>
+          <div class="formula-item"><b>3. Limite</b><span>Lungime, ton, ce să evite.</span></div>
+          <div class="formula-item"><b>4. Format</b><span>Cum vrei rezultatul (listă, tabel, email).</span></div>
+        </div>
+      </div>
+
+      <!-- BEFORE / AFTER -->
+      <div class="section-label">Diferența pe care o face formula</div>
+      <div class="example-grid">
+        <div class="example-col bad">
+          <div class="example-tag">✗ Prompt slab</div>
+          <div class="example-prompt">Scrie-mi un email de refuz.</div>
+          <div class="example-out"><b>Rezultatul:</b> un email generic, robotic, pe care tot tu trebuie să-l rescrii ca să sune a tine.</div>
+        </div>
+        <div class="example-col good">
+          <div class="example-tag">✓ Prompt bun</div>
+          <div class="example-prompt">Ajută-mă să scriu un email de refuz în română.
+<span class="ph">Context:</span> sunt freelancer, clientul cere o reducere de 30%.
+<span class="ph">Obiectiv:</span> refuz, dar păstrez relația.
+<span class="ph">Ton:</span> ferm și empatic. <span class="ph">Format:</span> max 100 de cuvinte, 2 variante.</div>
+          <div class="example-out"><b>Rezultatul:</b> 2 emailuri gata de trimis, pe tonul potrivit, fără editare.</div>
+        </div>
+      </div>
+      <p style="font-size:0.88rem;color:var(--muted);margin-top:0.9rem;">Aceeași cerere. Diferența o fac cele 4 elemente: <strong>obiectiv, context, limite, format</strong>. Toate prompturile din ghid sunt construite pe acest tipar — îl poți copia pentru orice altă situație.</p>
+
+      <!-- ITERATE -->
+      <div class="iterate">
+        <h4>Primul răspuns rar e cel final</h4>
+        <p>Cea mai mare greșeală a începătorilor: primesc un răspuns „aproape bun", se enervează și o iau de la capăt. Nu. Continuă conversația — corectează din câteva cuvinte:</p>
+        <div class="chip-row">
+          <span class="chip">mai scurt</span>
+          <span class="chip">sună prea corporate</span>
+          <span class="chip">mai concret</span>
+          <span class="chip">dă-mi 3 variante</span>
+          <span class="chip">fă-l mai persuasiv</span>
+          <span class="chip">elimină clișeele</span>
+          <span class="chip">varianta pentru un director</span>
+          <span class="chip">explică-mi mai simplu</span>
+        </div>
+        <p style="margin-top:0.9rem;margin-bottom:0;">Conversația e instrumentul, nu un singur mesaj. Aici se câștigă diferența de calitate.</p>
+      </div>
+
+      <!-- SAFETY -->
+      <div class="warn-box">
+        <h4>⚠️ Reguli de siguranță (mai ales la muncă)</h4>
+        <ul>
+          <li><strong>AI-ul poate inventa.</strong> Cifrele, citatele, sursele și datele juridice — verifică-le mereu înainte să te bazezi pe ele.</li>
+          <li><strong>Nu pune date sensibile.</strong> Parole, date personale ale clienților, informații confidențiale sau contracte secrete nu se lipesc în chat.</li>
+          <li><strong>Tu rămâi responsabil.</strong> AI-ul e un asistent, nu decidentul. Citește înainte să trimiți și ajustează ce nu sună a tine.</li>
+        </ul>
+      </div>
+
+      <!-- TOC -->
+      <div class="toc">
+        <div class="toc-title">Categoriile</div>
+        <ol>
+          <li>Email &amp; Comunicare</li>
+          <li>Scriere &amp; Editare</li>
+          <li>Ședințe &amp; Întâlniri</li>
+          <li>Research &amp; Învățare rapidă</li>
+          <li>Analiză &amp; Decizii</li>
+          <li>Documente &amp; Rapoarte</li>
+          <li>Planificare &amp; Productivitate</li>
+          <li>Prezentări &amp; Conținut</li>
+          <li>Marketing &amp; Social media</li>
+          <li>AI ca asistent personal</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 1. EMAIL -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">1</div>
+        <div><h3>Email &amp; Comunicare</h3><p>Scrii mai repede, suni mai bine, eviți tensiunile.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Email dificil (refuz sau veste proastă)</div>
+        <div class="prompt-when">Când trebuie să spui „nu" sau să comunici ceva neplăcut, fără să strici relația.</div>
+        <div class="prompt-text">Ajută-mă să scriu un email profesional în limba română.
+- Cine sunt: <span class="ph">[rolul tău]</span>
+- Către cine scriu: <span class="ph">[destinatar și relația]</span>
+- Situația: <span class="ph">[ce s-a întâmplat]</span>
+- Ce vreau să comunic: <span class="ph">[vestea / refuzul]</span>
+- Ton: ferm, dar respectuos și empatic
+- Limite: max <span class="ph">[120]</span> de cuvinte, clar și direct, fără limbaj de lemn
+Dă-mi 2 variante între care să aleg.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Follow-up fără să par insistent</div>
+        <div class="prompt-when">Când aștepți un răspuns și vrei să reamintești elegant.</div>
+        <div class="prompt-text">Scrie un email scurt de follow-up în limba română.
+- Context: am trimis <span class="ph">[ce]</span> pe <span class="ph">[când]</span> și nu am primit răspuns
+- Destinatar: <span class="ph">[cine]</span>
+- Obiectiv: să primesc un răspuns, fără să par insistent
+- Ton: prietenos, relaxat
+- Limite: max 80 de cuvinte, cu o singură întrebare clară la final.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Răspuns calm la un email tensionat</div>
+        <div class="prompt-when">Când primești o reclamație sau un mesaj agresiv și nu vrei să reacționezi la nervi.</div>
+        <div class="prompt-text">Ajută-mă să răspund calm la acest email tensionat.
+Întâi: rezumă în 2 puncte ce vrea de fapt expeditorul și care e îngrijorarea reală.
+Apoi scrie un răspuns care: recunoaște problema, nu se scuză excesiv și oferă un pas concret.
+Ton: profesionist, calm, fără defensivă.
+Emailul primit: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Rezumă un thread lung de email</div>
+        <div class="prompt-when">Când intri într-o conversație cu zeci de mesaje și nu ai timp să citești tot.</div>
+        <div class="prompt-text">Rezumă acest thread de email.
+Vreau: 1) despre ce e vorba (2 rânduri), 2) deciziile luate până acum, 3) ce se așteaptă de la mine și până când.
+În limba română, pe scurt.
+Thread-ul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Cerere către șef sau client</div>
+        <div class="prompt-when">Când ceri o mărire, o aprobare sau o resursă și vrei să sune convingător.</div>
+        <div class="prompt-text">Ajută-mă să scriu un email prin care cer <span class="ph">[ce ceri]</span>.
+- Cine sunt și către cine: <span class="ph">[detalii]</span>
+- De ce e justificat: <span class="ph">[argumentele tale]</span>
+- Ton: încrezător, dar respectuos
+- Structură: context → cerere → beneficiu. Max 150 de cuvinte.
+Dă-mi o variantă și 2 sugestii de îmbunătățire.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Reconectare / networking</div>
+        <div class="prompt-when">Când vrei să reiei legătura cu un fost coleg sau client după mult timp.</div>
+        <div class="prompt-text">Scrie un email de reconectare cu <span class="ph">[cine]</span>.
+- Context: nu am mai vorbit de <span class="ph">[cât timp]</span>
+- Motivul real: <span class="ph">[de ce scriu acum]</span>
+- Ton: cald, autentic, fără să par interesat
+- Limite: max 100 de cuvinte, cu un motiv clar de a-mi răspunde.</div>
+      </div>
+    </section>
+
+    <!-- 2. SCRIERE -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">2</div>
+        <div><h3>Scriere &amp; Editare</h3><p>Transformi un text bun într-unul excelent.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Îmbunătățește textul meu</div>
+        <div class="prompt-when">Când ai scris ceva, dar simți că poate suna mai bine.</div>
+        <div class="prompt-text">Îmbunătățește textul de mai jos. Păstrează sensul și vocea mea, dar fă-l mai clar, mai concis și mai ușor de citit.
+La final, spune-mi pe scurt ce ai schimbat și de ce.
+Public: <span class="ph">[cine citește]</span>. Ton dorit: <span class="ph">[formal/prietenos]</span>.
+Textul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Schimbă tonul</div>
+        <div class="prompt-when">Când mesajul e bun, dar tonul nu se potrivește cu situația.</div>
+        <div class="prompt-text">Rescrie textul de mai jos cu un ton <span class="ph">[mai formal / mai prietenos / mai ferm]</span>.
+Păstrează informația, schimbă doar tonul și formularea.
+Textul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Scurtează la esență</div>
+        <div class="prompt-when">Când ai prea mult text și vrei doar ce contează.</div>
+        <div class="prompt-text">Scurtează textul de mai jos la maximum <span class="ph">[X]</span> cuvinte, păstrând ideile esențiale și sensul. Nu adăuga informație nouă.
+Textul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Corectează și învață-mă</div>
+        <div class="prompt-when">Când vrei un text corect și, în plus, să înțelegi greșelile.</div>
+        <div class="prompt-text">Corectează textul de mai jos gramatical și stilistic, în limba română.
+Marchează-mi greșelile importante și explică pe scurt regula, ca să învăț.
+Textul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Adaptează pentru alt public</div>
+        <div class="prompt-when">Când ai un text și vrei o versiune pentru conducere, clienți sau public general.</div>
+        <div class="prompt-text">Adaptează textul de mai jos pentru <span class="ph">[public nou]</span>.
+Schimbă nivelul de detaliu, jargonul și tonul ca să fie potrivit pentru ei.
+Textul: <span class="ph">[lipește aici]</span></div>
+      </div>
+    </section>
+
+    <!-- 3. SEDINTE -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">3</div>
+        <div><h3>Ședințe &amp; Întâlniri</h3><p>Intri pregătit, ieși cu acțiuni clare.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Creează o agendă</div>
+        <div class="prompt-when">Înainte de orice ședință care merită să existe.</div>
+        <div class="prompt-text">Creează o agendă pentru o ședință de <span class="ph">[durată]</span> despre <span class="ph">[subiect]</span>.
+Participanți: <span class="ph">[cine]</span>. Obiectiv: <span class="ph">[ce vrem să decidem]</span>.
+Dă-mi puncte de discuție cu timp alocat fiecăruia și un rezultat clar la final.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Pregătește-mă pentru ședință</div>
+        <div class="prompt-when">Când vrei să nu fii prins pe picior greșit.</div>
+        <div class="prompt-text">Pregătește-mă pentru o ședință despre <span class="ph">[subiect]</span>.
+Participanți: <span class="ph">[cine]</span>. Obiectivul meu: <span class="ph">[ce vreau]</span>.
+Dă-mi: 1) 3 întrebări bune de pus, 2) posibile obiecții și cum răspund, 3) mesajul-cheie cu care vreau să rămână toți.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Note → acțiuni (action items)</div>
+        <div class="prompt-when">După ședință, ca să nu se piardă nimic.</div>
+        <div class="prompt-text">Transformă notițele de mai jos în acțiuni clare.
+Pentru fiecare: ce trebuie făcut, cine e responsabil (dacă reiese), termen (dacă reiese).
+Notițele: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Rezumat din transcript</div>
+        <div class="prompt-when">Când ai înregistrarea/transcriptul și vrei concluziile.</div>
+        <div class="prompt-text">Rezumă transcriptul ședinței de mai jos.
+Vreau: 1) deciziile luate, 2) acțiunile + responsabili, 3) subiectele rămase deschise.
+Transcript: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Brief de o pagină</div>
+        <div class="prompt-when">Înainte de o întâlnire importantă cu un client sau partener.</div>
+        <div class="prompt-text">Scrie un brief de o pagină înainte de întâlnirea cu <span class="ph">[cine]</span>.
+Include: contextul, obiectivul, 3 puncte de discutat și întrebări deschise.
+Detalii: <span class="ph">[lipește aici]</span></div>
+      </div>
+    </section>
+
+    <!-- 4. RESEARCH -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">4</div>
+        <div><h3>Research &amp; Învățare rapidă</h3><p>Înțelegi în 30 de minute ce ți-ar lua ore.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Explică-mi pe nivelul meu</div>
+        <div class="prompt-when">Când dai peste un subiect nou și vrei să-l înțelegi rapid.</div>
+        <div class="prompt-text">Explică-mi <span class="ph">[subiect]</span> pe înțelesul unui <span class="ph">[începător / profesionist non-tehnic]</span>.
+Structură: 1) ce este și de ce contează, 2) 3-5 lucruri esențiale, 3) o analogie simplă.
+În limba română. Spune-mi clar dacă ceva e incert sau se poate schimba în timp.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Compară opțiuni</div>
+        <div class="prompt-when">Când alegi între tool-uri, furnizori sau abordări.</div>
+        <div class="prompt-text">Compară <span class="ph">[opțiunea A]</span> cu <span class="ph">[opțiunea B]</span> pentru nevoia mea: <span class="ph">[ce vreau să fac]</span>.
+Dă-mi un tabel cu avantaje/dezavantaje și o recomandare cu motivul ei.
+Spune-mi și ce informație îți lipsește ca să fii sigur.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Tutore personal — plan de învățare</div>
+        <div class="prompt-when">Când vrei să înveți o abilitate nouă, structurat.</div>
+        <div class="prompt-text">Vreau să învăț <span class="ph">[subiect]</span> în <span class="ph">[cât timp]</span>, având disponibile <span class="ph">[X ore/săptămână]</span>.
+Fă-mi un plan de învățare pas cu pas, de la zero, cu ce studiez în fiecare etapă și cum verific că am progresat.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Rezumă o temă complexă</div>
+        <div class="prompt-when">Când ai nevoie de esența unui subiect, repede.</div>
+        <div class="prompt-text">Rezumă-mi tema <span class="ph">[subiect]</span> în 5 puncte esențiale, pe înțelesul unui profesionist ocupat.
+Adaugă la final o frază: „de ce ar trebui să-mi pese". În limba română.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Verifică-mă (metoda Feynman)</div>
+        <div class="prompt-when">Când crezi că ai înțeles, dar vrei să fii sigur.</div>
+        <div class="prompt-text">Vreau să verific că am înțeles <span class="ph">[subiect]</span>.
+Pune-mi 5 întrebări, de la simplu la dificil. După fiecare răspuns al meu, spune-mi dacă e corect și completează ce am ratat.</div>
+      </div>
+    </section>
+
+    <!-- 5. ANALIZA -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">5</div>
+        <div><h3>Analiză &amp; Decizii</h3><p>Gândești mai limpede și decizi mai bine.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Pro și contra</div>
+        <div class="prompt-when">Când ești blocat între opțiuni.</div>
+        <div class="prompt-text">Ajută-mă să iau decizia: <span class="ph">[decizia]</span>.
+Dă-mi argumentele pro și contra, apoi factorii pe care ar trebui să-i cântăresc cel mai mult și o recomandare.
+Context: <span class="ph">[situația ta]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Interpretează niște date</div>
+        <div class="prompt-when">Când ai cifre, dar nu ești sigur ce-ți spun.</div>
+        <div class="prompt-text">Am următoarele date: <span class="ph">[lipește cifrele/tabelul]</span>.
+Ajută-mă să le înțeleg: 1) ce tipare/tendințe observi, 2) 3 concluzii practice, 3) ce ar trebui să verific mai departe.
+Explică simplu, ca pentru cineva fără background statistic.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Analiză de risc</div>
+        <div class="prompt-when">Înainte să pornești un proiect sau să iei o decizie mare.</div>
+        <div class="prompt-text">Analizează riscurile pentru: <span class="ph">[plan/decizie]</span>.
+Dă-mi: principalele riscuri, cât de probabile sunt, impactul lor și cum le pot reduce.
+Context: <span class="ph">[detalii]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Matrice de decizie</div>
+        <div class="prompt-when">Când ai mai multe opțiuni și mai multe criterii.</div>
+        <div class="prompt-text">Ajută-mă să aleg între <span class="ph">[opțiuni]</span> folosind o matrice de decizie.
+Criteriile mele și cât contează fiecare: <span class="ph">[criteriu – importanță, ...]</span>.
+Dă-mi un punctaj pentru fiecare opțiune și un câștigător clar.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Avocatul diavolului</div>
+        <div class="prompt-when">Când vrei să-ți testezi planul înainte să-l prezinți.</div>
+        <div class="prompt-text">Fii avocatul diavolului pentru planul de mai jos.
+Găsește slăbiciunile, presupunerile riscante și ce aș putea trece cu vederea. Apoi sugerează cum l-aș putea întări.
+Planul: <span class="ph">[lipește aici]</span></div>
+      </div>
+    </section>
+
+    <!-- 6. DOCUMENTE -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">6</div>
+        <div><h3>Documente &amp; Rapoarte</h3><p>Citești mai puțin, înțelegi mai mult, scrii mai repede.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Rezumă un document lung</div>
+        <div class="prompt-when">Când primești un PDF de 20 de pagini și ai 5 minute.</div>
+        <div class="prompt-text">Rezumă documentul de mai jos pentru <span class="ph">[rolul meu]</span>.
+Vreau: 1) ideile principale (max 5), 2) ce acțiuni/decizii se cer de la mine, 3) cifre sau termene importante.
+Fără jargon, în limba română.
+Documentul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Structurează un raport</div>
+        <div class="prompt-when">Când ai foaia albă și nu știi de unde să începi.</div>
+        <div class="prompt-text">Ajută-mă să structurez un raport despre <span class="ph">[subiect]</span> pentru <span class="ph">[public]</span>.
+Dă-mi un cuprins logic, cu ce ar trebui să conțină fiecare secțiune și aproximativ câtă întindere.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Draft de raport din notițe</div>
+        <div class="prompt-when">Când ai notițe răzlețe și vrei un prim draft.</div>
+        <div class="prompt-text">Scrie un prim draft de raport din notițele de mai jos.
+Public: <span class="ph">[cine]</span>. Ton: profesional, clar. Structurează-l cu titluri și subtitluri.
+Notițele: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Extrage informațiile cheie</div>
+        <div class="prompt-when">Când ai un contract sau document și vrei să știi la ce să fii atent.</div>
+        <div class="prompt-text">Extrage din documentul de mai jos: părțile, obligațiile principale, termenele, sumele, clauzele de reziliere și orice ar trebui să mă îngrijoreze.
+Nu da sfaturi juridice — doar evidențiază ce merită citit cu atenție.
+Documentul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Executive summary</div>
+        <div class="prompt-when">Când decidentul nu citește tot, dar trebuie să decidă.</div>
+        <div class="prompt-text">Scrie un executive summary de <span class="ph">[X]</span> cuvinte pentru documentul de mai jos, pentru un cititor care nu are timp să citească tot, dar trebuie să ia o decizie.
+Documentul: <span class="ph">[lipește aici]</span></div>
+      </div>
+    </section>
+
+    <!-- 7. PLANIFICARE -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">7</div>
+        <div><h3>Planificare &amp; Productivitate</h3><p>Faci ordine în haos și avansezi pe ce contează.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Prioritizează-mi lista</div>
+        <div class="prompt-when">Când ai prea multe de făcut și nu știi cu ce să începi.</div>
+        <div class="prompt-text">Iată lista mea de sarcini: <span class="ph">[lipește lista]</span>.
+Ajută-mă să le prioritizez după impact și urgență. Spune-mi cu ce să încep și ce aș putea amâna sau delega.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Plan săptămânal</div>
+        <div class="prompt-when">Luni dimineața, ca să nu te trezești vineri copleșit.</div>
+        <div class="prompt-text">Ajută-mă să-mi planific săptămâna.
+Obiectivele mele: <span class="ph">[2-3 obiective]</span>. Întâlniri fixe: <span class="ph">[listă]</span>. Timp disponibil: <span class="ph">[detalii]</span>.
+Dă-mi un plan realist pe zile, cu timp pentru lucru concentrat.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Sparge un proiect mare în pași</div>
+        <div class="prompt-when">Când un proiect pare prea mare ca să-l începi.</div>
+        <div class="prompt-text">Sparge proiectul <span class="ph">[nume/obiectiv]</span> în pași clari, în ordine.
+Pentru fiecare pas: ce presupune și când e considerat terminat.
+Marchează primul pas pe care îl pot face azi.
+Context: <span class="ph">[detalii]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Estimează timp și ordine</div>
+        <div class="prompt-when">Când trebuie să promiți un termen realist.</div>
+        <div class="prompt-text">Iată sarcinile pentru <span class="ph">[proiect]</span>: <span class="ph">[listă]</span>.
+Estimează cât durează fiecare, în ce ordine ar trebui făcute și care depind una de alta.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Organizează-mi ziua (time-blocking)</div>
+        <div class="prompt-when">Dimineața, ca să-ți protejezi timpul de lucru concentrat.</div>
+        <div class="prompt-text">Ajută-mă să-mi organizez ziua pe intervale.
+Am de făcut: <span class="ph">[sarcini]</span>. Întâlniri fixe: <span class="ph">[ore]</span>. Cele mai productive ore ale mele: <span class="ph">[când]</span>.
+Dă-mi un program realist, cu pauze.</div>
+      </div>
+    </section>
+
+    <!-- 8. PREZENTARI -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">8</div>
+        <div><h3>Prezentări &amp; Conținut</h3><p>Spui povești care prind, nu slide-uri pe care le sare lumea.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Structura unei prezentări</div>
+        <div class="prompt-when">Când ai un subiect, dar nu și firul.</div>
+        <div class="prompt-text">Ajută-mă să structurez o prezentare de <span class="ph">[durată]</span> despre <span class="ph">[subiect]</span>, pentru <span class="ph">[public]</span>.
+Dă-mi firul narativ: cum încep, punctele principale și cum închei cu un mesaj memorabil.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Conținut pentru slide-uri</div>
+        <div class="prompt-when">Când vrei slide-uri curate, nu pereți de text.</div>
+        <div class="prompt-text">Creează conținutul pentru slide-uri despre <span class="ph">[subiect]</span>.
+Pentru fiecare slide: un titlu scurt și 3-4 bullet-uri concise (nu paragrafe). Maxim <span class="ph">[X]</span> slide-uri.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Storytelling</div>
+        <div class="prompt-when">Când vrei ca mesajul să rămână, nu doar să fie auzit.</div>
+        <div class="prompt-text">Transformă mesajul de mai jos într-o poveste care prinde la audiență.
+Folosește structura: situația → problema → soluția → rezultatul.
+Mesajul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Notițe de prezentator</div>
+        <div class="prompt-when">Când vrei să suni natural, nu citit.</div>
+        <div class="prompt-text">Scrie-mi notițe de prezentator pentru slide-urile de mai jos — ce să spun la fiecare, pe scurt, ca să sune natural.
+Slide-urile: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Simplifică un concept complex</div>
+        <div class="prompt-when">Când trebuie să explici ceva tehnic unui public non-tehnic.</div>
+        <div class="prompt-text">Explică conceptul <span class="ph">[concept]</span> pentru o audiență <span class="ph">[non-tehnică / de conducere]</span>, într-un minut.
+Folosește o analogie și evită jargonul.</div>
+      </div>
+    </section>
+
+    <!-- 9. MARKETING -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">9</div>
+        <div><h3>Marketing &amp; Social media</h3><p>Produci conținut mai repede, fără să rămâi fără idei.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Idei de postări (calendar)</div>
+        <div class="prompt-when">Când te uiți la o foaie goală de content.</div>
+        <div class="prompt-text">Dă-mi <span class="ph">[10]</span> idei de postări pentru <span class="ph">[platformă]</span> despre <span class="ph">[tema mea]</span>.
+Pentru fiecare: unghiul și de ce ar interesa publicul meu, care este <span class="ph">[cine]</span>.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Postare de LinkedIn</div>
+        <div class="prompt-when">Când vrei o postare care chiar e citită, nu derulată.</div>
+        <div class="prompt-text">Scrie o postare de LinkedIn despre <span class="ph">[subiect/experiență]</span>.
+Ton: autentic, util, fără clișee motivaționale. Începe cu un cârlig puternic în prima frază.
+Detalii: <span class="ph">[ce vrei să transmiți]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Headline-uri / titluri</div>
+        <div class="prompt-when">Când titlul decide dacă restul mai e citit.</div>
+        <div class="prompt-text">Dă-mi 10 variante de titlu pentru <span class="ph">[articol/postare/email]</span> despre <span class="ph">[subiect]</span>.
+Public: <span class="ph">[cine]</span>. Vreau stiluri diferite: clare, curioase, cu beneficiu.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Refolosește conținut (repurpose)</div>
+        <div class="prompt-when">Când ai un articol bun și vrei mai mult din el.</div>
+        <div class="prompt-text">Transformă textul de mai jos în <span class="ph">[3]</span> postări scurte pentru <span class="ph">[platformă]</span>, fiecare cu un unghi diferit.
+Textul: <span class="ph">[lipește aici]</span></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Descriere de produs/serviciu</div>
+        <div class="prompt-when">Când vrei să vinzi beneficii, nu doar caracteristici.</div>
+        <div class="prompt-text">Scrie o descriere convingătoare pentru <span class="ph">[produs/serviciu]</span>.
+Public: <span class="ph">[cine]</span>. Beneficiul principal: <span class="ph">[care]</span>. Ton: <span class="ph">[cum]</span>.
+Concentrează-te pe beneficii. Dă-mi 2 variante: una scurtă, una detaliată.</div>
+      </div>
+    </section>
+
+    <!-- 10. ASISTENT -->
+    <section class="category">
+      <div class="category-header">
+        <div class="category-num">10</div>
+        <div><h3>AI ca asistent personal</h3><p>Îl configurezi o dată ca să te cunoască mereu — partea pe care o ratează aproape toți.</p></div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Custom instructions (setare permanentă)</div>
+        <div class="prompt-when">O dată, ca să nu mai explici cine ești la fiecare conversație.</div>
+        <div class="prompt-text">Vreau să te configurez ca asistentul meu de lucru. Iată ce ar trebui să știi mereu despre mine:
+- Rol: <span class="ph">[rolul tău]</span>
+- Domeniu: <span class="ph">[domeniu]</span>
+- Ce fac des: <span class="ph">[sarcini tipice]</span>
+- Cum vreau să-mi răspunzi: <span class="ph">[concis/detaliat, ton]</span>, în limba română
+Confirmă că ai înțeles și spune-mi ce alte detalii te-ar ajuta.
+(Salvează textul în Custom Instructions / Personalizare.)</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Fișierul tău de context personal</div>
+        <div class="prompt-when">Când vrei un text reutilizabil despre tine, lipit la început de conversație.</div>
+        <div class="prompt-text">Ajută-mă să-mi creez un „fișier de context personal" pe care să-l lipesc la începutul conversațiilor.
+Pune-mi întrebările necesare despre mine, rolul și preferințele mele, apoi compune un text scurt și reutilizabil prin care AI-ul mă cunoaște.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Asistent dedicat unui rol (Project / GPT)</div>
+        <div class="prompt-when">Când faci des același tip de muncă (marketing, HR, vânzări).</div>
+        <div class="prompt-text">Vreau să-mi creez un asistent dedicat pentru <span class="ph">[rol/activitate]</span>.
+Spune-mi: ce instrucțiuni să-i dau, ce fișiere/exemple să-i încarc și cum să-l folosesc ca să-mi economisească timp constant.</div>
+      </div>
+
+      <div class="prompt">
+        <div class="prompt-title">Pune AI-ul în rol de expert</div>
+        <div class="prompt-when">Când vrei răspunsuri de nivel expert, nu generice.</div>
+        <div class="prompt-text">Acționează ca un <span class="ph">[expert: ex. consultant de marketing cu 15 ani experiență]</span>.
+Înainte să-mi răspunzi la cererea de mai jos, pune-mi întrebările de care ai nevoie ca să-mi dai cel mai bun răspuns posibil.
+Cererea: <span class="ph">[ce vrei]</span></div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="closing">
+      <h2>Prompturile sunt unelte. <span>Cursul îți dă sistemul.</span></h2>
+      <p>Aceste 50 de prompturi te ajută azi. Dar diferența reală o face să nu mai depinzi de o listă — să folosești AI-ul ca un multiplicator de timp, în munca ta de zi cu zi:</p>
+      <ul class="closing-list">
+        <li>Construiești singur orice prompt, pentru orice situație</li>
+        <li>Dai AI-ului context care te cunoaște (nu mai explici de la zero)</li>
+        <li>Faci research și rapoarte în minute, nu în ore</li>
+        <li>Automatizezi sarcinile repetitive care îți mănâncă ziua</li>
+      </ul>
+      <p style="margin-bottom:1.25rem;">Tot ce înveți în <strong style="color:#fff;">Învață AI</strong>: 40 de lecții practice, pas cu pas, în limba română.</p>
+      <div class="price">Preț de acces timpuriu: <b>199 lei</b> &nbsp;·&nbsp; va crește la 399 lei la lansarea completă</div>
+      <a href="https://invata-ai.com">Vezi cursul →</a>
+      <div class="small">Acces pe viață · Garanție 14 zile · 100% în limba română</div>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 Învață AI · <a href="https://invata-ai.com">invata-ai.com</a> · Distribuie acest ghid unui coleg care pierde timp cu sarcini pe care AI-ul le rezolvă în minute.
+  </footer>
+
+</div>
+</body>
+</html>
