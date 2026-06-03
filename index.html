@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://invata-ai.com/">
   <meta property="og:locale" content="ro_RO">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -26,6 +27,9 @@
       --border: #e2e8f0;
       --white: #fff;
       --success: #10b981;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --grad: linear-gradient(120deg, #2563eb, #7c3aed);
       --radius: 12px;
     }
 
@@ -68,7 +72,12 @@
       letter-spacing: -0.5px;
     }
 
-    .logo span { color: var(--primary); }
+    .logo span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     /* COMING SOON SECTION */
     .coming-soon {
@@ -112,7 +121,10 @@
 
     .coming-soon h1 em {
       font-style: normal;
-      color: var(--primary);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .coming-soon-description {

@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://invata-ai.com/">
   <meta property="og:locale" content="ro_RO">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- MailerLite Universal -->
@@ -47,6 +48,7 @@
       --dark: #0f172a; --text: #1e293b; --muted: #64748b;
       --light: #f8fafc; --border: #e2e8f0; --white: #fff;
       --success: #10b981; --radius: 12px; --radius-lg: 20px;
+      --accent: #7c3aed; --accent-light: #a78bfa; --grad: linear-gradient(120deg, #2563eb, #7c3aed);
       --shadow: 0 4px 24px rgba(0,0,0,0.08); --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
     }
     html { scroll-behavior: smooth; }
@@ -56,7 +58,7 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: white; border-bottom: 1px solid var(--border); padding: 0 2rem; }
     .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .logo { font-weight: 800; font-size: 1.15rem; color: var(--dark); text-decoration: none; letter-spacing: -0.5px; }
-    .logo span { color: var(--primary); }
+    .logo span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--dark); }
@@ -68,7 +70,7 @@
     .hero-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-light); border: 1px solid #bfdbfe; color: var(--primary); padding: 0.35rem 0.9rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
     .hero h1 { font-size: clamp(2rem, 3.5vw, 3.1rem); font-weight: 900; color: var(--dark); line-height: 1.15; letter-spacing: -1px; margin-bottom: 1.25rem; }
-    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.75; max-width: 480px; }
     .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 2rem; }
     .btn-buy { background: var(--primary); color: white; padding: 0.9rem 2rem; border-radius: 9px; font-weight: 800; font-size: 1rem; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.6rem; }
