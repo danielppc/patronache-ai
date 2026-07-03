@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cum scrii prompturi mai bune: formula Obiectiv + Context + Limite + Format | Învață AI</title>
+  <meta name="description" content="De ce „Scrie-mi un email" dă rezultate slabe în ChatGPT sau Claude — și formula simplă, în 4 pași, care transformă răspunsurile AI din generice în gata de folosit. Cu exemple în română.">
+  <link rel="canonical" href="https://invata-ai.com/blog/cum-scrii-prompturi-mai-bune.html">
+  <meta property="og:title" content="Cum scrii prompturi mai bune: formula Obiectiv + Context + Limite + Format">
+  <meta property="og:description" content="Formula simplă, în 4 pași, care transformă răspunsurile AI din generice în gata de folosit. Cu exemple în română.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://invata-ai.com/blog/cum-scrii-prompturi-mai-bune.html">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:image" content="https://invata-ai.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://invata-ai.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cum scrii prompturi mai bune: formula Obiectiv + Context + Limite + Format",
+    "description": "Formula simplă, în 4 pași, care transformă răspunsurile AI din generice în gata de folosit. Cu exemple în română.",
+    "datePublished": "2026-07-03",
+    "dateModified": "2026-07-03",
+    "inLanguage": "ro",
+    "author": { "@type": "Person", "name": "Daniel Lupu" },
+    "publisher": { "@type": "Organization", "name": "Învață AI", "url": "https://invata-ai.com" },
+    "image": "https://invata-ai.com/og-image.png",
+    "mainEntityOfPage": "https://invata-ai.com/blog/cum-scrii-prompturi-mai-bune.html"
+  }
+  </script>
+  <!-- Consent Mode v2 — implicit refuzat până la alegerea utilizatorului -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('ia_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted',
+          ad_personalization: 'granted', analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script src="/consent.js" defer></script>
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1152344');
+  </script>
+  <!-- End MailerLite Universal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1e40af; --dark: #0f172a; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --light: #f8fafc; --accent: #7c3aed; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.75; background: #fff; }
+    nav { border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 10; }
+    .nav-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo img { height: 30px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+    article { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem 4rem; }
+    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 900; color: var(--dark); letter-spacing: -1px; line-height: 1.2; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.45rem; font-weight: 800; color: var(--dark); letter-spacing: -0.3px; margin: 2.5rem 0 1rem; }
+    p, li { font-size: 1.02rem; margin-bottom: 1.1rem; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1.1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--primary); }
+    strong { color: var(--dark); }
+    .prompt-box { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.4rem; font-size: 0.95rem; margin: 1.25rem 0; white-space: pre-wrap; }
+    .bad { background: #fef2f2; border-color: #fecaca; }
+    .good { background: #f0fdf4; border-color: #bbf7d0; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+    .bad .tag { color: #dc2626; } .good .tag { color: #16a34a; }
+    .cta { background: linear-gradient(160deg, #0f172a, #1e3a8a); color: #fff; border-radius: 18px; padding: 2.25rem 2rem; margin: 3rem 0 1rem; text-align: center; }
+    .cta h3 { font-size: 1.35rem; font-weight: 900; margin-bottom: 0.6rem; }
+    .cta h3 span { background: linear-gradient(120deg, #60a5fa, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .cta p { color: #cbd5e1; font-size: 0.95rem; max-width: 480px; margin: 0 auto 1.25rem; }
+    .cta .ml-embedded { max-width: 420px; margin: 0 auto; }
+    .author { display: flex; align-items: center; gap: 0.5rem; border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer { background: var(--dark); color: #94a3b8; padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; }
+    footer img { height: 30px; margin-bottom: 1rem; }
+    footer a { color: #93c5fd; text-decoration: none; }
+    @media (max-width: 640px) { h1 { font-size: 1.7rem; } article { padding-top: 2.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
+      <ul class="nav-links">
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article>
+    <div class="meta">Blog · 3 iulie 2026 · 6 min de citit · de Daniel Lupu</div>
+    <h1>Cum scrii prompturi mai bune: formula Obiectiv + Context + Limite + Format</h1>
+
+    <p>Ai încercat ChatGPT sau Claude, ai primit un răspuns mediocru și ai tras concluzia că „AI-ul nu e chiar așa grozav"? Nu ești singur. Dar în majoritatea cazurilor, problema nu e AI-ul — e promptul.</p>
+
+    <p>Cea mai frecventă greșeală cu AI-ul nu e tehnică. E asta: <strong>îi ceri prea puțin.</strong> „Scrie-mi un email." „Rezumă textul ăsta." „Dă-mi idei." Cereri vagi, răspunsuri generice.</p>
+
+    <p>Vestea bună: există o formulă simplă care repară asta în 30 de secunde. O folosesc pentru orice — emailuri, rapoarte, research, planificare — și o poți copia imediat.</p>
+
+    <h2>Formula: Obiectiv + Context + Limite + Format</h2>
+
+    <p>Orice prompt bun are patru elemente:</p>
+
+    <ul>
+      <li><strong>Obiectiv</strong> — ce vrei, concret. Nu „ajută-mă cu un email", ci „vreau un email de refuz care păstrează relația".</li>
+      <li><strong>Context</strong> — cine ești și care e situația. AI-ul nu îți știe meseria, clientul sau istoricul. Spune-i.</li>
+      <li><strong>Limite</strong> — lungime, ton, ce să evite. „Max 120 de cuvinte, ton ferm dar politicos, fără limbaj de lemn."</li>
+      <li><strong>Format</strong> — cum vrei rezultatul: listă, tabel, email gata de trimis, două variante.</li>
+    </ul>
+
+    <h2>Exemplu concret: aceeași cerere, două rezultate</h2>
+
+    <div class="prompt-box bad"><span class="tag">✗ Prompt vag</span>
+Scrie un email către client.</div>
+
+    <p>Rezultatul: un text generic, robotic, pe care oricum îl rescrii de la zero.</p>
+
+    <div class="prompt-box good"><span class="tag">✓ Prompt cu formula</span>
+Sunt consultant și scriu unui client care a întârziat feedback-ul cu 5 zile. Vreau un email politicos, scurt, ferm, în română, maxim 120 de cuvinte. Obiectivul e să primesc răspuns până vineri. Dă-mi 2 variante.</div>
+
+    <p>Rezultatul: două emailuri gata de trimis, pe tonul potrivit, în 10 secunde. Aceeași unealtă, alt input — cu totul alt output.</p>
+
+    <h2>De ce funcționează</h2>
+
+    <p>Modelele AI generează răspunsul cel mai probabil pentru cererea primită. Dacă cererea e vagă, primești răspunsul „mediu" — adică generic. Cu cât dai mai mult context și constrângeri, cu atât spațiul de răspuns se îngustează spre exact ce ai nevoie.</p>
+
+    <p>Gândește-te așa: dacă ai delega sarcina unui coleg nou, ce i-ai spune ca să iasă bine din prima? Exact aceleași lucruri i le spui AI-ului.</p>
+
+    <h2>Pasul doi: nu accepta primul răspuns</h2>
+
+    <p>A doua greșeală frecventă: primești un răspuns „aproape bun", te enervezi și o iei de la capăt. Nu. Conversația e instrumentul, nu un singur mesaj. Corectează din câteva cuvinte:</p>
+
+    <ul>
+      <li>„mai scurt"</li>
+      <li>„sună prea corporate"</li>
+      <li>„dă-mi 3 variante"</li>
+      <li>„fă-l mai persuasiv"</li>
+      <li>„explică-mi mai simplu"</li>
+    </ul>
+
+    <p>Fiecare ajustare durează 5 secunde și rafinează rezultatul. Aici se câștigă diferența de calitate.</p>
+
+    <h2>Un avertisment onest</h2>
+
+    <p>Formula îți dă răspunsuri mult mai bune, dar nu infailibile. AI-ul poate genera cifre, citate sau „fapte" care sună credibil și sunt false. Regula de aur pentru profesioniști: <strong>verifică orice informație pe care te bazezi</strong> înainte s-o trimiți mai departe — și nu lipi date sensibile (clienți, contracte, parole) în conversație.</p>
+
+    <h2>Aplică azi</h2>
+
+    <p>Ia o sarcină reală de pe lista ta de azi — un email dificil, un rezumat, un plan — și scrie promptul cu cele 4 elemente: obiectiv, context, limite, format. Diferența se simte de la prima folosire.</p>
+
+    <div class="cta">
+      <h3>Vrei 50 de prompturi <span>gata de folosit?</span></h3>
+      <p>Primești gratuit pachetul cu 50 de prompturi esențiale pentru profesioniști — emailuri, ședințe, research, rapoarte — plus un email pe săptămână cu exemple concrete de AI la muncă.</p>
+      <!-- MailerLite Form Embed -->
+      <div class="ml-embedded" data-form="EYQS9u"></div>
+      <!-- End MailerLite Form Embed -->
+    </div>
+
+    <div class="author">
+      <span>Scris de <strong>Daniel Lupu</strong> — creatorul cursului <a href="/">Învață AI</a>: 40 de lecții practice de AI, în limba română.</span>
+    </div>
+  </article>
+
+  <footer>
+    <img src="/logo-white.png" alt="Învață AI">
+    <p><a href="/">Acasă</a> · <a href="/blog/">Blog</a> · <a href="/termeni.html">Termeni</a> · <a href="/confidentialitate.html">Confidențialitate</a></p>
+    <p style="margin-top:0.75rem;">© 2026 Învață AI</p>
+  </footer>
+</body>
+</html>

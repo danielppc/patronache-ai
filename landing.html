@@ -4,14 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Învață AI — Curs AI pentru profesioniștii români</title>
-  <meta name="description" content="Curs online în limba română care te învață să folosești AI-ul ca un profesionist: prompturi, context, workflow-uri și automatizări. 40 de lecții practice, acces pe viață, 199 lei plată unică (preț de acces timpuriu).">
+  <meta name="description" content="Curs online în limba română care te învață să folosești AI-ul ca un profesionist: prompturi, context, workflow-uri și automatizări. 40 de lecții practice, acces pe viață, 199 lei plată unică (preț introductiv).">
   <meta property="og:title" content="Învață AI — Curs AI pentru profesioniștii români">
   <meta property="og:description" content="40 de lecții practice care te duc de la „mai încerc ChatGPT uneori" la prompturi, context, workflow-uri și automatizări pe care le folosești în munca reală.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://invata-ai.com/">
   <meta property="og:locale" content="ro_RO">
+  <meta property="og:image" content="https://invata-ai.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://invata-ai.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Consent Mode v2 — implicit refuzat până la alegerea utilizatorului -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('ia_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted',
+          ad_personalization: 'granted', analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script src="/consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- MailerLite Universal -->
@@ -441,12 +464,13 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><img src="/logo.png" alt="Învață AI"></a>
+    <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
     <ul class="nav-links">
       <li><a href="#program">Program</a></li>
       <li><a href="#preview">Lecții gratuite</a></li>
       <li><a href="#pret">Preț</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="/blog/">Blog</a></li>
     </ul>
     <a href="#pret" class="nav-buy">Cumpără — 199 lei</a>
   </div>
@@ -608,7 +632,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Cumperi cursul o singură dată</h3>
-        <p>Plată unică de 199 lei (preț de acces timpuriu). Imediat după, primești acces complet la toate cele 40 de lecții, pentru totdeauna.</p>
+        <p>Plată unică de 199 lei (preț introductiv). Imediat după, primești acces complet la toate cele 40 de lecții, pentru totdeauna.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -734,7 +758,7 @@
       <div class="pricing-top">
         <h3>Curs complet Învață AI</h3>
         <div class="price-amount">199<sup> lei</sup></div>
-        <div class="price-once">preț de acces timpuriu · plată unică, fără abonament</div>
+        <div class="price-once">preț introductiv · plată unică, fără abonament</div>
       </div>
       <div class="pricing-body">
         <ul class="pricing-list">
@@ -803,7 +827,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">De ce 199 lei și de ce crește prețul?</div>
-        <div class="faq-a">199 lei e prețul de acces timpuriu — un mod de a mulțumi celor care intră devreme. La lansarea completă, prețul va fi 399 lei. Chiar și la 199 lei, cursul se recuperează din prima săptămână dacă economisești 2 ore de muncă: primești 40 de lecții practice, exerciții reale, o bibliotecă de prompts și actualizări gratuite pe viață.</div>
+        <div class="faq-a">199 lei e prețul introductiv — un mod de a mulțumi celor care intră devreme. Locurile la acest preț sunt limitate; după aceea, prețul crește la 399 lei. Chiar și la 199 lei, cursul se recuperează din prima săptămână dacă economisești 2 ore de muncă: primești 40 de lecții practice, exerciții reale, o bibliotecă de prompturi și actualizări gratuite pe viață.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Folosesc deja ChatGPT — mai are sens acest curs?</div>
@@ -826,9 +850,10 @@
 </section>
 
 <footer>
-  <a href="#" class="footer-logo"><img src="/logo-white.png" alt="Învață AI"></a>
+  <a href="/" class="footer-logo"><img src="/logo-white.png" alt="Învață AI"></a>
   <p>Curs AI în română pentru profesioniști</p>
   <p><a href="mailto:hello@invata-ai.com">hello@invata-ai.com</a></p>
+  <p><a href="/blog/">Blog</a> · <a href="/termeni.html">Termeni</a> · <a href="/confidentialitate.html">Politică de confidențialitate</a></p>
   <p style="margin-top:1.25rem;font-size:0.72rem;">© 2026 Învață AI · Toate drepturile rezervate</p>
 </footer>
 

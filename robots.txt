@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /curs.html
+Disallow: /brand-kit.html
+Disallow: /og-image.html
+Disallow: /product-banner.html
+
+Sitemap: https://invata-ai.com/sitemap.xml

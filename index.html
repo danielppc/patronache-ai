@@ -4,14 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Învață AI — Curs AI pentru profesioniștii români</title>
-  <meta name="description" content="Curs online în limba română care te învață să folosești AI-ul ca un profesionist. Lansare iunie 2026. Alătură-te celor 500+ oameni cu acces timpuriu.">
-  <meta property="og:title" content="Învață AI — Lansare iunie 2026">
-  <meta property="og:description" content="Curs AI pentru profesioniștii români. Alătură-te celor 500+ oameni cu acces timpuriu.">
+  <meta name="description" content="Curs online în limba română care te învață să folosești AI-ul ca un profesionist. Se lansează în curând. Abonează-te și primești gratuit 50 de prompturi esențiale.">
+  <meta property="og:title" content="Învață AI — Se lansează în curând">
+  <meta property="og:description" content="Curs AI pentru profesioniștii români. Abonează-te și primești gratuit 50 de prompturi esențiale.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://invata-ai.com/">
   <meta property="og:locale" content="ro_RO">
+  <meta property="og:image" content="https://invata-ai.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://invata-ai.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Consent Mode v2 — implicit refuzat până la alegerea utilizatorului -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('ia_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted',
+          ad_personalization: 'granted', analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script src="/consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -282,7 +305,7 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
-      <div style="font-size: 0.85rem; color: var(--muted);">🚀 Lansare iunie 2026</div>
+      <div style="font-size: 0.85rem; color: var(--muted);">🚀 Lansare în curând</div>
     </div>
   </nav>
 
@@ -292,7 +315,7 @@
         ✨ Curând disponibil
       </div>
 
-      <h1>Învață <em>AI</em> se lansează în iunie 2026</h1>
+      <h1>Învață <em>AI</em> se lansează în curând</h1>
 
       <p class="coming-soon-description">
         Curs online în limba română care te învață să folosești AI-ul ca un profesionist: prompturi eficiente, context, workflow-uri și automatizări pe care le folosești în munca reală.
@@ -300,7 +323,7 @@
 
       <div class="coming-soon-form">
         <h2>Fii printre primii</h2>
-        <p>Alătură-te celor 500+ oameni cu acces timpuriu. Ai o surpriză-n coloană de jos 👇</p>
+        <p>Abonează-te și primești imediat, gratuit, pachetul cu 50 de prompturi esențiale pentru munca ta. 👇</p>
 
         <!-- MailerLite Form Embed -->
         <div class="ml-embedded" data-form="EYQS9u"></div>
@@ -335,8 +358,9 @@
     <p>© 2026 Învață AI. Toate drepturile rezervate.</p>
     <p>
       <a href="mailto:hello@invata-ai.com">Contact</a> •
-      <a href="#">Termeni</a> •
-      <a href="#">Politică de confidențialitate</a>
+      <a href="/blog/">Blog</a> •
+      <a href="/termeni.html">Termeni</a> •
+      <a href="/confidentialitate.html">Politică de confidențialitate</a>
     </p>
   </footer>
 </body>

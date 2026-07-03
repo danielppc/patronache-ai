@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Învață AI | Ghiduri practice de AI în română</title>
+  <meta name="description" content="Ghiduri practice, în limba română, despre cum folosești AI-ul în munca de zi cu zi: prompturi, workflow-uri, automatizări și decizii mai bune.">
+  <link rel="canonical" href="https://invata-ai.com/blog/">
+  <meta property="og:title" content="Blog — Învață AI">
+  <meta property="og:description" content="Ghiduri practice de AI în română, pentru profesioniști.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://invata-ai.com/blog/">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:image" content="https://invata-ai.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://invata-ai.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Consent Mode v2 — implicit refuzat până la alegerea utilizatorului -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('ia_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted',
+          ad_personalization: 'granted', analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script src="/consent.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1e40af; --dark: #0f172a; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --light: #f8fafc; --grad: linear-gradient(120deg, #2563eb, #7c3aed); }
+    body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: #fff; }
+    nav { border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 10; }
+    .nav-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo img { height: 30px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--dark); }
+    header.hero { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .eyebrow { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #7c3aed; margin-bottom: 0.75rem; }
+    h1 { font-size: 2.4rem; font-weight: 900; color: var(--dark); letter-spacing: -1px; margin-bottom: 0.75rem; }
+    .hero p { color: var(--muted); max-width: 560px; }
+    main { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+    .post { display: block; border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 2rem; text-decoration: none; color: inherit; transition: all 0.2s; margin-bottom: 1.25rem; }
+    .post:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(15,23,42,0.08); border-color: #c7d2fe; }
+    .post-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .post h2 { font-size: 1.35rem; font-weight: 800; color: var(--dark); letter-spacing: -0.3px; margin-bottom: 0.5rem; }
+    .post p { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .post .more { font-size: 0.9rem; font-weight: 700; color: var(--primary); }
+    footer { background: var(--dark); color: #94a3b8; padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; }
+    footer img { height: 30px; margin-bottom: 1rem; }
+    footer a { color: #93c5fd; text-decoration: none; }
+    @media (max-width: 640px) { h1 { font-size: 1.8rem; } header.hero { padding-top: 2.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
+      <ul class="nav-links">
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Blog</div>
+    <h1>AI de folosit la muncă</h1>
+    <p>Ghiduri practice, în limba română: cum folosești AI-ul în munca de zi cu zi — prompturi, workflow-uri, automatizări și decizii mai bune.</p>
+  </header>
+
+  <main>
+    <a class="post" href="/blog/cum-scrii-prompturi-mai-bune.html">
+      <div class="post-meta">3 iulie 2026 · 6 min de citit</div>
+      <h2>Cum scrii prompturi mai bune: formula Obiectiv + Context + Limite + Format</h2>
+      <p>De ce „Scrie-mi un email" dă rezultate slabe — și formula simplă, în 4 pași, care transformă răspunsurile AI din generice în gata de folosit.</p>
+      <span class="more">Citește articolul →</span>
+    </a>
+  </main>
+
+  <footer>
+    <img src="/logo-white.png" alt="Învață AI">
+    <p><a href="/">Acasă</a> · <a href="/termeni.html">Termeni</a> · <a href="/confidentialitate.html">Confidențialitate</a></p>
+    <p style="margin-top:0.75rem;">© 2026 Învață AI</p>
+  </footer>
+</body>
+</html>

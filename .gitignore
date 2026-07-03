@@ -1,5 +1,7 @@
 # Internal planning — keep local only
 CONTEXT.md
+email-flow.md
+welcome-email-preview.html
 
 # Generated lesson exports (regenerate with: python3 scripts/export-lessons.py)
 exports/
@@ -11,6 +13,7 @@ exports/
 .vscode/
 .idea/
 *.swp
+.claude/
 
 # Logs
 *.log
