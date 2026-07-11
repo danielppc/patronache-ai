@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI pentru manageri: ședințe, rapoarte, decizii | Învață AI</title>
+  <meta name="description" content="Ghid practic pentru manageri: cum folosești AI-ul la pregătirea ședințelor, scrierea rapoartelor și luarea deciziilor. Cu prompturi în română, gata de copiat.">
+  <link rel="canonical" href="https://invata-ai.com/blog/ai-pentru-manageri.html">
+  <meta property="og:title" content="AI pentru manageri: ședințe, rapoarte, decizii">
+  <meta property="og:description" content="Cum folosești AI-ul la pregătirea ședințelor, scrierea rapoartelor și luarea deciziilor. Cu prompturi în română.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://invata-ai.com/blog/ai-pentru-manageri.html">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:image" content="https://invata-ai.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://invata-ai.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI pentru manageri: ședințe, rapoarte, decizii",
+    "description": "Cum folosești AI-ul la pregătirea ședințelor, scrierea rapoartelor și luarea deciziilor. Cu prompturi în română.",
+    "datePublished": "2026-07-03",
+    "dateModified": "2026-07-03",
+    "inLanguage": "ro",
+    "author": { "@type": "Person", "name": "Daniel Lupu" },
+    "publisher": { "@type": "Organization", "name": "Învață AI", "url": "https://invata-ai.com" },
+    "image": "https://invata-ai.com/og-image.png",
+    "mainEntityOfPage": "https://invata-ai.com/blog/ai-pentru-manageri.html"
+  }
+  </script>
+  <!-- Consent Mode v2 — implicit refuzat până la alegerea utilizatorului -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('ia_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted',
+          ad_personalization: 'granted', analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script src="/consent.js" defer></script>
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1152344');
+  </script>
+  <!-- End MailerLite Universal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1e40af; --dark: #0f172a; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --light: #f8fafc; --accent: #7c3aed; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.75; background: #fff; }
+    nav { border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 10; }
+    .nav-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo img { height: 30px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+    article { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem 4rem; }
+    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 900; color: var(--dark); letter-spacing: -1px; line-height: 1.2; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.45rem; font-weight: 800; color: var(--dark); letter-spacing: -0.3px; margin: 2.5rem 0 1rem; }
+    p, li { font-size: 1.02rem; margin-bottom: 1.1rem; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1.1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--primary); }
+    strong { color: var(--dark); }
+    .prompt-box { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.4rem; font-size: 0.95rem; margin: 1.25rem 0; white-space: pre-wrap; }
+    .prompt-box .ph { color: var(--accent); font-weight: 600; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; color: var(--primary); }
+    .stat-box { background: #f5f3ff; border-left: 4px solid var(--accent); border-radius: 0 12px 12px 0; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.95rem; color: var(--text); }
+    .warn-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 12px 12px 0; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.95rem; color: #78350f; }
+    .cta { background: linear-gradient(160deg, #0f172a, #1e3a8a); color: #fff; border-radius: 18px; padding: 2.25rem 2rem; margin: 3rem 0 1rem; text-align: center; }
+    .cta h3 { font-size: 1.35rem; font-weight: 900; margin-bottom: 0.6rem; color: #fff; }
+    .cta h3 span { background: linear-gradient(120deg, #60a5fa, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .cta p { color: #cbd5e1; font-size: 0.95rem; max-width: 480px; margin: 0 auto 1.25rem; }
+    .cta .ml-embedded { max-width: 420px; margin: 0 auto; }
+    .author { display: flex; align-items: center; gap: 0.5rem; border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer { background: var(--dark); color: #94a3b8; padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; }
+    footer img { height: 30px; margin-bottom: 1rem; }
+    footer a { color: #93c5fd; text-decoration: none; }
+    @media (max-width: 640px) { h1 { font-size: 1.7rem; } article { padding-top: 2.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
+      <ul class="nav-links">
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article>
+    <div class="meta">Blog · 3 iulie 2026 · 8 min de citit · de Daniel Lupu</div>
+    <h1>AI pentru manageri: ședințe, rapoarte, decizii</h1>
+
+    <p>Munca de manager are o particularitate: cea mai mare parte din zi nu „produci" — coordonezi. Ședințe, rapoarte în sus, decizii în jos, emailuri în toate direcțiile. Exact genul de muncă în care AI-ul taie cel mai mult timp mort, pentru că e repetitivă ca structură, chiar dacă conținutul se schimbă mereu.</p>
+
+    <div class="stat-box">📊 <strong>Contextul din piață:</strong> 81% dintre lideri se așteaptă ca agenții AI să facă parte din strategia companiei în următoarele 12–18 luni <em>(Microsoft Work Trend Index, 2025)</em>. Managerii care știu deja să lucreze cu AI-ul nu vor mai avea de recuperat.</div>
+
+    <p>Mai jos: trei zone din munca ta, fiecare cu prompturi gata de copiat. Funcționează în ChatGPT, Claude sau Gemini — <a href="/blog/chatgpt-vs-claude-vs-gemini.html">oricare dintre ele</a>. Înlocuiești ce e între <span style="color:var(--accent);font-weight:600;">[paranteze]</span> cu detaliile tale.</p>
+
+    <h2>1. Ședințe: intri pregătit, ieși cu acțiuni</h2>
+
+    <p><strong>Înainte de ședință</strong> — 5 minute de pregătire care te scot din defensivă:</p>
+
+    <div class="prompt-box"><span class="tag">Prompt: pregătirea</span>
+Pregătește-mă pentru o ședință despre <span class="ph">[subiect]</span>.
+Participanți: <span class="ph">[cine]</span>. Obiectivul meu: <span class="ph">[ce vreau]</span>.
+Dă-mi: 1) 3 întrebări bune de pus, 2) posibile obiecții și cum răspund, 3) mesajul-cheie cu care vreau să rămână toți.</div>
+
+    <p><strong>După ședință</strong> — notițele devin plan de acțiune, nu amintiri:</p>
+
+    <div class="prompt-box"><span class="tag">Prompt: note → acțiuni</span>
+Transformă notițele de mai jos în acțiuni clare.
+Pentru fiecare: ce trebuie făcut, cine e responsabil (dacă reiese), termen (dacă reiese).
+Notițele: <span class="ph">[lipește aici]</span></div>
+
+    <p>Efectul compus: dacă conduci 5 ședințe pe săptămână și recuperezi 20 de minute la fiecare, sunt aproape 2 ore pe săptămână — doar din zona asta.</p>
+
+    <h2>2. Rapoarte: de la foaia albă la draft în 2 minute</h2>
+
+    <p>Raportul recurent — săptămânal către conducere, lunar către client — e candidatul perfect pentru un workflow salvat. Nu-l scrii de la zero: îți arunci notițele brute (bullet-uri, cifre, dezordonat) și îi dai structura:</p>
+
+    <div class="prompt-box"><span class="tag">Prompt: raportul de status</span>
+Scrie raportul meu săptămânal de status pentru <span class="ph">[public: conducere/client]</span>.
+Structură: realizări, în lucru, blocaje, pași următori.
+Ton profesional, concis.
+Transformă notițele de mai jos în raport: <span class="ph">[lipește notițele]</span></div>
+
+    <p>Partea importantă: <strong>salvează promptul.</strong> Săptămâna viitoare schimbi doar notițele. Iar când primești tu rapoarte lungi de la alții, procesul invers e la fel de valoros: „Rezumă documentul pentru <span style="color:var(--accent);font-weight:600;">[rolul meu]</span>: ideile principale, ce decizii se cer de la mine, cifre și termene importante."</p>
+
+    <h2>3. Decizii: AI-ul ca sparring partner, nu ca decident</h2>
+
+    <p>Aici e cea mai subestimată utilizare pentru manageri. Nu-i ceri AI-ului să decidă — îi ceri să-ți <strong>testeze gândirea</strong> înainte s-o prezinți sau s-o execuți.</p>
+
+    <div class="prompt-box"><span class="tag">Prompt: avocatul diavolului</span>
+Fii avocatul diavolului pentru planul de mai jos.
+Găsește slăbiciunile, presupunerile riscante și ce aș putea trece cu vederea. Apoi sugerează cum l-aș putea întări.
+Planul: <span class="ph">[lipește aici]</span></div>
+
+    <p>Iar când ești blocat între opțiuni cu criterii multiple:</p>
+
+    <div class="prompt-box"><span class="tag">Prompt: matricea de decizie</span>
+Ajută-mă să aleg între <span class="ph">[opțiuni]</span> folosind o matrice de decizie.
+Criteriile mele și cât contează fiecare: <span class="ph">[criteriu – importanță, ...]</span>.
+Dă-mi un punctaj pentru fiecare opțiune și un câștigător clar.</div>
+
+    <p>Valoarea nu e „răspunsul corect" — e că-ți structurează gândirea și scoate la suprafață presupunerile pe care nu știai că le faci. Decizia rămâne a ta.</p>
+
+    <div class="warn-box">⚠️ <strong>Regulile managerului responsabil:</strong> (1) Nu lipi în AI date confidențiale — nume de angajați în discuții sensibile, cifre nefăcute publice, planuri strategice; descrie situația generic. (2) Verifică cifrele și afirmațiile factuale — AI-ul poate „inventa" cu încredere. (3) Deciziile care afectează oameni rămân ale tale — AI-ul e consilier, nu decident.</div>
+
+    <h2>De unde începi (concret)</h2>
+    <ol>
+      <li>Alege <strong>o singură zonă</strong> din cele trei — cea care te doare cel mai tare.</li>
+      <li>Folosește promptul de acolo la următoarea ocazie reală (azi sau mâine, nu „cândva").</li>
+      <li>Salvează promptul care a mers într-un document. Ăsta e începutul bibliotecii tale de workflow-uri.</li>
+    </ol>
+    <p>Dacă vrei și partea de comunicare scrisă — refuzuri elegante, follow-up-uri, cereri — am acoperit-o separat: <a href="/blog/email-profesional-cu-ai.html">cum scrii un email profesional cu AI</a>.</p>
+
+    <div class="cta">
+      <h3>50 de prompturi pentru toată <span>munca ta</span></h3>
+      <p>Ședințe, rapoarte, decizii, emailuri, planificare — primești gratuit pachetul complet, plus un email pe săptămână cu exemple concrete de AI la muncă.</p>
+      <!-- MailerLite Form Embed -->
+      <div class="ml-embedded" data-form="EYQS9u"></div>
+      <!-- End MailerLite Form Embed -->
+    </div>
+
+    <div class="author">
+      <span>Scris de <strong>Daniel Lupu</strong> — creatorul cursului <a href="/">Învață AI</a>: 40 de lecții practice de AI, în limba română.</span>
+    </div>
+  </article>
+
+  <footer>
+    <img src="/logo-white.png" alt="Învață AI">
+    <p><a href="/">Acasă</a> · <a href="/blog/">Blog</a> · <a href="/termeni.html">Termeni</a> · <a href="/confidentialitate.html">Confidențialitate</a></p>
+    <p style="margin-top:0.75rem;">© 2026 Învață AI</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cum scrii un email profesional cu AI (cu exemple în română) | Învață AI</title>
+  <meta name="description" content="Ghid practic: cum folosești ChatGPT sau Claude ca să scrii emailuri profesionale în română — refuzuri elegante, follow-up-uri, cereri către șef. Cu prompturi gata de copiat.">
+  <link rel="canonical" href="https://invata-ai.com/blog/email-profesional-cu-ai.html">
+  <meta property="og:title" content="Cum scrii un email profesional cu AI (cu exemple în română)">
+  <meta property="og:description" content="Refuzuri elegante, follow-up-uri, cereri către șef — cu prompturi gata de copiat, în română.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://invata-ai.com/blog/email-profesional-cu-ai.html">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:image" content="https://invata-ai.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://invata-ai.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cum scrii un email profesional cu AI (cu exemple în română)",
+    "description": "Refuzuri elegante, follow-up-uri, cereri către șef — cu prompturi gata de copiat, în română.",
+    "datePublished": "2026-07-03",
+    "dateModified": "2026-07-03",
+    "inLanguage": "ro",
+    "author": { "@type": "Person", "name": "Daniel Lupu" },
+    "publisher": { "@type": "Organization", "name": "Învață AI", "url": "https://invata-ai.com" },
+    "image": "https://invata-ai.com/og-image.png",
+    "mainEntityOfPage": "https://invata-ai.com/blog/email-profesional-cu-ai.html"
+  }
+  </script>
+  <!-- Consent Mode v2 — implicit refuzat până la alegerea utilizatorului -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('ia_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted',
+          ad_personalization: 'granted', analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script src="/consent.js" defer></script>
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1152344');
+  </script>
+  <!-- End MailerLite Universal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1e40af; --dark: #0f172a; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --light: #f8fafc; --accent: #7c3aed; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.75; background: #fff; }
+    nav { border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 10; }
+    .nav-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo img { height: 30px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+    article { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem 4rem; }
+    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 900; color: var(--dark); letter-spacing: -1px; line-height: 1.2; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.45rem; font-weight: 800; color: var(--dark); letter-spacing: -0.3px; margin: 2.5rem 0 1rem; }
+    p, li { font-size: 1.02rem; margin-bottom: 1.1rem; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1.1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--primary); }
+    strong { color: var(--dark); }
+    .prompt-box { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.4rem; font-size: 0.95rem; margin: 1.25rem 0; white-space: pre-wrap; }
+    .prompt-box .ph { color: var(--accent); font-weight: 600; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; color: var(--primary); }
+    .warn-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 12px 12px 0; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.95rem; color: #78350f; }
+    .cta { background: linear-gradient(160deg, #0f172a, #1e3a8a); color: #fff; border-radius: 18px; padding: 2.25rem 2rem; margin: 3rem 0 1rem; text-align: center; }
+    .cta h3 { font-size: 1.35rem; font-weight: 900; margin-bottom: 0.6rem; color: #fff; }
+    .cta h3 span { background: linear-gradient(120deg, #60a5fa, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .cta p { color: #cbd5e1; font-size: 0.95rem; max-width: 480px; margin: 0 auto 1.25rem; }
+    .cta .ml-embedded { max-width: 420px; margin: 0 auto; }
+    .author { display: flex; align-items: center; gap: 0.5rem; border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer { background: var(--dark); color: #94a3b8; padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; }
+    footer img { height: 30px; margin-bottom: 1rem; }
+    footer a { color: #93c5fd; text-decoration: none; }
+    @media (max-width: 640px) { h1 { font-size: 1.7rem; } article { padding-top: 2.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
+      <ul class="nav-links">
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article>
+    <div class="meta">Blog · 3 iulie 2026 · 7 min de citit · de Daniel Lupu</div>
+    <h1>Cum scrii un email profesional cu AI (cu exemple în română)</h1>
+
+    <p>Emailul e locul unde AI-ul îți dă cel mai rapid câștig vizibil: sarcina e frecventă, are miză emoțională (tonul!) și se pretează perfect la delegare. Totuși, majoritatea oamenilor primesc de la AI emailuri robotice, care sună a corporatism gol.</p>
+
+    <p>Motivul nu e instrumentul — funcționează la fel de bine în ChatGPT, Claude sau Gemini (<a href="/blog/chatgpt-vs-claude-vs-gemini.html">comparația aici</a>). Motivul e cererea. Hai să reparăm asta cu trei situații reale, cu prompturi gata de copiat.</p>
+
+    <h2>Regula de bază: dă-i context, nu comenzi</h2>
+    <p>„Scrie-mi un email către client" produce un șablon generic. Un email bun are nevoie de: <strong>cine ești, cui scrii, ce s-a întâmplat, ce vrei să obții, pe ce ton, cât de lung.</strong> Asta e <a href="/blog/cum-scrii-prompturi-mai-bune.html">formula Obiectiv + Context + Limite + Format</a>, aplicată la email. Tot ce vezi între <span style="color:var(--accent);font-weight:600;">[paranteze]</span> înlocuiești cu detaliile tale.</p>
+
+    <h2>Situația 1: refuzul elegant (vestea proastă)</h2>
+    <p>Cel mai greu email de scris: spui „nu" fără să strici relația. Clientul cere o reducere, un coleg cere ceva imposibil de făcut până vineri, un partener vrea o întâlnire în care nu vezi rostul.</p>
+
+    <div class="prompt-box"><span class="tag">Prompt de copiat</span>
+Ajută-mă să scriu un email profesional în limba română.
+- Cine sunt: <span class="ph">[rolul tău]</span>
+- Către cine scriu: <span class="ph">[destinatar și relația]</span>
+- Situația: <span class="ph">[ce s-a întâmplat]</span>
+- Ce vreau să comunic: <span class="ph">[refuzul / vestea]</span>
+- Ton: ferm, dar respectuos și empatic
+- Limite: max 120 de cuvinte, clar și direct, fără limbaj de lemn
+Dă-mi 2 variante între care să aleg.</div>
+
+    <p>Detaliul care schimbă tot: <strong>„dă-mi 2 variante".</strong> Nu mai judeci un singur text („e bun? nu e?"), ci alegi dintre două — mult mai ușor, și de obicei combini ce e mai bun din fiecare.</p>
+
+    <h2>Situația 2: follow-up fără să pari insistent</h2>
+    <p>Ai trimis o ofertă, un CV, o întrebare — și liniște. Vrei să reamintești fără să sune a disperare.</p>
+
+    <div class="prompt-box"><span class="tag">Prompt de copiat</span>
+Scrie un email scurt de follow-up în limba română.
+- Context: am trimis <span class="ph">[ce]</span> pe <span class="ph">[când]</span> și nu am primit răspuns
+- Destinatar: <span class="ph">[cine]</span>
+- Obiectiv: să primesc un răspuns, fără să par insistent
+- Ton: prietenos, relaxat
+- Limite: max 80 de cuvinte, cu o singură întrebare clară la final.</div>
+
+    <p>De ce funcționează: constrângerea „o singură întrebare clară la final" forțează un email cu acțiune concretă, nu un „mă gândeam să revin" vag.</p>
+
+    <h2>Situația 3: cererea către șef sau client</h2>
+    <p>O mărire, o aprobare, o resursă. Aici structura vinde: context → cerere → beneficiu pentru ei.</p>
+
+    <div class="prompt-box"><span class="tag">Prompt de copiat</span>
+Ajută-mă să scriu un email prin care cer <span class="ph">[ce ceri]</span>.
+- Cine sunt și către cine: <span class="ph">[detalii]</span>
+- De ce e justificat: <span class="ph">[argumentele tale]</span>
+- Ton: încrezător, dar respectuos
+- Structură: context → cerere → beneficiu. Max 150 de cuvinte.
+Dă-mi o variantă și 2 sugestii de îmbunătățire.</div>
+
+    <h2>Pasul final: fă-l să sune a tine</h2>
+    <p>Primul răspuns rar e cel final. În loc s-o iei de la capăt, corectează din câteva cuvinte: <em>„mai scurt", „sună prea corporate", „mai cald", „fă-l mai direct".</em> Fiecare ajustare durează 5 secunde. Două-trei iterații și emailul sună a tine, nu a robot.</p>
+
+    <div class="warn-box">⚠️ <strong>Două reguli înainte de Send:</strong> (1) Recitește întotdeauna — numele tău e pe email, nu al AI-ului. (2) Nu lipi în conversație date confidențiale: numele complete ale clienților, sume din contracte, informații interne. Descrie situația generic („un client important", „o sumă semnificativă") — rezultatul e la fel de bun.</div>
+
+    <h2>Bonus: răspunsul la emailul tensionat</h2>
+    <p>Ai primit un mesaj agresiv sau o reclamație și îți vine să răspunzi la nervi? Exact atunci delegi primul draft: cere-i AI-ului să rezume întâi ce vrea de fapt expeditorul și care e îngrijorarea reală din spatele tonului, apoi să scrie un răspuns calm, care recunoaște problema și oferă un pas concret. Vei observa ceva interesant: de multe ori AI-ul „citește" mai limpede emailul decât tine, pentru că el nu e jignit.</p>
+
+    <div class="cta">
+      <h3>Astea au fost 3 din <span>50 de prompturi</span></h3>
+      <p>Primești gratuit pachetul complet — emailuri, ședințe, research, rapoarte, planificare — plus un email pe săptămână cu exemple concrete de AI la muncă.</p>
+      <!-- MailerLite Form Embed -->
+      <div class="ml-embedded" data-form="EYQS9u"></div>
+      <!-- End MailerLite Form Embed -->
+    </div>
+
+    <div class="author">
+      <span>Scris de <strong>Daniel Lupu</strong> — creatorul cursului <a href="/">Învață AI</a>: 40 de lecții practice de AI, în limba română.</span>
+    </div>
+  </article>
+
+  <footer>
+    <img src="/logo-white.png" alt="Învață AI">
+    <p><a href="/">Acasă</a> · <a href="/blog/">Blog</a> · <a href="/termeni.html">Termeni</a> · <a href="/confidentialitate.html">Confidențialitate</a></p>
+    <p style="margin-top:0.75rem;">© 2026 Învață AI</p>
+  </footer>
+</body>
+</html>
