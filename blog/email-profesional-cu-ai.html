@@ -88,6 +88,14 @@
     .cta p { color: #cbd5e1; font-size: 0.95rem; max-width: 480px; margin: 0 auto 1.25rem; }
     .cta .ml-embedded { max-width: 420px; margin: 0 auto; }
     .author { display: flex; align-items: center; gap: 0.5rem; border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
+    .related-wrap { border-top: 1px solid var(--border); margin-top: 2rem; padding-top: 1.75rem; }
+    .related-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 1rem; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .related-card { display: block; border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; text-decoration: none; transition: all 0.2s; }
+    .related-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,23,42,0.08); border-color: #c7d2fe; }
+    .related-card b { display: block; color: var(--dark); font-size: 0.95rem; line-height: 1.4; margin-bottom: 0.35rem; }
+    .related-card span { font-size: 0.82rem; color: var(--muted); }
+    @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
     footer { background: var(--dark); color: #94a3b8; padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; }
     footer img { height: 30px; margin-bottom: 1rem; }
     footer a { color: #93c5fd; text-decoration: none; }
@@ -173,6 +181,19 @@ Dă-mi o variantă și 2 sugestii de îmbunătățire.</div>
 
     <div class="author">
       <span>Scris de <strong>Daniel Lupu</strong> — creatorul cursului <a href="/">Învață AI</a>: 40 de lecții practice de AI, în limba română.</span>
+    </div>
+    <div class="related-wrap">
+      <div class="related-title">Citește și</div>
+      <div class="related-grid">
+        <a class="related-card" href="/blog/cum-scrii-prompturi-mai-bune.html">
+          <b>Cum scrii prompturi mai bune</b>
+          <span>Formula din spatele acestor emailuri, explicată pas cu pas.</span>
+        </a>
+        <a class="related-card" href="/blog/ai-pentru-manageri.html">
+          <b>AI pentru manageri</b>
+          <span>Ședințe, rapoarte și decizii — cu prompturi gata de copiat.</span>
+        </a>
+      </div>
     </div>
   </article>
 
