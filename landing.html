@@ -473,6 +473,7 @@
       <li><a href="#pret">Preț</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="/blog/">Blog</a></li>
+      <li><a href="/curs.html" id="nav-access">Acces curs</a></li>
     </ul>
     <a href="#pret" class="nav-buy">Cumpără — 199 lei</a>
   </div>
@@ -1207,6 +1208,23 @@ function typeText(el, text, cb) {
   document.getElementById(`modal${id}`).addEventListener('click', e => { if (e.target === document.getElementById(`modal${id}`)) closeModal(id); });
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(1); closeModal(2); } });
+</script>
+<script>
+  // Cumpărătorii (cookie de acces valid) văd „Continuă cursul" în loc de „Cumpără".
+  (function () {
+    fetch('/api/session', { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (s) {
+        if (!s || !s.access) return;
+        var navBuy = document.querySelector('.nav-buy');
+        if (navBuy) { navBuy.textContent = 'Continuă cursul'; navBuy.setAttribute('href', '/curs.html'); }
+        var navAccess = document.getElementById('nav-access');
+        if (navAccess) { navAccess.parentElement.style.display = 'none'; }
+        var buyBig = document.querySelector('.btn-buy-big');
+        if (buyBig) { buyBig.textContent = 'Continuă cursul →'; buyBig.setAttribute('href', '/curs.html'); }
+      })
+      .catch(function () { /* fără sesiune — butoanele rămân pe cumpărare */ });
+  })();
 </script>
 </body>
 </html>
