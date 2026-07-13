@@ -104,6 +104,12 @@
     .btn-outline { background: white; color: var(--text); padding: 0.9rem 1.75rem; border-radius: 9px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid var(--border); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
     .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
     .hero-proof { display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; }
+    /* Mod membru: cumpărătorii (cookie valid) văd varianta „bine ai revenit" */
+    .member-only { display: none !important; }
+    body.member .guest-only { display: none !important; }
+    body.member .member-only.as-block { display: block !important; }
+    body.member .member-only.as-flex { display: flex !important; }
+    body.member .member-only.as-inline { display: inline-flex !important; }
     .hero-proof-item { display: flex; align-items: center; gap: 0.35rem; }
     .hero-proof-item::before { content: '✓'; color: var(--success); font-weight: 700; }
 
@@ -470,12 +476,13 @@
     <ul class="nav-links">
       <li><a href="#program">Program</a></li>
       <li><a href="#preview">Lecții gratuite</a></li>
-      <li><a href="#pret">Preț</a></li>
+      <li class="guest-only"><a href="#pret">Preț</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="/curs.html" id="nav-access">Acces curs</a></li>
+      <li class="guest-only"><a href="/curs.html" id="nav-access">Acces curs</a></li>
     </ul>
-    <a href="#pret" class="nav-buy">Cumpără — 199 lei</a>
+    <a href="#pret" class="nav-buy guest-only">Cumpără — 199 lei</a>
+    <a href="/curs.html" class="nav-buy member-only as-inline">Continuă cursul</a>
   </div>
 </nav>
 
@@ -483,18 +490,26 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">🇷🇴 Curs online în limba română</div>
+      <div class="hero-eyebrow guest-only">🇷🇴 Curs online în limba română</div>
+      <div class="hero-eyebrow member-only as-inline">👋 Bine ai revenit</div>
       <h1>Construiește-ți sistemul personal de lucru cu AI</h1>
-      <p class="hero-sub">Curs text-interactiv, în ritmul tău. În 40 de lecții practice treci de la „mai încerc ChatGPT uneori" la prompturi, context, workflow-uri și automatizări pe care le folosești în munca reală.</p>
-      <div class="hero-ctas">
+      <p class="hero-sub guest-only">Curs text-interactiv, în ritmul tău. În 40 de lecții practice treci de la „mai încerc ChatGPT uneori" la prompturi, context, workflow-uri și automatizări pe care le folosești în munca reală.</p>
+      <p class="hero-sub member-only as-block">Cursul tău te așteaptă — progresul se salvează automat, continui exact de unde ai rămas.</p>
+      <div class="hero-ctas guest-only">
         <a href="#pret" class="btn-buy">Cumpără acum — 199 lei →</a>
         <a href="#preview" class="btn-outline">▶ Încearcă gratuit</a>
       </div>
-      <div class="hero-proof">
+      <div class="hero-ctas member-only as-flex">
+        <a href="/curs.html" class="btn-buy">Continuă cursul →</a>
+      </div>
+      <div class="hero-proof guest-only">
         <div class="hero-proof-item">Acces pe viață</div>
         <div class="hero-proof-item">Certificat inclus</div>
         <div class="hero-proof-item">Fără abonament</div>
         <div class="hero-proof-item">Plată unică</div>
+      </div>
+      <div class="hero-proof member-only as-flex">
+        <div class="hero-proof-item" id="member-progress">Progresul tău se încarcă…</div>
       </div>
     </div>
     <div class="hero-visual">
@@ -750,7 +765,7 @@
 </section>
 
 <!-- PRICING -->
-<section class="pricing" id="pret">
+<section class="pricing guest-only" id="pret">
   <div class="container">
     <div class="section-hdr center">
       <div class="section-eyebrow">Preț</div>
@@ -1210,20 +1225,29 @@ function typeText(el, text, cb) {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(1); closeModal(2); } });
 </script>
 <script>
-  // Cumpărătorii (cookie de acces valid) văd „Continuă cursul" în loc de „Cumpără".
+  // Mod membru: cumpărătorii (cookie de acces valid) văd „bine ai revenit" + progres,
+  // fără butoane de cumpărare. Comutarea e făcută prin clasa body.member (CSS declarativ).
   (function () {
     fetch('/api/session', { credentials: 'same-origin' })
       .then(function (r) { return r.json(); })
       .then(function (s) {
         if (!s || !s.access) return;
-        var navBuy = document.querySelector('.nav-buy');
-        if (navBuy) { navBuy.textContent = 'Continuă cursul'; navBuy.setAttribute('href', '/curs.html'); }
-        var navAccess = document.getElementById('nav-access');
-        if (navAccess) { navAccess.parentElement.style.display = 'none'; }
-        var buyBig = document.querySelector('.btn-buy-big');
-        if (buyBig) { buyBig.textContent = 'Continuă cursul →'; buyBig.setAttribute('href', '/curs.html'); }
+        document.body.classList.add('member');
+        try {
+          var prog = JSON.parse(localStorage.getItem('invata_ai_progress') || '{}');
+          var done = Object.keys(prog).filter(function (k) { return prog[k]; }).length;
+          var el = document.getElementById('member-progress');
+          if (el) {
+            if (done > 0) {
+              var pct = Math.min(100, Math.round((done / 40) * 100));
+              el.textContent = '📈 Progresul tău: ' + done + ' din 40 de lecții (' + pct + '%)';
+            } else {
+              el.textContent = '✨ Totul e pregătit — începe cu prima lecție.';
+            }
+          }
+        } catch (e) { /* fără progres local — butonul rămâne suficient */ }
       })
-      .catch(function () { /* fără sesiune — butoanele rămân pe cumpărare */ });
+      .catch(function () { /* fără sesiune — pagina rămâne în modul vizitator */ });
   })();
 </script>
 </body>
