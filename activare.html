@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activează cursul — Învață AI</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1e40af; --primary-dark: #1e3a8a; --dark: #0f172a; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --light: #f8fafc; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--light); min-height: 100vh; display: flex; flex-direction: column; }
+    nav { background: #fff; border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .nav-inner { max-width: 560px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo img { height: 30px; width: auto; display: block; }
+    .nav-back { font-size: 0.85rem; color: var(--muted); text-decoration: none; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1.25rem; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 2.5rem 2.25rem; max-width: 480px; width: 100%; box-shadow: 0 10px 40px rgba(15,23,42,0.06); }
+    .badge { display: inline-block; background: #ede9fe; color: #6d28d9; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.8rem; border-radius: 50px; margin-bottom: 1rem; }
+    h1 { font-size: 1.6rem; font-weight: 900; color: var(--dark); letter-spacing: -0.5px; margin-bottom: 0.6rem; }
+    .sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.6; }
+    label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+    input { width: 100%; padding: 0.95rem 1.1rem; border: 1.5px solid var(--border); border-radius: 10px; font-size: 0.95rem; font-family: ui-monospace, Menlo, monospace; transition: border 0.2s; }
+    input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px #dbeafe; }
+    button { width: 100%; margin-top: 1rem; background: var(--primary); color: #fff; border: 0; border-radius: 10px; padding: 1rem; font-size: 1rem; font-weight: 800; font-family: inherit; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: var(--primary-dark); }
+    button:disabled { opacity: 0.6; cursor: wait; }
+    .msg { margin-top: 1rem; font-size: 0.9rem; line-height: 1.55; border-radius: 10px; padding: 0.85rem 1rem; display: none; }
+    .msg.err { display: block; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+    .msg.ok { display: block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .help { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--border); font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .help a { color: var(--primary); }
+    footer { padding: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/logo.png" alt="Învață AI"></a>
+      <a href="/" class="nav-back">← Înapoi la site</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="card">
+      <div class="badge">Acces curs</div>
+      <h1>Activează-ți accesul</h1>
+      <p class="sub">Introdu cheia de acces primită pe email după cumpărare. O introduci o singură dată pe acest dispozitiv — apoi intri direct în curs.</p>
+
+      <form id="f">
+        <label for="key">Cheia ta de acces</label>
+        <input id="key" name="key" type="text" placeholder="INVATA-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" required>
+        <button id="btn" type="submit">Activează cursul</button>
+      </form>
+      <div class="msg" id="msg"></div>
+
+      <div class="help">
+        <strong>Nu găsești cheia?</strong> E în emailul de confirmare a plății (caută „Polar" — verifică și Spam). Probleme? Scrie-ne la <a href="mailto:hello@invata-ai.com">hello@invata-ai.com</a> — răspundem rapid.
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2026 Învață AI · <a href="/termeni.html" style="color:inherit;">Termeni</a></footer>
+
+  <script>
+    const f = document.getElementById('f');
+    const btn = document.getElementById('btn');
+    const msg = document.getElementById('msg');
+
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.className = 'msg';
+      btn.disabled = true;
+      btn.textContent = 'Se verifică…';
+      try {
+        const res = await fetch('/.netlify/functions/activate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: document.getElementById('key').value }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          msg.textContent = '✓ Acces activat! Te ducem în curs…';
+          msg.className = 'msg ok';
+          setTimeout(() => { window.location.href = '/curs.html'; }, 900);
+          return;
+        }
+        msg.textContent = data.error || 'Ceva n-a mers. Încearcă din nou.';
+        msg.className = 'msg err';
+      } catch (err) {
+        msg.textContent = 'Nu am putut contacta serverul. Verifică conexiunea și încearcă din nou.';
+        msg.className = 'msg err';
+      }
+      btn.disabled = false;
+      btn.textContent = 'Activează cursul';
+    });
+  </script>
+</body>
+</html>
