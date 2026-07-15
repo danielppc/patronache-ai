@@ -186,6 +186,19 @@
     .notwhat .section-eyebrow { color: #fbbf24; }
     .notwhat .section-title { color: white; }
     .notwhat .section-sub { color: #94a3b8; }
+
+    /* BLOG PREVIEW */
+    .blogprev { padding: 6rem 0; background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .blogprev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .blogprev-card { display: block; background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; text-decoration: none; color: inherit; transition: all 0.25s; }
+    .blogprev-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .blogprev-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .blogprev-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark); letter-spacing: -0.3px; line-height: 1.35; margin-bottom: 0.6rem; }
+    .blogprev-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .blogprev-more { font-size: 0.85rem; font-weight: 700; color: var(--primary); }
+    .blogprev-footer { text-align: center; margin-top: 2.5rem; }
+    .blogprev-footer a { font-size: 0.9rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    @media (max-width: 900px) { .blogprev-grid { grid-template-columns: 1fr; } }
     .notwhat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 820px; margin: 0 auto; }
     .notwhat-col { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; }
     .notwhat-col h3 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
@@ -867,6 +880,40 @@
         <div class="faq-q" onclick="toggleFaq(this)">Pot cumpăra cursul pentru angajații mei?</div>
         <div class="faq-a">Da. Scrie-ne la hello@invata-ai.com pentru o ofertă de grup (5+ persoane). Oferim reduceri pentru achiziții multiple.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section class="blogprev guest-only">
+  <div class="container">
+    <div class="section-hdr center" style="text-align:center;">
+      <div class="section-eyebrow">Din blog</div>
+      <h2 class="section-title">Încă te gândești? Citește câteva ghiduri gratuite</h2>
+      <p class="section-sub" style="margin:0 auto;">O parte din ce înveți în curs, pe scurt și gratuit — ca să vezi cum lucrăm înainte să cumperi.</p>
+    </div>
+    <div class="blogprev-grid">
+      <a class="blogprev-card" href="/blog/cum-scrii-prompturi-mai-bune.html">
+        <div class="blogprev-meta">6 min de citit</div>
+        <h3>Cum scrii prompturi mai bune: formula Obiectiv + Context + Limite + Format</h3>
+        <p>De ce „Scrie-mi un email" dă rezultate slabe — și formula simplă care rezolvă asta.</p>
+        <span class="blogprev-more">Citește articolul →</span>
+      </a>
+      <a class="blogprev-card" href="/blog/email-profesional-cu-ai.html">
+        <div class="blogprev-meta">7 min de citit</div>
+        <h3>Cum scrii un email profesional cu AI</h3>
+        <p>Refuzul elegant, follow-up-ul și cererea către șef — trei situații reale, cu prompturi gata de copiat.</p>
+        <span class="blogprev-more">Citește articolul →</span>
+      </a>
+      <a class="blogprev-card" href="/blog/ai-pentru-manageri.html">
+        <div class="blogprev-meta">8 min de citit</div>
+        <h3>AI pentru manageri: ședințe, rapoarte, decizii</h3>
+        <p>Trei zone din munca de manager în care AI-ul taie cel mai mult timp mort.</p>
+        <span class="blogprev-more">Citește articolul →</span>
+      </a>
+    </div>
+    <div class="blogprev-footer">
+      <a href="/blog/">Vezi toate articolele →</a>
     </div>
   </div>
 </section>
