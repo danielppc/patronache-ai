@@ -146,7 +146,9 @@
     .mockup-complete-btn { background: var(--primary); color: white; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.9rem; border-radius: 6px; }
     .mockup-nav-text { font-size: 0.7rem; color: var(--muted); }
     .float-badge { position: absolute; bottom: -12px; left: -20px; background: white; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; box-shadow: var(--shadow); display: flex; align-items: center; gap: 0.6rem; }
-    .float-badge-icon { width: 32px; height: 32px; background: #dcfce7; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .float-badge-icon { width: 32px; height: 32px; background: #dcfce7; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #16a34a; }
+    .float-badge-icon svg { width: 17px; height: 17px; }
+    .icon-svg { display: inline-block; vertical-align: -3px; }
     .float-badge-text strong { display: block; font-size: 0.8rem; color: var(--dark); }
     .float-badge-text span { font-size: 0.7rem; color: var(--muted); }
 
@@ -196,7 +198,8 @@
     .notwhat-col.yes li::before { content: '✓'; color: #22c55e; }
     .forwho-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: all 0.25s; }
     .forwho-card:hover { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); transform: translateY(-2px); }
-    .forwho-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .forwho-icon { width: 48px; height: 48px; background: var(--primary-light); color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .forwho-icon svg { width: 24px; height: 24px; }
     .forwho-card h3 { font-size: 0.95rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
     .forwho-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
@@ -251,7 +254,8 @@
     .includes { background: var(--light); }
     .includes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
     .include-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
-    .include-icon { width: 42px; height: 42px; background: var(--primary-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .include-icon { width: 42px; height: 42px; background: var(--primary-light); color: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .include-icon svg { width: 21px; height: 21px; }
     .include-item h4 { font-size: 0.875rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
     .include-item p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
 
@@ -560,7 +564,7 @@
         </div>
       </div>
       <div class="float-badge">
-        <div class="float-badge-icon">🎯</div>
+        <div class="float-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <div class="float-badge-text">
           <strong>Lecția 12 din 40</strong>
           <span>29% completat</span>
@@ -608,17 +612,17 @@
     </div>
     <div class="forwho-grid">
       <div class="forwho-card">
-        <div class="forwho-icon">💼</div>
+        <div class="forwho-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <h3>Profesionistul care vrea să economisească timp</h3>
         <p>Emailuri, rapoarte, rezumate — înveți să delegi sarcinile repetitive către AI și câștigi ore în fiecare săptămână.</p>
       </div>
       <div class="forwho-card">
-        <div class="forwho-icon">📈</div>
+        <div class="forwho-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
         <h3>Managerul care vrea să rămână relevant</h3>
         <p>AI-ul schimbă modul în care echipele lucrează. Înțelege ce e posibil și cum să îți ghidezi oamenii în această tranziție.</p>
       </div>
       <div class="forwho-card">
-        <div class="forwho-icon">🚀</div>
+        <div class="forwho-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
         <h3>Freelancerul care vrea să producă mai mult</h3>
         <p>Conținut, propuneri, cercetare, prezentări — cu AI poți să livrezi mai rapid și să iei mai multe proiecte fără să lucrezi mai mult.</p>
       </div>
@@ -755,12 +759,12 @@
       <h2 class="section-title">Tot ce ai nevoie, dintr-o singură dată</h2>
     </div>
     <div class="includes-grid">
-      <div class="include-item"><div class="include-icon">📚</div><div><h4>40 lecții interactive</h4><p>Text + exerciții practice în browser. Fără video-uri de 2 ore pe care le dai skip.</p></div></div>
-      <div class="include-item"><div class="include-icon">🎯</div><div><h4>Exerciții pe cazuri reale</h4><p>Fiecare lecție include un exercițiu aplicat — nu întrebări de trivia.</p></div></div>
-      <div class="include-item"><div class="include-icon">📋</div><div><h4>Biblioteca de prompts</h4><p>Prompts gata de folosit, pentru email, rapoarte, HR, marketing și altele.</p></div></div>
-      <div class="include-item"><div class="include-icon">🏆</div><div><h4>Certificat de absolvire</h4><p>La finalul cursului primești un certificat pe care îl poți adăuga pe LinkedIn.</p></div></div>
-      <div class="include-item"><div class="include-icon">♾️</div><div><h4>Acces pe viață</h4><p>Cursul se actualizează gratuit. Plătești o dată, beneficiezi pentru totdeauna.</p></div></div>
-      <div class="include-item"><div class="include-icon">📱</div><div><h4>Funcționează pe orice device</h4><p>Browser pe telefon, tabletă sau laptop. Fără app de instalat.</p></div></div>
+      <div class="include-item"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div><div><h4>40 lecții interactive</h4><p>Text + exerciții practice în browser. Fără video-uri de 2 ore pe care le dai skip.</p></div></div>
+      <div class="include-item"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><h4>Exerciții pe cazuri reale</h4><p>Fiecare lecție include un exercițiu aplicat — nu întrebări de trivia.</p></div></div>
+      <div class="include-item"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div><div><h4>Biblioteca de prompts</h4><p>Prompts gata de folosit, pentru email, rapoarte, HR, marketing și altele.</p></div></div>
+      <div class="include-item"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><h4>Certificat de absolvire</h4><p>La finalul cursului primești un certificat pe care îl poți adăuga pe LinkedIn.</p></div></div>
+      <div class="include-item"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.588 0-4.588 8 0 8 5.606 0 7.644-8 12.739-8z"/></svg></div><div><h4>Acces pe viață</h4><p>Cursul se actualizează gratuit. Plătești o dată, beneficiezi pentru totdeauna.</p></div></div>
+      <div class="include-item"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><div><h4>Funcționează pe orice device</h4><p>Browser pe telefon, tabletă sau laptop. Fără app de instalat.</p></div></div>
     </div>
   </div>
 </section>
@@ -791,10 +795,10 @@
         <a href="https://buy.polar.sh/polar_cl_iRjlJH4jAamWbRewRlO1dRRYMvbZ1L69WFVeY16Msrs" class="btn-buy-big">
           Cumpără acum — 199 lei →
         </a>
-        <div class="pricing-anchor">🚀 <strong>199 lei — locuri limitate.</strong> După, prețul crește la 399 lei. Cumperi acum și prinzi cursul la jumătate de preț — cu acces pe viață la tot ce adăugăm după.</div>
-        <div class="pricing-anchor" style="background:#eff6ff;border-left-color:var(--primary);color:#1e3a8a;">💡 <strong>Chiar și la 199 lei</strong>, dacă AI-ul îți economisește doar 30 de minute pe zi, cursul se amortizează în câteva zile. O singură automatizare bună poate economisi zeci de ore anual.</div>
-        <div class="pricing-money-back">✓ <strong>Garanție 14 zile — banii înapoi.</strong> Parcurgi cursul, încerci. Dacă nu e pentru tine, primești toți banii înapoi. Fără întrebări.</div>
-        <div class="pricing-guarantee">🔒 Plată securizată prin Polar · TVA inclus</div>
+        <div class="pricing-anchor"><svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> <strong>199 lei — locuri limitate.</strong> După, prețul crește la 399 lei. Cumperi acum și prinzi cursul la jumătate de preț — cu acces pe viață la tot ce adăugăm după.</div>
+        <div class="pricing-anchor" style="background:#eff6ff;border-left-color:var(--primary);color:#1e3a8a;"><svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> <strong>Chiar și la 199 lei</strong>, dacă AI-ul îți economisește doar 30 de minute pe zi, cursul se amortizează în câteva zile. O singură automatizare bună poate economisi zeci de ore anual.</div>
+        <div class="pricing-money-back"><svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> <strong>Garanție 14 zile — banii înapoi.</strong> Parcurgi cursul, încerci. Dacă nu e pentru tine, primești toți banii înapoi. Fără întrebări.</div>
+        <div class="pricing-guarantee"><svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Plată securizată prin Polar · TVA inclus</div>
       </div>
     </div>
   </div>
