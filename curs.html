@@ -221,6 +221,17 @@
     .cert-date { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
     .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.85rem 1.75rem; border-radius: 9px; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; border: none; cursor: pointer; }
     .btn-download:hover { background: var(--primary-dark); }
+    .cert-input { width: 100%; max-width: 360px; padding: 0.85rem 1.1rem; border: 1.5px solid var(--border); border-radius: 9px; font-size: 1rem; font-family: inherit; margin-bottom: 1.25rem; text-align: center; }
+    .cert-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+    .cert-sub { font-size: 0.85rem; color: var(--muted); margin: 0.25rem 0 0.75rem; }
+    .cert-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 0.35rem; }
+    .btn-ghost { background: transparent !important; color: var(--primary) !important; border: 1.5px solid var(--primary) !important; margin-left: 0.5rem; }
+    @media print {
+      body * { visibility: hidden !important; }
+      #cert-print, #cert-print * { visibility: visible !important; }
+      #cert-print { position: absolute; left: 0; top: 0; width: 100%; padding: 2rem; }
+      #cert-print .cert-box { border-width: 3px; }
+    }
 
     /* EXERCISE / PROMPT FORMAT */
     .exercise-block { background: #fff8f1; border: 1.5px solid #fed7aa; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
@@ -368,16 +379,42 @@
 
     <!-- CERTIFICATE -->
     <div class="cert-screen" id="cert-screen">
-      <span class="cert-emoji">🏆</span>
-      <h2>Felicitări! Ai absolvit cursul!</h2>
-      <p>Ai parcurs toate cele 40 de lecții și ești acum pregătit să folosești AI în munca ta de zi cu zi.</p>
-      <div class="cert-box">
-        <h3>Certificat de absolvire</h3>
-        <div class="cert-name">Învață AI — Curs AI Fundamental</div>
-        <div class="cert-course">40 lecții · 7 module · ~7 ore de conținut</div>
-        <div class="cert-date">Completat în <span id="cert-date"></span></div>
+      <!-- Stare: nu ai terminat toate lecțiile -->
+      <div id="cert-locked" style="display:none;">
+        <span class="cert-emoji">🔒</span>
+        <h2>Mai ai puțin până la certificat</h2>
+        <p>Certificatul se deblochează după ce termini toate cele 40 de lecții. Până acum ai completat <strong id="cert-progress">0/40</strong>. Continuă — ești pe drumul cel bun.</p>
+        <button class="btn-download" onclick="showDashboard()">Continuă cursul →</button>
       </div>
-      <button class="btn-download" onclick="window.print()">⬇ Descarcă certificatul</button>
+
+      <!-- Stare: ai terminat, introdu numele -->
+      <div id="cert-nameform" style="display:none;">
+        <span class="cert-emoji">🎉</span>
+        <h2>Felicitări! Ai absolvit cursul!</h2>
+        <p>Ai parcurs toate cele 40 de lecții. Scrie-ți numele complet — apare pe certificat.</p>
+        <input id="cert-name-input" class="cert-input" type="text" placeholder="Numele tău complet" autocomplete="name" onkeydown="if(event.key==='Enter')generateCertificate()">
+        <br>
+        <button class="btn-download" onclick="generateCertificate()">Generează certificatul →</button>
+      </div>
+
+      <!-- Stare: certificatul final -->
+      <div id="cert-final" style="display:none;">
+        <span class="cert-emoji">🏆</span>
+        <h2>Felicitări, <span id="cert-firstname"></span>!</h2>
+        <p>Ai absolvit cursul. Descarcă certificatul și adaugă-l pe LinkedIn.</p>
+        <div id="cert-print">
+          <div class="cert-box">
+            <h3>Certificat de absolvire</h3>
+            <div class="cert-name" id="cert-fullname">—</div>
+            <div class="cert-sub">a absolvit cursul</div>
+            <div class="cert-title">Învață AI — Curs AI Fundamental</div>
+            <div class="cert-course">40 lecții · 7 module · ~7 ore de conținut</div>
+            <div class="cert-date">Completat în <span id="cert-date"></span></div>
+          </div>
+        </div>
+        <button class="btn-download" onclick="window.print()">⬇ Descarcă certificatul</button>
+        <button class="btn-download btn-ghost" onclick="editCertName()">Schimbă numele</button>
+      </div>
     </div>
   </div>
 </div>
@@ -3069,9 +3106,53 @@ function showDashboard() {
 function showCertificate() {
   document.getElementById('lesson-view').classList.remove('active');
   document.getElementById('dashboard').style.display = 'none';
-  const cert = document.getElementById('cert-screen');
-  cert.classList.add('active');
+  document.getElementById('cert-screen').classList.add('active');
+  document.getElementById('main').scrollTo(0, 0);
+
+  var done = countCompleted(), total = totalLessons();
+  var locked = document.getElementById('cert-locked');
+  var nameform = document.getElementById('cert-nameform');
+  var finalCert = document.getElementById('cert-final');
+  locked.style.display = 'none'; nameform.style.display = 'none'; finalCert.style.display = 'none';
+
+  // Gate: certificatul doar dacă toate lecțiile sunt complete
+  if (done < total) {
+    document.getElementById('cert-progress').textContent = done + '/' + total;
+    locked.style.display = 'block';
+    return;
+  }
+  var saved = (storageGet('invata_ai_name') || '').trim();
+  if (saved) { renderCertificate(saved); }
+  else {
+    nameform.style.display = 'block';
+    setTimeout(function () { var i = document.getElementById('cert-name-input'); if (i) i.focus(); }, 50);
+  }
+}
+
+function generateCertificate() {
+  var el = document.getElementById('cert-name-input');
+  var val = (el.value || '').trim();
+  if (val.length < 2) { el.focus(); return; }
+  storageSet('invata_ai_name', val);
+  renderCertificate(val);
+}
+
+function renderCertificate(name) {
+  document.getElementById('cert-locked').style.display = 'none';
+  document.getElementById('cert-nameform').style.display = 'none';
+  document.getElementById('cert-final').style.display = 'block';
+  document.getElementById('cert-fullname').textContent = name;
+  document.getElementById('cert-firstname').textContent = name.split(' ')[0];
   document.getElementById('cert-date').textContent = new Date().toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function editCertName() {
+  document.getElementById('cert-final').style.display = 'none';
+  var nf = document.getElementById('cert-nameform');
+  nf.style.display = 'block';
+  var i = document.getElementById('cert-name-input');
+  i.value = storageGet('invata_ai_name') || '';
+  i.focus();
 }
 
 function updateUI() {
