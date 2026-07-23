@@ -214,13 +214,12 @@
     .cert-emoji { font-size: 4rem; margin-bottom: 1rem; display: block; }
     .cert-screen h2 { font-size: 1.8rem; font-weight: 900; color: var(--dark); margin-bottom: 0.75rem; }
     .cert-screen p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
-    .cert-box { background: white; border: 2px solid var(--primary); border-radius: 16px; padding: 2.5rem; margin: 2rem 0; }
-    .cert-box h3 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 0.75rem; }
-    .cert-name { font-size: 1.6rem; font-weight: 900; color: var(--dark); letter-spacing: -0.5px; margin-bottom: 0.5rem; }
-    .cert-course { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
-    .cert-date { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
-    .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.85rem 1.75rem; border-radius: 9px; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; border: none; cursor: pointer; }
-    .btn-download:hover { background: var(--primary-dark); }
+    #cert-print { margin: 2rem 0; }
+    .cert-canvas-wrap { border-radius: 14px; overflow: hidden; box-shadow: 0 18px 50px rgba(15,23,42,0.16); line-height: 0; background: #fff; }
+    #cert-canvas { display: block; width: 100%; height: auto; }
+    .cert-actions { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; margin-top: 0.25rem; }
+    .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.9rem 1.75rem; border-radius: 9px; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; border: none; cursor: pointer; }
+    .btn-download:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(30,64,175,0.28); }
     .cert-input { width: 100%; max-width: 360px; padding: 0.85rem 1.1rem; border: 1.5px solid var(--border); border-radius: 9px; font-size: 1rem; font-family: inherit; margin-bottom: 1.25rem; text-align: center; }
     .cert-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
     .cert-sub { font-size: 0.85rem; color: var(--muted); margin: 0.25rem 0 0.75rem; }
@@ -232,13 +231,8 @@
     .share-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); background: white; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; color: var(--muted); }
     .share-btn:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); box-shadow: 0 6px 16px rgba(15,23,42,0.1); }
     .share-btn svg { width: 20px; height: 20px; }
-    .share-toast { font-size: 0.8rem; color: #16a34a; font-weight: 600; margin-top: 0.85rem; min-height: 1rem; }
-    @media print {
-      body * { visibility: hidden !important; }
-      #cert-print, #cert-print * { visibility: visible !important; }
-      #cert-print { position: absolute; left: 0; top: 0; width: 100%; padding: 2rem; }
-      #cert-print .cert-box { border-width: 3px; }
-    }
+    .share-toast { font-size: 0.82rem; color: #16a34a; font-weight: 600; margin-top: 0.85rem; min-height: 1rem; }
+    .share-hint { font-size: 0.8rem; color: var(--muted); line-height: 1.55; margin-top: 0.6rem; max-width: 420px; margin-left: auto; margin-right: auto; }
 
     /* EXERCISE / PROMPT FORMAT */
     .exercise-block { background: #fff8f1; border: 1.5px solid #fed7aa; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
@@ -408,22 +402,24 @@
       <div id="cert-final" style="display:none;">
         <span class="cert-emoji">🏆</span>
         <h2>Felicitări, <span id="cert-firstname"></span>!</h2>
-        <p>Ai absolvit cursul. Descarcă certificatul și adaugă-l pe LinkedIn.</p>
+        <p>Ai absolvit cursul. Descarcă certificatul ca imagine și pune-l pe LinkedIn.</p>
         <div id="cert-print">
-          <div class="cert-box">
-            <h3>Certificat de absolvire</h3>
-            <div class="cert-name" id="cert-fullname">—</div>
-            <div class="cert-sub">a absolvit cursul</div>
-            <div class="cert-title">Învață AI — Curs AI Fundamental</div>
-            <div class="cert-course">40 lecții · 7 module · ~7 ore de conținut</div>
-            <div class="cert-date">Completat în <span id="cert-date"></span></div>
+          <div class="cert-canvas-wrap">
+            <canvas id="cert-canvas" width="2000" height="1414" role="img" aria-label="Certificat de absolvire Învață AI"></canvas>
           </div>
         </div>
-        <button class="btn-download" onclick="window.print()">⬇ Descarcă certificatul</button>
-        <button class="btn-download btn-ghost" onclick="editCertName()">Schimbă numele</button>
+        <div class="cert-actions">
+          <button class="btn-download" onclick="downloadCertificate()">⬇ Descarcă certificatul (PNG)</button>
+          <button class="btn-download btn-ghost" onclick="editCertName()">Schimbă numele</button>
+        </div>
 
         <div class="cert-share">
-          <span class="cert-share-label">Împărtășește reușita ta 🎉</span>
+          <span class="cert-share-label">Distribuie certificatul 🎉</span>
+          <div class="cert-share-btns" style="margin-bottom:0.7rem;">
+            <button class="btn-download" id="cert-native-share" onclick="shareCertNative()" style="display:none;">📤 Distribuie imaginea</button>
+          </div>
+          <p class="share-hint">Pe LinkedIn/Facebook: <b>descarcă imaginea</b> mai sus, apoi ataș-o la o postare nouă. Butoanele de mai jos împart doar linkul către curs.</p>
+          <span class="cert-share-label" style="margin-top:1rem;">Sau dă vestea (link către curs)</span>
           <div class="cert-share-btns">
             <button class="share-btn" onclick="shareCert('linkedin')" title="LinkedIn" aria-label="Share pe LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></button>
             <button class="share-btn" onclick="shareCert('facebook')" title="Facebook" aria-label="Share pe Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></button>
@@ -3160,9 +3156,213 @@ function renderCertificate(name) {
   document.getElementById('cert-locked').style.display = 'none';
   document.getElementById('cert-nameform').style.display = 'none';
   document.getElementById('cert-final').style.display = 'block';
-  document.getElementById('cert-fullname').textContent = name;
   document.getElementById('cert-firstname').textContent = name.split(' ')[0];
-  document.getElementById('cert-date').textContent = new Date().toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
+  var dateStr = new Date().toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
+  // Draw after fonts load so serif/Inter render crisply
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { drawCertificate(name, dateStr); });
+    drawCertificate(name, dateStr); // immediate draw too (fonts likely cached)
+  } else {
+    drawCertificate(name, dateStr);
+  }
+  // Show native share button only where it can share the image file
+  try {
+    var nb = document.getElementById('cert-native-share');
+    if (nb && navigator.canShare && navigator.canShare({ files: [new File([new Blob(['x'])], 'x.png', { type: 'image/png' })] })) {
+      nb.style.display = 'inline-flex';
+    }
+  } catch (e) { /* canShare not supported — keep hidden */ }
+}
+
+function drawCertificate(name, dateStr) {
+  var canvas = document.getElementById('cert-canvas');
+  if (!canvas) return;
+  var W = 2000, H = 1414;
+  canvas.width = W; canvas.height = H;
+  var ctx = canvas.getContext('2d');
+  var cx = W / 2;
+
+  // ---- background ----
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, W, H);
+  // subtle top-corner tint
+  var bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, 'rgba(37,99,235,0.05)');
+  bg.addColorStop(0.5, 'rgba(255,255,255,0)');
+  bg.addColorStop(1, 'rgba(124,58,237,0.05)');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  var brand = ctx.createLinearGradient(0, 0, W, 0);
+  brand.addColorStop(0, '#2563eb');
+  brand.addColorStop(1, '#7c3aed');
+
+  // ---- outer gradient frame ----
+  roundRectPath(ctx, 46, 46, W - 92, H - 92, 26);
+  ctx.lineWidth = 12; ctx.strokeStyle = brand; ctx.stroke();
+  // inner thin line
+  roundRectPath(ctx, 74, 74, W - 148, H - 148, 18);
+  ctx.lineWidth = 2.5; ctx.strokeStyle = 'rgba(30,64,175,0.35)'; ctx.stroke();
+  // corner accents
+  drawCorners(ctx, 74, 74, W - 148, H - 148, brand);
+
+  // ---- top brand wordmark ----
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = brand;
+  ctx.font = '800 40px Inter, system-ui, sans-serif';
+  spaceText(ctx, 'ÎNVAȚĂ AI', cx, 168, 6);
+
+  // ---- medallion seal ----
+  drawSeal(ctx, cx, 320, 92, brand);
+
+  // ---- eyebrow ----
+  ctx.fillStyle = '#64748b';
+  ctx.font = '700 30px Inter, system-ui, sans-serif';
+  spaceText(ctx, 'CERTIFICAT DE ABSOLVIRE', cx, 500, 8);
+
+  // ---- "se acordă lui" ----
+  ctx.fillStyle = '#475569';
+  ctx.font = '400 34px Inter, system-ui, sans-serif';
+  ctx.fillText('Acest certificat se acordă lui', cx, 580);
+
+  // ---- name (serif, gradient) ----
+  var nameSize = fitFont(ctx, name, 120, W - 400, '800', 'Georgia, "Times New Roman", serif');
+  ctx.font = '800 ' + nameSize + 'px Georgia, "Times New Roman", serif';
+  ctx.fillStyle = '#0f172a';
+  ctx.fillText(name, cx, 715);
+  // flourish underline
+  var uw = Math.min(560, ctx.measureText(name).width + 80);
+  var ug = ctx.createLinearGradient(cx - uw / 2, 0, cx + uw / 2, 0);
+  ug.addColorStop(0, 'rgba(37,99,235,0)');
+  ug.addColorStop(0.5, '#7c3aed');
+  ug.addColorStop(1, 'rgba(124,58,237,0)');
+  ctx.strokeStyle = ug; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx - uw / 2, 758); ctx.lineTo(cx + uw / 2, 758); ctx.stroke();
+
+  // ---- "pentru absolvirea cursului" ----
+  ctx.fillStyle = '#475569';
+  ctx.font = '400 34px Inter, system-ui, sans-serif';
+  ctx.fillText('pentru absolvirea cu succes a cursului', cx, 852);
+
+  // ---- course title ----
+  ctx.fillStyle = brand;
+  ctx.font = '800 62px Inter, system-ui, sans-serif';
+  ctx.fillText('Curs AI Fundamental', cx, 938);
+
+  // ---- meta ----
+  ctx.fillStyle = '#64748b';
+  ctx.font = '600 30px Inter, system-ui, sans-serif';
+  ctx.fillText('40 de lecții  ·  7 module  ·  ~7 ore de conținut practic', cx, 1000);
+
+  // ---- bottom row: date (left) + signature (right) ----
+  var by = 1230, padX = 250;
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(padX, by - 8); ctx.lineTo(padX + 360, by - 8); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(W - padX - 360, by - 8); ctx.lineTo(W - padX, by - 8); ctx.stroke();
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 30px Inter, system-ui, sans-serif';
+  ctx.fillText(dateStr, padX + 180, by + 34);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '600 24px Inter, system-ui, sans-serif';
+  ctx.fillText('Data absolvirii', padX + 180, by + 74);
+
+  ctx.fillStyle = '#0f172a'; ctx.font = '800 34px Georgia, serif';
+  ctx.fillText('Daniel Lupu', W - padX - 180, by + 34);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '600 24px Inter, system-ui, sans-serif';
+  ctx.fillText('Fondator · Învață AI', W - padX - 180, by + 74);
+
+  // ---- footer ----
+  ctx.fillStyle = brand; ctx.font = '700 28px Inter, system-ui, sans-serif';
+  spaceText(ctx, 'invata-ai.com', cx, 1340, 2);
+}
+
+// ---- canvas helpers ----
+function roundRectPath(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+function drawCorners(ctx, x, y, w, h, stroke) {
+  var L = 46, off = 26;
+  ctx.strokeStyle = stroke; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  var pts = [[x + off, y + off, 1, 1], [x + w - off, y + off, -1, 1], [x + off, y + h - off, 1, -1], [x + w - off, y + h - off, -1, -1]];
+  pts.forEach(function (p) {
+    ctx.beginPath();
+    ctx.moveTo(p[0], p[1] + p[3] * L); ctx.lineTo(p[0], p[1]); ctx.lineTo(p[0] + p[2] * L, p[1]);
+    ctx.stroke();
+  });
+}
+function drawSeal(ctx, x, y, r, brand) {
+  ctx.save();
+  // outer ring
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fillStyle = brand; ctx.fill();
+  // scalloped edge dots
+  for (var i = 0; i < 24; i++) {
+    var a = (i / 24) * Math.PI * 2;
+    ctx.beginPath(); ctx.arc(x + Math.cos(a) * (r + 6), y + Math.sin(a) * (r + 6), 5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(124,58,237,0.35)'; ctx.fill();
+  }
+  // inner white disc + ring
+  ctx.beginPath(); ctx.arc(x, y, r - 16, 0, Math.PI * 2); ctx.fillStyle = '#fff'; ctx.fill();
+  ctx.beginPath(); ctx.arc(x, y, r - 16, 0, Math.PI * 2); ctx.lineWidth = 3; ctx.strokeStyle = brand; ctx.stroke();
+  // checkmark
+  ctx.beginPath();
+  ctx.moveTo(x - 30, y + 2); ctx.lineTo(x - 8, y + 26); ctx.lineTo(x + 34, y - 26);
+  ctx.lineWidth = 12; ctx.strokeStyle = brand; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke();
+  ctx.restore();
+}
+function spaceText(ctx, text, cx, y, gap) {
+  var chars = text.split('');
+  var widths = chars.map(function (c) { return ctx.measureText(c).width; });
+  var total = widths.reduce(function (a, b) { return a + b; }, 0) + gap * (chars.length - 1);
+  var start = cx - total / 2;
+  var prevAlign = ctx.textAlign; ctx.textAlign = 'left';
+  var xx = start;
+  for (var i = 0; i < chars.length; i++) { ctx.fillText(chars[i], xx, y); xx += widths[i] + gap; }
+  ctx.textAlign = prevAlign;
+}
+function fitFont(ctx, text, size, maxW, weight, family) {
+  ctx.font = weight + ' ' + size + 'px ' + family;
+  while (ctx.measureText(text).width > maxW && size > 48) {
+    size -= 4; ctx.font = weight + ' ' + size + 'px ' + family;
+  }
+  return size;
+}
+
+function downloadCertificate() {
+  var canvas = document.getElementById('cert-canvas');
+  if (!canvas) return;
+  var raw = (storageGet('invata_ai_name') || 'Certificat').trim();
+  var safe = raw.replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-+|-+$/g, '') || 'Certificat';
+  canvas.toBlob(function (blob) {
+    if (!blob) { certToast('Nu am putut genera imaginea. Încearcă din nou.'); return; }
+    var a = document.createElement('a');
+    var href = URL.createObjectURL(blob);
+    a.href = href; a.download = 'Certificat-Invata-AI-' + safe + '.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(href); }, 1500);
+    certToast('✓ Descărcat! Îl găsești în Downloads / Galerie.');
+  }, 'image/png');
+}
+
+function shareCertNative() {
+  var canvas = document.getElementById('cert-canvas');
+  if (!canvas || !navigator.canShare) { downloadCertificate(); return; }
+  var text = 'Tocmai am absolvit cursul Învață AI 🎓 — 40 de lecții practice despre cum folosești AI-ul în munca de zi cu zi, în română. https://invata-ai.com';
+  canvas.toBlob(function (blob) {
+    if (!blob) { downloadCertificate(); return; }
+    var file = new File([blob], 'certificat-invata-ai.png', { type: 'image/png' });
+    if (navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], title: 'Certificat Învață AI', text: text }).catch(function () {});
+    } else {
+      downloadCertificate();
+      certToast('Descarcă imaginea și încarc-o în postarea ta.');
+    }
+  }, 'image/png');
 }
 
 function editCertName() {
