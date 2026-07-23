@@ -32,6 +32,11 @@
     .msg.ok { display: block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
     .help { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--border); font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
     .help a { color: var(--primary); }
+    .keyguide { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 1rem 1.15rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: #1e3a8a; line-height: 1.6; }
+    .keyguide-title { font-weight: 800; color: #1e40af; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+    .keyguide ol { margin: 0; padding-left: 1.2rem; }
+    .keyguide li { margin-bottom: 0.3rem; }
+    .keyguide b { color: #1e3a8a; }
     footer { padding: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
   </style>
 </head>
@@ -47,7 +52,16 @@
     <div class="card">
       <div class="badge">Acces curs</div>
       <h1>Activează-ți accesul</h1>
-      <p class="sub">Lipește cheia de licență primită după cumpărare (începe cu <b>INVATA-</b>). O introduci o singură dată pe acest dispozitiv — apoi intri direct în curs, fără s-o mai ceri.</p>
+      <p class="sub">O introduci o singură dată pe acest dispozitiv — apoi intri direct în curs, fără s-o mai ceri.</p>
+
+      <div class="keyguide">
+        <div class="keyguide-title">🔑 De unde iei cheia?</div>
+        <ol>
+          <li>Deschide <b>emailul de la Polar</b> („order confirmation" — caută și în <b>Spam</b>).</li>
+          <li>Apasă butonul <b>„Access purchase"</b> din email.</li>
+          <li>Copiază cheia care începe cu <b>INVATA-</b> și lipește-o mai jos.</li>
+        </ol>
+      </div>
 
       <form id="f">
         <label for="key">Cheia ta de acces</label>
@@ -57,8 +71,6 @@
       <div class="msg" id="msg"></div>
 
       <div class="help">
-        <strong>Unde găsesc cheia?</strong> În emailul de la Polar („order confirmation" — verifică și în Spam), apeși <b>„Access purchase"</b> și vezi cheia în portal. O copiezi de acolo.
-        <br><br>
         <strong>Vreau să intru și de pe telefon sau alt laptop.</strong> Poți — pe fiecare dispozitiv nou lipești cheia o singură dată (funcționează pe până la 5 dispozitive). Nu e o eroare că ți se cere din nou: e normal, accesul se ține separat pe fiecare dispozitiv.
         <br><br>
         <strong>Probleme sau ai atins limita de dispozitive?</strong> Scrie-ne la <a href="mailto:hello@invata-ai.com">hello@invata-ai.com</a> — răspundem rapid.
